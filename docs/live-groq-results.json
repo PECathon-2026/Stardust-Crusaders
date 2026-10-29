@@ -1,0 +1,826 @@
+{
+  "runs": [
+    {
+      "scenario": "checkout",
+      "provider": "groq",
+      "status": "completed",
+      "outcome": "purchase",
+      "steps": 7,
+      "error": null,
+      "receipts": [
+        {
+          "digest": "588a2b96bed6930823cf5cc2d7b0d740a213d027fbcccd2fbaa7d2faec79f557",
+          "bytes": 3911,
+          "latency_ms": 928,
+          "destination": "Groq",
+          "transport": "response received",
+          "image_disclosed": false,
+          "http_status": 200,
+          "id": "65d584c8aea6",
+          "snapshot": "s_670e5cf1ea09794a7a8852e2",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "ADDRESS",
+            "CARD",
+            "CREDIT_CARD",
+            "CVV",
+            "NAME",
+            "PERSON"
+          ],
+          "region": null
+        },
+        {
+          "digest": "36e8a2a09020d30e575d3db4bec89b0379f284debb29c33695ed51ca2ce0c311",
+          "bytes": 3987,
+          "latency_ms": 890,
+          "destination": "Groq",
+          "transport": "response received",
+          "image_disclosed": false,
+          "http_status": 200,
+          "id": "d42bf5fd306a",
+          "snapshot": "s_988dc3f574fb97f20e91ade5",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "ADDRESS",
+            "CARD",
+            "CREDIT_CARD",
+            "CVV",
+            "NAME",
+            "PERSON"
+          ],
+          "region": null
+        },
+        {
+          "digest": "ddcd0a8d8db88746fbc8d18e3d4be90306aed77e52cc03a8916e94ae8c37cb4b",
+          "bytes": 4071,
+          "latency_ms": 1308,
+          "destination": "Groq",
+          "transport": "response received",
+          "image_disclosed": false,
+          "http_status": 200,
+          "id": "bc5327e14de4",
+          "snapshot": "s_e6740779c5696e02cea09d78",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "ADDRESS",
+            "CARD",
+            "CREDIT_CARD",
+            "CVV",
+            "NAME",
+            "PERSON"
+          ],
+          "region": null
+        },
+        {
+          "digest": "471582a000da9f21968cf03078b2ddc2a30b2df0af5d5720a4e80955e4874983",
+          "bytes": 4150,
+          "latency_ms": 1177,
+          "destination": "Groq",
+          "transport": "response received",
+          "image_disclosed": false,
+          "http_status": 200,
+          "id": "2c653b2d761b",
+          "snapshot": "s_cf0b4925d16c5239920f81fb",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "ADDRESS",
+            "CARD",
+            "CREDIT_CARD",
+            "CVV",
+            "NAME",
+            "PERSON"
+          ],
+          "region": null
+        },
+        {
+          "digest": "1e7f46b3ebb8586affc4ac359186232bd9427aa48a3014a2baab7e3e99b35273",
+          "bytes": 4193,
+          "latency_ms": 835,
+          "destination": "Groq",
+          "transport": "response received",
+          "image_disclosed": false,
+          "http_status": 200,
+          "id": "dd43f47de105",
+          "snapshot": "s_0554da2329c1141fa21a2eaa",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "ADDRESS",
+            "CARD",
+            "CREDIT_CARD",
+            "CVV",
+            "NAME",
+            "PERSON"
+          ],
+          "region": null
+        },
+        {
+          "digest": "4eccc00d1b2023bc58d1976c18cb39da5d19a62c9cb75d79a34b5c66233e81a5",
+          "bytes": 4457,
+          "latency_ms": 1022,
+          "destination": "Groq",
+          "transport": "response received",
+          "image_disclosed": false,
+          "http_status": 200,
+          "id": "0fe4eba8aa24",
+          "snapshot": "s_1b7f34faf15a241d037b82ed",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "ADDRESS",
+            "CARD",
+            "CREDIT_CARD",
+            "CVV",
+            "NAME",
+            "PERSON"
+          ],
+          "region": null
+        }
+      ],
+      "events": [
+        {
+          "id": 0,
+          "time": "02:13:26",
+          "title": "Browser connected",
+          "detail": "Private ephemeral Chromium context",
+          "kind": "info"
+        },
+        {
+          "id": 1,
+          "time": "02:13:30",
+          "title": "Observation protected",
+          "detail": "10 findings \u00b7 3660 ms",
+          "kind": "privacy"
+        },
+        {
+          "id": 2,
+          "time": "02:13:31",
+          "title": "Action executed",
+          "detail": "fill secret",
+          "kind": "success"
+        },
+        {
+          "id": 3,
+          "time": "02:13:34",
+          "title": "Observation protected",
+          "detail": "11 findings \u00b7 2542 ms",
+          "kind": "privacy"
+        },
+        {
+          "id": 4,
+          "time": "02:13:35",
+          "title": "Action executed",
+          "detail": "fill secret",
+          "kind": "success"
+        },
+        {
+          "id": 5,
+          "time": "02:13:38",
+          "title": "Observation protected",
+          "detail": "12 findings \u00b7 2680 ms",
+          "kind": "privacy"
+        },
+        {
+          "id": 6,
+          "time": "02:13:40",
+          "title": "Action executed",
+          "detail": "fill secret",
+          "kind": "success"
+        },
+        {
+          "id": 7,
+          "time": "02:13:43",
+          "title": "Observation protected",
+          "detail": "13 findings \u00b7 2608 ms",
+          "kind": "privacy"
+        },
+        {
+          "id": 8,
+          "time": "02:13:44",
+          "title": "Action executed",
+          "detail": "fill secret",
+          "kind": "success"
+        },
+        {
+          "id": 9,
+          "time": "02:13:47",
+          "title": "Observation protected",
+          "detail": "13 findings \u00b7 2833 ms",
+          "kind": "privacy"
+        },
+        {
+          "id": 10,
+          "time": "02:13:48",
+          "title": "Action executed",
+          "detail": "click",
+          "kind": "success"
+        },
+        {
+          "id": 11,
+          "time": "02:13:51",
+          "title": "Observation protected",
+          "detail": "13 findings \u00b7 2677 ms",
+          "kind": "privacy"
+        },
+        {
+          "id": 12,
+          "time": "02:13:52",
+          "title": "Approval required",
+          "detail": "Place demo order",
+          "kind": "approval"
+        },
+        {
+          "id": 13,
+          "time": "02:13:53",
+          "title": "Action executed",
+          "detail": "click",
+          "kind": "success"
+        },
+        {
+          "id": 14,
+          "time": "02:13:56",
+          "title": "Observation protected",
+          "detail": "13 findings \u00b7 2509 ms",
+          "kind": "privacy"
+        },
+        {
+          "id": 15,
+          "time": "02:13:56",
+          "title": "Task completed",
+          "detail": "Observed the expected page outcome",
+          "kind": "success"
+        }
+      ],
+      "elapsed_s": 30.75
+    },
+    {
+      "scenario": "authentication",
+      "provider": "groq",
+      "status": "completed",
+      "outcome": "signin",
+      "steps": 5,
+      "error": null,
+      "receipts": [
+        {
+          "digest": "28de2b46bd7336638a882cd69abeff6ffb6228d8ca871c97b6ef1dc9f7b233c3",
+          "bytes": 3838,
+          "latency_ms": 1204,
+          "destination": "Groq",
+          "transport": "response received",
+          "image_disclosed": false,
+          "http_status": 200,
+          "id": "40ef902f4b4a",
+          "snapshot": "s_0314d1a71207e4138fa275df",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "EMAIL",
+            "EMAIL_ADDRESS",
+            "OTP",
+            "PASSWORD",
+            "PHONE_NUMBER"
+          ],
+          "region": null
+        },
+        {
+          "digest": "3d2bc8a5000d9864d1fc79039f9ca07e57f3c26df571c9c0af7743a8ae2f8f7c",
+          "bytes": 3918,
+          "latency_ms": 1207,
+          "destination": "Groq",
+          "transport": "response received",
+          "image_disclosed": false,
+          "http_status": 200,
+          "id": "d1453c7e8785",
+          "snapshot": "s_ebe70b8dfeb8cac2f583c0cd",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "EMAIL",
+            "EMAIL_ADDRESS",
+            "OTP",
+            "PASSWORD",
+            "PHONE_NUMBER"
+          ],
+          "region": null
+        },
+        {
+          "digest": "34fe9434a62f311e0cac4980a488af65842c24100aad7362e6be858940b93122",
+          "bytes": 3994,
+          "latency_ms": 1075,
+          "destination": "Groq",
+          "transport": "response received",
+          "image_disclosed": false,
+          "http_status": 200,
+          "id": "7708538d4313",
+          "snapshot": "s_c12f0331b775834aeb897032",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "EMAIL",
+            "EMAIL_ADDRESS",
+            "OTP",
+            "PASSWORD",
+            "PHONE_NUMBER"
+          ],
+          "region": null
+        },
+        {
+          "digest": "6f740f3c6791f497ae6863b43340a974a5453e2a90167b446f1ddb40f58d89ff",
+          "bytes": 4036,
+          "latency_ms": 912,
+          "destination": "Groq",
+          "transport": "response received",
+          "image_disclosed": false,
+          "http_status": 200,
+          "id": "20b794495125",
+          "snapshot": "s_3d1a48200dcc326bb89e97a5",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "EMAIL",
+            "EMAIL_ADDRESS",
+            "OTP",
+            "PASSWORD",
+            "PHONE_NUMBER"
+          ],
+          "region": null
+        }
+      ],
+      "events": [
+        {
+          "id": 0,
+          "time": "02:13:58",
+          "title": "Browser connected",
+          "detail": "Private ephemeral Chromium context",
+          "kind": "info"
+        },
+        {
+          "id": 1,
+          "time": "02:14:00",
+          "title": "Observation protected",
+          "detail": "7 findings \u00b7 2705 ms",
+          "kind": "privacy"
+        },
+        {
+          "id": 2,
+          "time": "02:14:02",
+          "title": "Action executed",
+          "detail": "fill secret",
+          "kind": "success"
+        },
+        {
+          "id": 3,
+          "time": "02:14:05",
+          "title": "Observation protected",
+          "detail": "8 findings \u00b7 2423 ms",
+          "kind": "privacy"
+        },
+        {
+          "id": 4,
+          "time": "02:14:06",
+          "title": "Action executed",
+          "detail": "fill secret",
+          "kind": "success"
+        },
+        {
+          "id": 5,
+          "time": "02:14:09",
+          "title": "Observation protected",
+          "detail": "8 findings \u00b7 2449 ms",
+          "kind": "privacy"
+        },
+        {
+          "id": 6,
+          "time": "02:14:10",
+          "title": "Action executed",
+          "detail": "fill secret",
+          "kind": "success"
+        },
+        {
+          "id": 7,
+          "time": "02:14:13",
+          "title": "Observation protected",
+          "detail": "8 findings \u00b7 2750 ms",
+          "kind": "privacy"
+        },
+        {
+          "id": 8,
+          "time": "02:14:14",
+          "title": "Action executed",
+          "detail": "click",
+          "kind": "success"
+        },
+        {
+          "id": 9,
+          "time": "02:14:17",
+          "title": "Observation protected",
+          "detail": "8 findings \u00b7 2840 ms",
+          "kind": "privacy"
+        },
+        {
+          "id": 10,
+          "time": "02:14:17",
+          "title": "Task completed",
+          "detail": "Observed the expected page outcome",
+          "kind": "success"
+        }
+      ],
+      "elapsed_s": 21.53
+    },
+    {
+      "scenario": "support",
+      "provider": "groq",
+      "status": "blocked",
+      "outcome": null,
+      "steps": 10,
+      "error": "Model request failed (HTTP 429): The provider's rate or quota limit was reached. Check quota before retrying.",
+      "receipts": [
+        {
+          "digest": "6ea23dac03bd795ef218deba15b33da270aabc91ea7c3ba24411d070218523f8",
+          "bytes": 3478,
+          "latency_ms": 930,
+          "destination": "Groq",
+          "transport": "response received",
+          "image_disclosed": false,
+          "http_status": 200,
+          "id": "c0be834d69f5",
+          "snapshot": "s_38dc15d849aa788a6ad20d29",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "INPUT",
+            "PHONE_NUMBER",
+            "PRIVATE_CONTENT"
+          ],
+          "region": null
+        },
+        {
+          "digest": "0c55bc3902573b574059aa572bfde590030a06ed9c90273229d2b9062d906850",
+          "bytes": 3557,
+          "latency_ms": 1330,
+          "destination": "Groq",
+          "transport": "response received",
+          "image_disclosed": false,
+          "http_status": 200,
+          "id": "bb4a2be10966",
+          "snapshot": "s_7c8833c107167e7f27d11fa3",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "INPUT",
+            "PHONE_NUMBER",
+            "PRIVATE_CONTENT"
+          ],
+          "region": null
+        },
+        {
+          "digest": "a4e22c36406a8fc6d9c69228f3a78eeafd569a312d9495717e41f5d86865f413",
+          "bytes": 3630,
+          "latency_ms": 1277,
+          "destination": "Groq",
+          "transport": "response received",
+          "image_disclosed": false,
+          "http_status": 200,
+          "id": "79047fe5056e",
+          "snapshot": "s_273397cbda61cb5944571610",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "INPUT",
+            "PHONE_NUMBER",
+            "PRIVATE_CONTENT"
+          ],
+          "region": null
+        },
+        {
+          "digest": "07f6cb1af5b29a2cc5668f6a67c53150447499d21438e9d082308db5804caf62",
+          "bytes": 3703,
+          "latency_ms": 842,
+          "destination": "Groq",
+          "transport": "response received",
+          "image_disclosed": false,
+          "http_status": 200,
+          "id": "60a4ab1a8974",
+          "snapshot": "s_24683c6d9b0b3e6dee4d36c9",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "INPUT",
+            "PHONE_NUMBER",
+            "PRIVATE_CONTENT"
+          ],
+          "region": null
+        },
+        {
+          "digest": "5a964958cebb95ae529235f4f82d30322e72c893df1c77f26d4b15cb951c0c11",
+          "bytes": 3784,
+          "latency_ms": 1467,
+          "destination": "Groq",
+          "transport": "response received",
+          "image_disclosed": false,
+          "http_status": 200,
+          "id": "a9972d9a279e",
+          "snapshot": "s_2223f8395d7f3326e93f1294",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "INPUT",
+            "PHONE_NUMBER",
+            "PRIVATE_CONTENT"
+          ],
+          "region": null
+        },
+        {
+          "digest": "3e81238410cb2dc5aa9b5e5c9beca5cc5e8f2504178e3db1e2d70543abe19334",
+          "bytes": 3865,
+          "latency_ms": 1312,
+          "destination": "Groq",
+          "transport": "response received",
+          "image_disclosed": false,
+          "http_status": 200,
+          "id": "63398650325c",
+          "snapshot": "s_b36f91755211bd5d61b8fb28",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "INPUT",
+            "PHONE_NUMBER",
+            "PRIVATE_CONTENT"
+          ],
+          "region": null
+        },
+        {
+          "digest": "682ff732faed4cb83dd965747af62538a79efc19ca6eb8f0007048a1a80d6d1a",
+          "bytes": 3938,
+          "latency_ms": 1355,
+          "destination": "Groq",
+          "transport": "response received",
+          "image_disclosed": false,
+          "http_status": 200,
+          "id": "f834275ca8a2",
+          "snapshot": "s_c3ae253f30a2c58ae0b77598",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "INPUT",
+            "PHONE_NUMBER",
+            "PRIVATE_CONTENT"
+          ],
+          "region": null
+        },
+        {
+          "digest": "7bdeb8c56cbe63f6f347e8a83bb9ff520e3a7166e1db2db1bad34d53905c4bae",
+          "bytes": 3930,
+          "latency_ms": 1688,
+          "destination": "Groq",
+          "transport": "response received",
+          "image_disclosed": false,
+          "http_status": 200,
+          "id": "4d311f361520",
+          "snapshot": "s_77430036a601e82ec39b6319",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "INPUT",
+            "PHONE_NUMBER",
+            "PRIVATE_CONTENT"
+          ],
+          "region": null
+        },
+        {
+          "digest": "746be036fe3a6fb0e490aae1cbfb7fb6a6ecaf8272991a700411d59fe8920966",
+          "bytes": 3930,
+          "latency_ms": 1222,
+          "destination": "Groq",
+          "transport": "response received",
+          "image_disclosed": false,
+          "http_status": 200,
+          "id": "d21b198094e2",
+          "snapshot": "s_a32580de6c1a96960b98a37c",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "INPUT",
+            "PHONE_NUMBER",
+            "PRIVATE_CONTENT"
+          ],
+          "region": null
+        },
+        {
+          "id": "35e091222520",
+          "contract": "task-bound-v1",
+          "decision": "blocked",
+          "reason": "Model request failed (HTTP 429): The provider's rate or quota limit was reached. Check quota before retrying.",
+          "bytes": 0,
+          "digest": null,
+          "image_disclosed": false,
+          "categories": []
+        },
+        {
+          "digest": "a20cc278758e0630637ffd66aaae481a29543e332a7930de97adaa6db914638e",
+          "bytes": 3938,
+          "latency_ms": 490,
+          "destination": "Groq",
+          "transport": "response received",
+          "image_disclosed": false,
+          "http_status": 429,
+          "id": "968851ba854b",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [],
+          "note": "Transport attempted before run failure; response not validated"
+        }
+      ],
+      "events": [
+        {
+          "id": 0,
+          "time": "02:14:20",
+          "title": "Browser connected",
+          "detail": "Private ephemeral Chromium context",
+          "kind": "info"
+        },
+        {
+          "id": 1,
+          "time": "02:14:23",
+          "title": "Observation protected",
+          "detail": "5 findings \u00b7 3708 ms",
+          "kind": "privacy"
+        },
+        {
+          "id": 2,
+          "time": "02:14:25",
+          "title": "Action executed",
+          "detail": "fill public",
+          "kind": "success"
+        },
+        {
+          "id": 3,
+          "time": "02:14:28",
+          "title": "Observation protected",
+          "detail": "5 findings \u00b7 3332 ms",
+          "kind": "privacy"
+        },
+        {
+          "id": 4,
+          "time": "02:14:30",
+          "title": "Approval required",
+          "detail": "Send reply",
+          "kind": "approval"
+        },
+        {
+          "id": 5,
+          "time": "02:14:30",
+          "title": "Action executed",
+          "detail": "click",
+          "kind": "success"
+        },
+        {
+          "id": 6,
+          "time": "02:14:33",
+          "title": "Observation protected",
+          "detail": "5 findings \u00b7 3235 ms",
+          "kind": "privacy"
+        },
+        {
+          "id": 7,
+          "time": "02:14:35",
+          "title": "Approval required",
+          "detail": "Send reply",
+          "kind": "approval"
+        },
+        {
+          "id": 8,
+          "time": "02:14:35",
+          "title": "Action executed",
+          "detail": "click",
+          "kind": "success"
+        },
+        {
+          "id": 9,
+          "time": "02:14:39",
+          "title": "Observation protected",
+          "detail": "5 findings \u00b7 3166 ms",
+          "kind": "privacy"
+        },
+        {
+          "id": 10,
+          "time": "02:14:40",
+          "title": "Action executed",
+          "detail": "fill public",
+          "kind": "success"
+        },
+        {
+          "id": 11,
+          "time": "02:14:43",
+          "title": "Observation protected",
+          "detail": "5 findings \u00b7 2933 ms",
+          "kind": "privacy"
+        },
+        {
+          "id": 12,
+          "time": "02:14:45",
+          "title": "Action executed",
+          "detail": "fill public",
+          "kind": "success"
+        },
+        {
+          "id": 13,
+          "time": "02:14:47",
+          "title": "Observation protected",
+          "detail": "5 findings \u00b7 2352 ms",
+          "kind": "privacy"
+        },
+        {
+          "id": 14,
+          "time": "02:14:49",
+          "title": "Approval required",
+          "detail": "Send reply",
+          "kind": "approval"
+        },
+        {
+          "id": 15,
+          "time": "02:14:49",
+          "title": "Action executed",
+          "detail": "click",
+          "kind": "success"
+        },
+        {
+          "id": 16,
+          "time": "02:14:52",
+          "title": "Observation protected",
+          "detail": "5 findings \u00b7 2353 ms",
+          "kind": "privacy"
+        },
+        {
+          "id": 17,
+          "time": "02:14:53",
+          "title": "Approval required",
+          "detail": "Send reply",
+          "kind": "approval"
+        },
+        {
+          "id": 18,
+          "time": "02:14:54",
+          "title": "Action executed",
+          "detail": "click",
+          "kind": "success"
+        },
+        {
+          "id": 19,
+          "time": "02:14:57",
+          "title": "Observation protected",
+          "detail": "5 findings \u00b7 2356 ms",
+          "kind": "privacy"
+        },
+        {
+          "id": 20,
+          "time": "02:14:59",
+          "title": "Approval required",
+          "detail": "Send reply",
+          "kind": "approval"
+        },
+        {
+          "id": 21,
+          "time": "02:14:59",
+          "title": "Action executed",
+          "detail": "click",
+          "kind": "success"
+        },
+        {
+          "id": 22,
+          "time": "02:15:01",
+          "title": "Observation protected",
+          "detail": "5 findings \u00b7 2367 ms",
+          "kind": "privacy"
+        },
+        {
+          "id": 23,
+          "time": "02:15:03",
+          "title": "Action executed",
+          "detail": "fill public",
+          "kind": "success"
+        },
+        {
+          "id": 24,
+          "time": "02:15:05",
+          "title": "Observation protected",
+          "detail": "5 findings \u00b7 2066 ms",
+          "kind": "privacy"
+        },
+        {
+          "id": 25,
+          "time": "02:15:06",
+          "title": "Run blocked",
+          "detail": "Model request failed (HTTP 429): The provider's rate or quota limit was reached. Check quota before retrying.",
+          "kind": "blocked"
+        }
+      ],
+      "elapsed_s": 48.02
+    }
+  ],
+  "timestamp": 1793306706.8364613
+}

@@ -29,6 +29,7 @@ headless = True
 settings_secrets = {}
 evaluation = None
 gateway.api_key = os.getenv("GEMINI_API_KEY", "")
+gateway.groq_api_key = os.getenv("GROQ_API_KEY", "")
 gateway.model = os.getenv("GEMINI_MODEL", "gemini-3.5-flash-lite")
 
 
@@ -100,6 +101,8 @@ async def status():
     return {
         "initializing": initializing,
         "detectors": detector.status,
+        "groq_configured": bool(gateway.groq_api_key),
+        "groq_model": gateway.groq_model,
         "gemini_configured": bool(gateway.api_key),
         "gemini_model": gateway.model,
         "provider_status": gateway.provider_status,
@@ -119,6 +122,11 @@ async def settings(payload: SettingsRequest):
         gateway.api_key = payload.api_key
     if payload.api_key or gateway.model != payload.gemini_model:
         gateway.provider_status = None
+    if payload.groq_api_key or gateway.groq_model != payload.groq_model:
+        gateway.provider_status = None
+    if payload.groq_api_key:
+        gateway.groq_api_key = payload.groq_api_key
+    gateway.groq_model = payload.groq_model
     gateway.model = payload.gemini_model
     headless = payload.headless
     return {"configured": bool(gateway.api_key), "model": gateway.model}
@@ -145,6 +153,8 @@ async def start(payload: StartRequest):
         )
     if payload.provider == "gemini" and not gateway.api_key:
         raise HTTPException(400, "Add your Gemini key in Settings first")
+    if payload.provider == "groq" and not gateway.groq_api_key:
+        raise HTTPException(400, "Add your Groq key in Settings first")
     payload.task = payload.task or DEFAULT_TASKS[payload.scenario]
     url = {
         "wikipedia": "https://en.wikipedia.org/wiki/Main_Page",

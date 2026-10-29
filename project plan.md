@@ -203,3 +203,6 @@ Current implementation status must be tracked honestly in `docs/phase-status.md`
 - Screenshot Redactor prior application: https://github.com/cleanroom-ai/screenshot-redactor
 
 Novelty comparison remains a required phase-0 check; these sources establish that several underlying mechanisms already exist.
+
+## Live provider follow-up
+Groq is the working text-only cloud alternative. The schema compatibility fix is verified by completed checkout and sign-in tasks. Next: resolve support action repetition and category selection, pace free-tier requests, validate support/conference/developer, then update the final presentation with measured cloud results. Keep local screenshot protection active; Groq text planning does not receive pixels.

@@ -2,7 +2,7 @@
 
 import asyncio, base64, hashlib, json, time, secrets
 import httpx
-from .contracts import Action, PURPOSES, planner_schema
+from .contracts import Action, PURPOSES, planner_schema, groq_schema, validate_text_proposal
 from .privacy import PrivacyError, StaleObservation, leak_check
 
 
@@ -109,6 +109,8 @@ class Gateway:
     def __init__(self, detector):
         self.detector = detector
         self.api_key = ""
+        self.groq_api_key = ""
+        self.groq_model = "openai/gpt-oss-120b"
         self.model = "gemini-3.5-flash-lite"
         self.sent = 0
         self.last_receipt = None
@@ -156,6 +158,27 @@ class Gateway:
                 "x-goog-api-key": self.api_key,
                 "content-type": "application/json",
             }
+        elif provider == "groq":
+            if not self.groq_api_key:
+                raise PrivacyError("Add your Groq API key in Settings before starting a Groq run")
+            if image is not None:
+                raise PrivacyError("Groq text planning does not accept screenshot disclosure")
+            body = {
+                "model": self.groq_model,
+                "messages": [
+                    {"role": "system", "content": SYSTEM + " This provider accepts text only. Image context requests are unavailable. Use the provided semantic controls and text. For this provider's fixed response shape, include every schema field and set unused fields to null. Never invent field values just to populate unused fields."},
+                    {"role": "user", "content": text},
+                ],
+                "response_format": {"type": "json_schema", "json_schema": {
+                    "name": "browser_action", "strict": True,
+                    "schema": groq_schema(observation, refs),
+                }},
+                "max_completion_tokens": 1024,
+                "reasoning_effort": "low",
+                "stream": False,
+            }
+            endpoint = "https://api.groq.com/openai/v1/chat/completions"
+            headers = {"Authorization": f"Bearer {self.groq_api_key}", "content-type": "application/json"}
         elif provider == "ollama":
             body = {
                 "model": "qwen3:4b",
@@ -182,7 +205,7 @@ class Gateway:
             "digest": digest,
             "bytes": len(data),
             "latency_ms": None,
-            "destination": "Gemini" if provider == "gemini" else "Local Ollama",
+            "destination": {"gemini": "Gemini", "groq": "Groq", "ollama": "Local Ollama"}[provider],
             "transport": "attempted",
             "image_disclosed": bool(image and provider == "gemini"),
         }
@@ -235,7 +258,23 @@ class Gateway:
                     ),
                 )
                 if provider != "gemini" and response.status_code == 402:
-                    message = "The local model endpoint rejected the request. Check its configuration."
+                    message = "The selected model provider requires billing access. Check its account settings."
+                if provider == "groq" and response.status_code == 400:
+                    # Classify diagnostics locally; never echo response text, which
+                    # may contain request data or credentials supplied by a server.
+                    diagnostic = response.text.lower()
+                    state = "invalid_request"
+                    message = "Groq rejected the request format. Provider access is not yet verified."
+                    for marker, safe_message in [
+                        ("organization", "Groq reports an organization or account restriction. Check your Groq console."),
+                        ("reasoning_effort", "Groq rejected the reasoning configuration."),
+                        ("max_completion_tokens", "Groq rejected the output token configuration."),
+                        ("schema", "Groq rejected the structured action schema."),
+                        ("model", "Groq rejected the selected model or its configuration."),
+                    ]:
+                        if marker in diagnostic:
+                            message = safe_message
+                            break
                 self.provider_status = {
                     "provider": provider,
                     "state": state,
@@ -253,6 +292,8 @@ class Gateway:
                     for p in result["candidates"][0]["content"]["parts"]
                     if not p.get("thought")
                 )
+            elif provider == "groq":
+                output = result["choices"][0]["message"]["content"]
             else:
                 output = result["message"]["content"]
             parsed = json.loads(output)
@@ -261,6 +302,8 @@ class Gateway:
                 if isinstance(parsed, dict) and set(parsed) == {"action"}
                 else parsed
             )
+            if provider == "groq":
+                validate_text_proposal(action, observation, refs)
         except Exception:
             self.provider_status = {
                 "provider": provider,

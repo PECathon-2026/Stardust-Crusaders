@@ -33,17 +33,7 @@ import "./style.css";
 
 type Obj = Record<string, any>;
 let token = "";
-function explainError(message: string) {
-  if (message.includes("HTTP 402"))
-    return "Gemini requires billing or prepaid credits for this project. Check Google AI Studio → Billing. Your key is saved locally.";
-  if (message.includes("HTTP 503"))
-    return "Gemini is temporarily unavailable. The task stopped safely; try again later or select another supported model.";
-  if (message.includes("HTTP 429"))
-    return "Gemini’s rate or quota limit was reached. Wait or check the project’s quota before retrying.";
-  if (message.includes("HTTP 401") || message.includes("HTTP 403"))
-    return "Gemini rejected access. Check the key’s API permissions and project access in Google AI Studio.";
-  return message;
-}
+function explainError(message: string) { return message; }
 async function api(path: string, body?: unknown) {
   const request = () =>
     fetch("/api/" + path, {
@@ -90,6 +80,7 @@ function App() {
     [busy, setBusy] = useState(false),
     [settings, setSettings] = useState(false),
     [key, setKey] = useState(""),
+    [groqKey, setGroqKey] = useState(""),
     [model, setModel] = useState("gemini-3.5-flash-lite"),
     [visibleBrowser, setVisibleBrowser] = useState(false),
     [raw, setRaw] = useState(false),
@@ -377,6 +368,7 @@ function App() {
                         onChange={(e) => setProvider(e.target.value)}
                       >
                         <option value="demo">Local test driver</option>
+                        <option value="groq">Groq · cloud AI (text)</option>
                         <option value="gemini">Gemini · cloud AI</option>
                         <option value="ollama">Ollama · local AI</option>
                       </select>
@@ -401,6 +393,8 @@ function App() {
                   <p className="helper">
                     {provider === "demo"
                       ? "The local test driver checks the pipeline without an AI request. Its results are not AI task-success scores."
+                      : provider === "groq"
+                        ? "Sanitized text planning with Groq. Add your Groq key in Settings. Free accounts have rate limits."
                       : provider === "gemini"
                         ? "Only sanitized context reaches Gemini. Add your API key in Settings."
                         : "Requires a running local Ollama instance with qwen3:4b. No cloud fallback."}
@@ -908,6 +902,11 @@ function App() {
               Keys and secret overrides are held in backend memory. They are
               never returned to the dashboard or saved to source files.
             </p>
+            <label className="field-label" htmlFor="groq-key">Groq API key</label>
+            <p className="helper" role="status">
+              {state.provider_status?.provider === "groq" ? state.provider_status.message : state.groq_configured ? "Groq key saved locally. Access is checked when a task runs." : "Paste your Groq key here. Model: openai/gpt-oss-120b."}
+            </p>
+            <input id="groq-key" type="password" autoComplete="off" value={groqKey} onChange={(e) => setGroqKey(e.target.value)} placeholder={state.groq_configured ? "Groq key already configured" : "Paste Groq key locally"} />
             <label className="field-label">Gemini API key</label>
             <p className="helper" role="status">
               {state.provider_status?.provider === "gemini"
@@ -944,10 +943,13 @@ function App() {
                 act(async () => {
                   await api("settings", {
                     api_key: key,
+                    groq_api_key: groqKey,
                     gemini_model: model,
                     headless: !visibleBrowser,
                   });
                   setKey("");
+                  if (groqKey) setProvider("groq");
+                  setGroqKey("");
                   setSettings(false);
                 })
               }

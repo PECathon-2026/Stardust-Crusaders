@@ -58,7 +58,7 @@ class StartRequest(Strict):
         "saucedemo",
     ]
     task: str = Field(default="", max_length=2000)
-    provider: Literal["demo", "gemini", "ollama"] = "demo"
+    provider: Literal["demo", "gemini", "groq", "ollama"] = "demo"
     mode: Literal["contract", "baseline"] = "contract"
     seed: int = Field(default=1, ge=1, le=10000)
     layout: int = Field(default=0, ge=0, le=1)
@@ -74,6 +74,8 @@ class SettingsRequest(Strict):
     gemini_model: str = Field(
         default="gemini-3.5-flash-lite", pattern=r"^[a-zA-Z0-9.\-]+$", max_length=80
     )
+    groq_api_key: str = Field(default="", max_length=300)
+    groq_model: Literal["openai/gpt-oss-120b", "openai/gpt-oss-20b"] = "openai/gpt-oss-120b"
     headless: bool = True
 
 
@@ -103,7 +105,7 @@ PURPOSES = {
 }
 
 
-def planner_schema(observation, refs):
+def planner_schema(observation, refs, allow_context=True):
     """Expose only action shapes and handles valid for the current observation."""
     controls = [c for c in observation.get("controls", []) if not c.get("disabled")]
     targets = [c["id"] for c in controls]
@@ -167,7 +169,7 @@ def planner_schema(observation, refs):
                 "text": {"type": "string", "maxLength": 500},
             },
         )
-    if regions:
+    if regions and allow_context:
         branch("request_context", {"region_id": {"type": "string", "enum": regions}})
     branch("scroll", {"direction": {"type": "string", "enum": ["up", "down"]}})
     branch("wait", {})
@@ -178,3 +180,37 @@ def planner_schema(observation, refs):
         "required": ["action"],
         "additionalProperties": False,
     }
+
+
+def groq_schema(observation, refs):
+    """Use one fixed object for the provider; enforce dependent fields locally."""
+    branches = planner_schema(observation, refs, allow_context=False)["properties"]["action"]["anyOf"]
+    properties = {
+        "type": {"type": "string", "enum": [b["properties"]["type"]["enum"][0] for b in branches]},
+        "snapshot_id": {"type": "string", "enum": [observation.get("snapshot_id", "snapshot")]},
+    }
+    for field in ("target_id", "text", "secret_ref", "direction"):
+        properties[field] = {"type": ["string", "null"]}
+        if field != "text":
+            values = list(dict.fromkeys(value for b in branches for value in b["properties"].get(field, {}).get("enum", [])))
+            properties[field]["enum"] = [*values, None]
+    return {
+        "type": "object",
+        "properties": {"action": {
+            "type": "object", "properties": properties,
+            "required": list(properties), "additionalProperties": False,
+        }},
+        "required": ["action"], "additionalProperties": False,
+    }
+
+
+def validate_text_proposal(action, observation, refs):
+    """Keep the dynamic action contract authoritative regardless of cloud schema."""
+    branches = planner_schema(observation, refs, allow_context=False)["properties"]["action"]["anyOf"]
+    for branch in branches:
+        properties = branch["properties"]
+        if action.type != properties["type"]["enum"][0]:
+            continue
+        if all("enum" not in rule or getattr(action, field) in rule["enum"] for field, rule in properties.items()):
+            return
+    raise ValueError("Proposal is outside the current text action contract")

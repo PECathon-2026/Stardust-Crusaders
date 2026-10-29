@@ -22,3 +22,6 @@ Passing tests are scoped evidence, not a privacy guarantee. Screenshot p95 was 3
 Downloaded reference repositories are under `third_party/`. OpenCV bulk LFS downloads were stopped; the required YuNet model was separately downloaded and checksum-verified. Reference source remains available with LFS pointers, and runtime does not need the checkouts. `requirements.lock.txt` and `frontend/package-lock.json` pin installed packages. The spaCy model is installed by its explicit 3.8.0 wheel URL.
 
 See EVALUATION.md for measurements, ARCHITECTURE.md for boundaries, THIRD_PARTY.md for reuse, INNOVATION.md for the novelty claim and DEMO.md for the judging walkthrough.
+
+## Groq live checkpoint
+Groq text planning is integrated with separate memory-only credentials, exact-byte privacy receipts and local action enforcement. The nested union caused a provider discriminator error; a fixed nullable object resolved it. Checkout and authentication completed with verified outcomes. Support repeated actions and then hit HTTP 429; remaining scenarios were not attempted. Full automated suite: 73 passed. Next phase: improve support category selection/loop handling, add free-tier pacing, then repeat the remaining live scenarios. See GROQ.md and live-groq-results.json.

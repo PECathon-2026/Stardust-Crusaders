@@ -15,6 +15,7 @@ Wait for “Local protection ready”. Choose a scenario and Start protected tas
 
 ### Planner choices
 - **Local test driver:** deterministic fixture walkthrough, no AI call or key. Exercises the real privacy pipeline; not an AI success benchmark.
+- **Groq:** add a Groq key in local Settings and select Groq for sanitized text planning with `openai/gpt-oss-120b`. Keys stay in memory until restart. Local screenshot masking still runs, but this planner cannot receive images. Free accounts have rate limits. See [Groq setup and validation](docs/GROQ.md).
 - **Gemini:** add a key in local Settings, select a supported model, then select Gemini. Keys stay in backend memory until the process ends. Exact request bytes pass the local gate. Provider data-handling terms still apply.
 - **Ollama:** optional adapter to an existing local instance at `127.0.0.1:11434`, model `qwen3:4b`. Text only, no cloud fallback. Not installed by setup; evaluate separately on this laptop.
 
