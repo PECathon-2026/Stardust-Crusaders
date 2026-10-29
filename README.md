@@ -1,4 +1,4 @@
-# PrivacyLens
+# PrivacyLens — Stardust Crusaders
 
 **Permission to do more. Access to less.** A local browser-agent workspace with task-scoped disclosure, local secret capabilities, consequential-action approval and inspectable privacy receipts.
 

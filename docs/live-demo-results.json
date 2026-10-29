@@ -4,23 +4,140 @@
     {
       "scenario": "wikipedia",
       "provider": "demo",
-      "status": "blocked",
-      "outcome": null,
-      "steps": 0,
-      "error": "A browser or processing operation failed. No raw fallback was sent.",
-      "receipts": [],
-      "elapsed_s": 46.45
+      "status": "completed",
+      "outcome": "article_verified",
+      "steps": 3,
+      "error": null,
+      "receipts": [
+        {
+          "digest": "e34a28572ef30e3f284948b780af0a9aa33864f8f5e0f58a5f239230a22c278e",
+          "bytes": 8930,
+          "latency_ms": 0,
+          "destination": "Local test driver \u2014 no AI request",
+          "id": "44c6df6b329c",
+          "snapshot": "s_f6d87c78dd12ab5d303b255f",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "FACE",
+            "INPUT",
+            "PERSON"
+          ],
+          "image_disclosed": false,
+          "region": null
+        },
+        {
+          "digest": "62f17e2b469a47ac61bc2417290a42163001ce6e3f85c15529d8fdf0e885d343",
+          "bytes": 10811,
+          "latency_ms": 0,
+          "destination": "Local test driver \u2014 no AI request",
+          "id": "ae8f7aeb0d84",
+          "snapshot": "s_9d89d3cd8073571b10050c3b",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "FACE",
+            "INPUT",
+            "PERSON"
+          ],
+          "image_disclosed": false,
+          "region": null
+        }
+      ],
+      "elapsed_s": 28.73
     },
     {
       "scenario": "saucedemo",
       "provider": "demo",
-      "status": "blocked",
-      "outcome": null,
-      "steps": 1,
-      "error": "A browser or processing operation failed. No raw fallback was sent.",
-      "receipts": [],
-      "elapsed_s": 57.34
+      "status": "completed",
+      "outcome": "cart_verified",
+      "steps": 6,
+      "error": null,
+      "receipts": [
+        {
+          "digest": "e107bab738cd760ed8d4e16de15dd60d0c36129a7a6dd2f9b4bef2aa795e4d00",
+          "bytes": 670,
+          "latency_ms": 0,
+          "destination": "Local test driver \u2014 no AI request",
+          "id": "7328bdc59ce8",
+          "snapshot": "s_77994b3eec7b53ba623db8bb",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "PASSWORD",
+            "SECRET",
+            "USERNAME"
+          ],
+          "image_disclosed": false,
+          "region": null
+        },
+        {
+          "digest": "7a5b0d4ab16e3f7643316ffbc9c9817a7c0de024ee29a198059521306a6286c8",
+          "bytes": 738,
+          "latency_ms": 0,
+          "destination": "Local test driver \u2014 no AI request",
+          "id": "4c819a1adb5b",
+          "snapshot": "s_78be66d87e6e474d0704e2a9",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "PASSWORD",
+            "SECRET",
+            "USERNAME"
+          ],
+          "image_disclosed": false,
+          "region": null
+        },
+        {
+          "digest": "99186d1826a2d8aa174cbdc46378d676bc7ca6a4592f8deb46159cdbdb16eec2",
+          "bytes": 808,
+          "latency_ms": 0,
+          "destination": "Local test driver \u2014 no AI request",
+          "id": "4c69b73d5d6b",
+          "snapshot": "s_6740320205d877a363167a36",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "PASSWORD",
+            "SECRET",
+            "USERNAME"
+          ],
+          "image_disclosed": false,
+          "region": null
+        },
+        {
+          "digest": "17b0e79b145d91fbfa3f983bdda5ab25386e846cac69d17921c3af3e0aed7415",
+          "bytes": 3878,
+          "latency_ms": 0,
+          "destination": "Local test driver \u2014 no AI request",
+          "id": "f2c6c88da0dd",
+          "snapshot": "s_5b6162919c8a8fc601fe4502",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "PERSON"
+          ],
+          "image_disclosed": false,
+          "region": null
+        },
+        {
+          "digest": "1e5434f2f000e5c29496a58e97982d9262355ac42e5f7892fce200b8fe2fdc21",
+          "bytes": 3968,
+          "latency_ms": 0,
+          "destination": "Local test driver \u2014 no AI request",
+          "id": "197cd577a9d5",
+          "snapshot": "s_e8dbfd1c677d9ba60daca6ae",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "PERSON"
+          ],
+          "image_disclosed": false,
+          "region": null
+        }
+      ],
+      "elapsed_s": 23.77
     }
   ],
-  "timestamp": 1793301889.5303776
+  "timestamp": 1793304095.8426337
 }

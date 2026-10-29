@@ -1,5 +1,9 @@
 $ErrorActionPreference = 'Stop'
 Set-Location $PSScriptRoot
+$runtimeTemp = Join-Path $PSScriptRoot '.runtime/tmp'
+New-Item -ItemType Directory -Force $runtimeTemp | Out-Null
+$env:TEMP = $runtimeTemp
+$env:TMP = $runtimeTemp
 if (!(Test-Path '.venv/Scripts/python.exe') -or !(Test-Path 'frontend/dist/index.html')) {
     throw 'Run setup.ps1 first.'
 }

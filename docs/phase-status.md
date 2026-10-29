@@ -5,9 +5,9 @@
 | 0: originality and provenance | Complete | Infrastructure reuse separated from original workflow; prior-art comparison and license notices documented |
 | 1: foundation | Complete | Python environment installed; React production build passes; local dashboard running |
 | 2: privacy engine | Complete | All four detectors ready; 50 text cases + negatives; 50 screenshot cases / 130 annotated regions |
-| 3: safe executor | Complete | Strict actions, scoped local secrets, approvals, stale-page checks; 56 automated tests passed before relocation |
+| 3: safe executor | Complete | Strict actions, scoped local secrets, approvals, stale-page checks; 56 automated tests passed again after relocation |
 | 4: distinctive workflow | Complete | 10/10 local-driver outcomes across both modes; planning-observation bytes reduced 25.18% with task-bound mode |
-| 5: external sites / live AI | Adapters implemented | Both external tasks succeeded during development; latest repeat failed during browser/capture operations. Revised Gemini flow awaits a successful live retest after HTTP 402 |
+| 5: external sites / live AI | Adapters implemented | Both external tasks passed again after relocation: Wikipedia article verified and SauceDemo cart verified. Revised Gemini flow awaits a successful live retest after HTTP 402 |
 | 6: evaluation | Mostly complete | Detection/pixel/policy evidence saved; live-provider and external-repeat validation remain open |
 | 7: docs / presentation | Complete local demo | Dashboard visually checked; 143-second captioned local-driver video recorded and inspected |
 

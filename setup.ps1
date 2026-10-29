@@ -1,5 +1,7 @@
 $ErrorActionPreference = 'Stop'
 Set-Location $PSScriptRoot
+$env:UV_CACHE_DIR = Join-Path $PSScriptRoot '.tools/uv-cache'
+$env:PIP_CACHE_DIR = Join-Path $PSScriptRoot '.tools/pip-cache'
 function Check-Exit { if ($LASTEXITCODE -ne 0) { throw "Setup command failed ($LASTEXITCODE)." } }
 python -m pip install --user uv
 Check-Exit
@@ -23,5 +25,5 @@ if ((Get-FileHash 'models/yunet.onnx').Hash -ne '8F2383E4DD3CFBB4553EA8718107FC0
 & '.venv/Scripts/python.exe' -c "from backend.privacy import Detector; d=Detector(); print(d.initialize()); assert all(d.status.values()), 'A local detector failed to initialize'"
 Check-Exit
 Push-Location frontend
-try { npm.cmd ci; Check-Exit; npm.cmd run build; Check-Exit } finally { Pop-Location }
+try { npm.cmd ci --cache "$PSScriptRoot/.tools/npm-cache"; Check-Exit; npm.cmd run build; Check-Exit } finally { Pop-Location }
 Write-Host 'Setup complete. Run .\start.ps1'
