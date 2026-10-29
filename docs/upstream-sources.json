@@ -1,0 +1,32 @@
+[
+  {
+    "name": "presidio",
+    "revision": "17d19468de60558965155a43aa1868336db4f7db",
+    "source": "https://github.com/data-privacy-stack/presidio.git",
+    "usage": "Reference checkout; AnalyzerEngine API integrated through pinned Python package"
+  },
+  {
+    "name": "gitleaks",
+    "revision": "5f6ec56cfa6f8c67648d863582c7ae2f206d5c1c",
+    "source": "https://github.com/gitleaks/gitleaks.git",
+    "usage": "Three attributed secret patterns adapted; full scanner not embedded"
+  },
+  {
+    "name": "RapidOCR",
+    "revision": "80b427d69bfc5b91a12913394875910296c6f315",
+    "source": "https://github.com/RapidAI/RapidOCR.git",
+    "usage": "Reference checkout; local OCR integrated through pinned Python package"
+  },
+  {
+    "name": "opencv_zoo",
+    "revision": "48b10fa505aeb51fbd127fc60a5c660040e823b7",
+    "source": "https://github.com/opencv/opencv_zoo.git",
+    "usage": "YuNet model downloaded separately with verified checksum; bulk LFS models not required"
+  },
+  {
+    "name": "NAYAN",
+    "revision": "2d551cc0a8460ac928b9a159b2f7957da9f23e2d",
+    "source": "https://github.com/Rohinth-S/NAYAN.git",
+    "usage": "Prior-art reference only; no application code reuse"
+  }
+]

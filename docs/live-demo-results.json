@@ -1,0 +1,26 @@
+{
+  "scope": "Live external websites, deterministic driver, independently checked outcomes; not AI task success",
+  "runs": [
+    {
+      "scenario": "wikipedia",
+      "provider": "demo",
+      "status": "blocked",
+      "outcome": null,
+      "steps": 0,
+      "error": "A browser or processing operation failed. No raw fallback was sent.",
+      "receipts": [],
+      "elapsed_s": 46.45
+    },
+    {
+      "scenario": "saucedemo",
+      "provider": "demo",
+      "status": "blocked",
+      "outcome": null,
+      "steps": 1,
+      "error": "A browser or processing operation failed. No raw fallback was sent.",
+      "receipts": [],
+      "elapsed_s": 57.34
+    }
+  ],
+  "timestamp": 1793301889.5303776
+}

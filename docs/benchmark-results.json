@@ -1,0 +1,1298 @@
+{
+  "scope": "Local deterministic driver exercising the same Run/Browser classes in a separate test session. Not AI success evidence. Layout 1 / seed 7 browser variants; full privacy checks enabled in both modes.",
+  "text": {
+    "suite": "Text detection / synthetic corpus",
+    "scope": "50 text cases plus 4 negative controls. Does not measure pixel coverage or AI task success.",
+    "cases": [
+      {
+        "scenario": "checkout",
+        "layout": 0,
+        "seed": 1,
+        "expected": 2,
+        "detected": 2,
+        "false_positives": 0
+      },
+      {
+        "scenario": "checkout",
+        "layout": 0,
+        "seed": 2,
+        "expected": 2,
+        "detected": 2,
+        "false_positives": 0
+      },
+      {
+        "scenario": "checkout",
+        "layout": 0,
+        "seed": 3,
+        "expected": 2,
+        "detected": 2,
+        "false_positives": 0
+      },
+      {
+        "scenario": "checkout",
+        "layout": 0,
+        "seed": 4,
+        "expected": 2,
+        "detected": 2,
+        "false_positives": 0
+      },
+      {
+        "scenario": "checkout",
+        "layout": 0,
+        "seed": 5,
+        "expected": 2,
+        "detected": 2,
+        "false_positives": 0
+      },
+      {
+        "scenario": "checkout",
+        "layout": 1,
+        "seed": 1,
+        "expected": 2,
+        "detected": 2,
+        "false_positives": 0
+      },
+      {
+        "scenario": "checkout",
+        "layout": 1,
+        "seed": 2,
+        "expected": 2,
+        "detected": 2,
+        "false_positives": 0
+      },
+      {
+        "scenario": "checkout",
+        "layout": 1,
+        "seed": 3,
+        "expected": 2,
+        "detected": 2,
+        "false_positives": 0
+      },
+      {
+        "scenario": "checkout",
+        "layout": 1,
+        "seed": 4,
+        "expected": 2,
+        "detected": 2,
+        "false_positives": 0
+      },
+      {
+        "scenario": "checkout",
+        "layout": 1,
+        "seed": 5,
+        "expected": 2,
+        "detected": 2,
+        "false_positives": 0
+      },
+      {
+        "scenario": "authentication",
+        "layout": 0,
+        "seed": 1,
+        "expected": 2,
+        "detected": 2,
+        "false_positives": 0
+      },
+      {
+        "scenario": "authentication",
+        "layout": 0,
+        "seed": 2,
+        "expected": 2,
+        "detected": 2,
+        "false_positives": 0
+      },
+      {
+        "scenario": "authentication",
+        "layout": 0,
+        "seed": 3,
+        "expected": 2,
+        "detected": 2,
+        "false_positives": 0
+      },
+      {
+        "scenario": "authentication",
+        "layout": 0,
+        "seed": 4,
+        "expected": 2,
+        "detected": 2,
+        "false_positives": 0
+      },
+      {
+        "scenario": "authentication",
+        "layout": 0,
+        "seed": 5,
+        "expected": 2,
+        "detected": 2,
+        "false_positives": 0
+      },
+      {
+        "scenario": "authentication",
+        "layout": 1,
+        "seed": 1,
+        "expected": 2,
+        "detected": 2,
+        "false_positives": 0
+      },
+      {
+        "scenario": "authentication",
+        "layout": 1,
+        "seed": 2,
+        "expected": 2,
+        "detected": 2,
+        "false_positives": 0
+      },
+      {
+        "scenario": "authentication",
+        "layout": 1,
+        "seed": 3,
+        "expected": 2,
+        "detected": 2,
+        "false_positives": 0
+      },
+      {
+        "scenario": "authentication",
+        "layout": 1,
+        "seed": 4,
+        "expected": 2,
+        "detected": 2,
+        "false_positives": 0
+      },
+      {
+        "scenario": "authentication",
+        "layout": 1,
+        "seed": 5,
+        "expected": 2,
+        "detected": 2,
+        "false_positives": 0
+      },
+      {
+        "scenario": "support",
+        "layout": 0,
+        "seed": 1,
+        "expected": 2,
+        "detected": 2,
+        "false_positives": 0
+      },
+      {
+        "scenario": "support",
+        "layout": 0,
+        "seed": 2,
+        "expected": 2,
+        "detected": 2,
+        "false_positives": 0
+      },
+      {
+        "scenario": "support",
+        "layout": 0,
+        "seed": 3,
+        "expected": 2,
+        "detected": 2,
+        "false_positives": 0
+      },
+      {
+        "scenario": "support",
+        "layout": 0,
+        "seed": 4,
+        "expected": 2,
+        "detected": 2,
+        "false_positives": 0
+      },
+      {
+        "scenario": "support",
+        "layout": 0,
+        "seed": 5,
+        "expected": 2,
+        "detected": 2,
+        "false_positives": 0
+      },
+      {
+        "scenario": "support",
+        "layout": 1,
+        "seed": 1,
+        "expected": 2,
+        "detected": 2,
+        "false_positives": 0
+      },
+      {
+        "scenario": "support",
+        "layout": 1,
+        "seed": 2,
+        "expected": 2,
+        "detected": 2,
+        "false_positives": 0
+      },
+      {
+        "scenario": "support",
+        "layout": 1,
+        "seed": 3,
+        "expected": 2,
+        "detected": 2,
+        "false_positives": 0
+      },
+      {
+        "scenario": "support",
+        "layout": 1,
+        "seed": 4,
+        "expected": 2,
+        "detected": 2,
+        "false_positives": 0
+      },
+      {
+        "scenario": "support",
+        "layout": 1,
+        "seed": 5,
+        "expected": 2,
+        "detected": 2,
+        "false_positives": 0
+      },
+      {
+        "scenario": "conference",
+        "layout": 0,
+        "seed": 1,
+        "expected": 2,
+        "detected": 2,
+        "false_positives": 0
+      },
+      {
+        "scenario": "conference",
+        "layout": 0,
+        "seed": 2,
+        "expected": 2,
+        "detected": 2,
+        "false_positives": 0
+      },
+      {
+        "scenario": "conference",
+        "layout": 0,
+        "seed": 3,
+        "expected": 2,
+        "detected": 2,
+        "false_positives": 0
+      },
+      {
+        "scenario": "conference",
+        "layout": 0,
+        "seed": 4,
+        "expected": 2,
+        "detected": 2,
+        "false_positives": 0
+      },
+      {
+        "scenario": "conference",
+        "layout": 0,
+        "seed": 5,
+        "expected": 2,
+        "detected": 2,
+        "false_positives": 0
+      },
+      {
+        "scenario": "conference",
+        "layout": 1,
+        "seed": 1,
+        "expected": 2,
+        "detected": 2,
+        "false_positives": 0
+      },
+      {
+        "scenario": "conference",
+        "layout": 1,
+        "seed": 2,
+        "expected": 2,
+        "detected": 2,
+        "false_positives": 0
+      },
+      {
+        "scenario": "conference",
+        "layout": 1,
+        "seed": 3,
+        "expected": 2,
+        "detected": 2,
+        "false_positives": 0
+      },
+      {
+        "scenario": "conference",
+        "layout": 1,
+        "seed": 4,
+        "expected": 2,
+        "detected": 2,
+        "false_positives": 0
+      },
+      {
+        "scenario": "conference",
+        "layout": 1,
+        "seed": 5,
+        "expected": 2,
+        "detected": 2,
+        "false_positives": 0
+      },
+      {
+        "scenario": "developer",
+        "layout": 0,
+        "seed": 1,
+        "expected": 3,
+        "detected": 3,
+        "false_positives": 0
+      },
+      {
+        "scenario": "developer",
+        "layout": 0,
+        "seed": 2,
+        "expected": 3,
+        "detected": 3,
+        "false_positives": 0
+      },
+      {
+        "scenario": "developer",
+        "layout": 0,
+        "seed": 3,
+        "expected": 3,
+        "detected": 3,
+        "false_positives": 0
+      },
+      {
+        "scenario": "developer",
+        "layout": 0,
+        "seed": 4,
+        "expected": 3,
+        "detected": 3,
+        "false_positives": 0
+      },
+      {
+        "scenario": "developer",
+        "layout": 0,
+        "seed": 5,
+        "expected": 3,
+        "detected": 3,
+        "false_positives": 0
+      },
+      {
+        "scenario": "developer",
+        "layout": 1,
+        "seed": 1,
+        "expected": 3,
+        "detected": 3,
+        "false_positives": 0
+      },
+      {
+        "scenario": "developer",
+        "layout": 1,
+        "seed": 2,
+        "expected": 3,
+        "detected": 3,
+        "false_positives": 0
+      },
+      {
+        "scenario": "developer",
+        "layout": 1,
+        "seed": 3,
+        "expected": 3,
+        "detected": 3,
+        "false_positives": 0
+      },
+      {
+        "scenario": "developer",
+        "layout": 1,
+        "seed": 4,
+        "expected": 3,
+        "detected": 3,
+        "false_positives": 0
+      },
+      {
+        "scenario": "developer",
+        "layout": 1,
+        "seed": 5,
+        "expected": 3,
+        "detected": 3,
+        "false_positives": 0
+      }
+    ],
+    "total_cases": 50,
+    "true_positives": 110,
+    "false_positives": 2,
+    "false_negatives": 0,
+    "recall": 1.0,
+    "precision": 0.9821,
+    "p50_ms": 10.22,
+    "p95_ms": 19.48,
+    "elapsed_s": 1.0,
+    "timestamp": 1793300893.6726942,
+    "attacks": {
+      "results": [
+        {
+          "name": "Secret in outgoing text",
+          "layer": "Payload gateway",
+          "blocked": true,
+          "latency_ms": 4.2
+        },
+        {
+          "name": "Secret sent as URL query",
+          "layer": "Payload gateway",
+          "blocked": true,
+          "latency_ms": 3.21
+        },
+        {
+          "name": "Secret in wrong field",
+          "layer": "Secret permission",
+          "blocked": true,
+          "latency_ms": 0.01
+        },
+        {
+          "name": "Secret on wrong origin",
+          "layer": "Secret permission",
+          "blocked": true,
+          "latency_ms": 0.0
+        },
+        {
+          "name": "Arbitrary JavaScript action",
+          "layer": "Action schema",
+          "blocked": true,
+          "latency_ms": 0.04
+        },
+        {
+          "name": "Extra action properties",
+          "layer": "Action schema",
+          "blocked": true,
+          "latency_ms": 0.02
+        },
+        {
+          "name": "Guessed target with text injection",
+          "layer": "Action schema",
+          "blocked": true,
+          "latency_ms": 0.03
+        },
+        {
+          "name": "Unsupported secret capability",
+          "layer": "Secret permission",
+          "blocked": true,
+          "latency_ms": 0.0
+        }
+      ],
+      "blocked": 8,
+      "total": 8,
+      "external_requests": 0,
+      "scope": "Local enforcement probes with synthetic data. Not an end-to-end prompt-injection benchmark."
+    }
+  },
+  "runs": [
+    {
+      "scenario": "checkout",
+      "mode": "contract",
+      "seed": 7,
+      "layout": 1,
+      "status": "completed",
+      "outcome": "purchase",
+      "steps": 7,
+      "approvals": 1,
+      "error": null,
+      "elapsed_s": 25.41,
+      "processing_ms": [
+        3610,
+        2954,
+        2533,
+        2754,
+        2863,
+        2993,
+        2696
+      ],
+      "context_bytes": 17,
+      "payload_bytes": 7139,
+      "receipts": [
+        {
+          "digest": "8f4692600c2085b0a24686a653630cbb2fc51046930099d80f3004dc98dd2b8a",
+          "bytes": 981,
+          "latency_ms": 0,
+          "destination": "Local test driver \u2014 no AI request",
+          "id": "3577e094ecbc",
+          "snapshot": "s_8d27776c4ad438d864f986a0",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "ADDRESS",
+            "CARD",
+            "CREDIT_CARD",
+            "CVV",
+            "NAME",
+            "PERSON"
+          ],
+          "image_disclosed": false,
+          "region": null
+        },
+        {
+          "digest": "7351e2ebc04ded7c8026e5aa5c2859f9a40586b31854a2e60a9285fe9ee57949",
+          "bytes": 1050,
+          "latency_ms": 0,
+          "destination": "Local test driver \u2014 no AI request",
+          "id": "5a3e6914a8a6",
+          "snapshot": "s_5dadc21ce5b8070a5800813f",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "ADDRESS",
+            "CARD",
+            "CREDIT_CARD",
+            "CVV",
+            "NAME",
+            "PERSON"
+          ],
+          "image_disclosed": false,
+          "region": null
+        },
+        {
+          "digest": "421c1bb7bc52cf978e7403f820d73db7c7afe5844f99b3be6bc75bab5a4645e6",
+          "bytes": 1128,
+          "latency_ms": 0,
+          "destination": "Local test driver \u2014 no AI request",
+          "id": "8a2e84f99ccb",
+          "snapshot": "s_c04ccc039486e42f7ef2f161",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "ADDRESS",
+            "CARD",
+            "CREDIT_CARD",
+            "CVV",
+            "NAME",
+            "PERSON"
+          ],
+          "image_disclosed": false,
+          "region": null
+        },
+        {
+          "digest": "7add004f2c3b5b54c69d8c995e4a4296bf79fd3b9a780235524123c84fa5502f",
+          "bytes": 1201,
+          "latency_ms": 0,
+          "destination": "Local test driver \u2014 no AI request",
+          "id": "c6e851e3997b",
+          "snapshot": "s_d203f5257e62cfa9ca8f81fc",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "ADDRESS",
+            "CARD",
+            "CREDIT_CARD",
+            "CVV",
+            "NAME",
+            "PERSON"
+          ],
+          "image_disclosed": false,
+          "region": null
+        },
+        {
+          "digest": "7510cb5ff2e4d72990109a0971972515a41455a790242f4c70b219bb4d0bf714",
+          "bytes": 1282,
+          "latency_ms": 0,
+          "destination": "Local test driver \u2014 no AI request",
+          "id": "3e0a1e7f55f4",
+          "snapshot": "s_1c08a7bf8bb4ee6cea55cd23",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "ADDRESS",
+            "CARD",
+            "CREDIT_CARD",
+            "CVV",
+            "NAME",
+            "PERSON"
+          ],
+          "image_disclosed": false,
+          "region": null
+        },
+        {
+          "digest": "17507d1136cc9729472e6da62aa50d9867393fa266be3bb658967d9c6e99f9a1",
+          "bytes": 1497,
+          "latency_ms": 0,
+          "destination": "Local test driver \u2014 no AI request",
+          "id": "ea0c442b2a61",
+          "snapshot": "s_a099bcb3d8d715c34ef06a32",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "ADDRESS",
+            "CARD",
+            "CREDIT_CARD",
+            "CVV",
+            "NAME",
+            "PERSON"
+          ],
+          "image_disclosed": false,
+          "region": null
+        }
+      ]
+    },
+    {
+      "scenario": "authentication",
+      "mode": "contract",
+      "seed": 7,
+      "layout": 1,
+      "status": "completed",
+      "outcome": "signin",
+      "steps": 5,
+      "approvals": 0,
+      "error": null,
+      "elapsed_s": 17.16,
+      "processing_ms": [
+        2462,
+        3184,
+        2501,
+        2504,
+        3061
+      ],
+      "context_bytes": 22,
+      "payload_bytes": 4266,
+      "receipts": [
+        {
+          "digest": "bda818b14bea341fff8ce3e64eb626852db7d03e6f11fc5b910178256aa60114",
+          "bytes": 958,
+          "latency_ms": 0,
+          "destination": "Local test driver \u2014 no AI request",
+          "id": "f3a789597ca4",
+          "snapshot": "s_1f68d1bf9e26eb9b66757fca",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "EMAIL",
+            "EMAIL_ADDRESS",
+            "OTP",
+            "PASSWORD",
+            "PHONE_NUMBER"
+          ],
+          "image_disclosed": false,
+          "region": null
+        },
+        {
+          "digest": "875c221e153181f8729c976514562f0c1b1a842c4c6ecdc2656e8e8264b162cd",
+          "bytes": 1031,
+          "latency_ms": 0,
+          "destination": "Local test driver \u2014 no AI request",
+          "id": "da9c9b7bd9f1",
+          "snapshot": "s_0f6e67eec826ebee68c8efc2",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "EMAIL",
+            "EMAIL_ADDRESS",
+            "OTP",
+            "PASSWORD",
+            "PHONE_NUMBER"
+          ],
+          "image_disclosed": false,
+          "region": null
+        },
+        {
+          "digest": "06bd10317a17d56973ec9f779bafb1fd1cf0255c964191b26763113ca34fca89",
+          "bytes": 1101,
+          "latency_ms": 0,
+          "destination": "Local test driver \u2014 no AI request",
+          "id": "7cac6d06f83d",
+          "snapshot": "s_12c67e701f5af075f68de3aa",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "EMAIL",
+            "EMAIL_ADDRESS",
+            "OTP",
+            "PASSWORD",
+            "PHONE_NUMBER"
+          ],
+          "image_disclosed": false,
+          "region": null
+        },
+        {
+          "digest": "bad88db470a4a53521b612ffd48ca26e481a7f01010133730e177df59e910b61",
+          "bytes": 1176,
+          "latency_ms": 0,
+          "destination": "Local test driver \u2014 no AI request",
+          "id": "f34aefd21552",
+          "snapshot": "s_2b94f30b25b6078e7c2bebf6",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "EMAIL",
+            "EMAIL_ADDRESS",
+            "OTP",
+            "PASSWORD",
+            "PHONE_NUMBER"
+          ],
+          "image_disclosed": false,
+          "region": null
+        }
+      ]
+    },
+    {
+      "scenario": "support",
+      "mode": "contract",
+      "seed": 7,
+      "layout": 1,
+      "status": "completed",
+      "outcome": "send",
+      "steps": 4,
+      "approvals": 1,
+      "error": null,
+      "elapsed_s": 12.91,
+      "processing_ms": [
+        2588,
+        2284,
+        2539,
+        2281
+      ],
+      "context_bytes": 15,
+      "payload_bytes": 2249,
+      "receipts": [
+        {
+          "digest": "f968b06b2a1a6a9d69d725e47b0f0b181e4c702c5ca8835f3635850869efffa5",
+          "bytes": 679,
+          "latency_ms": 0,
+          "destination": "Local test driver \u2014 no AI request",
+          "id": "ab3254b55de2",
+          "snapshot": "s_199a952d6394980747cf0ca8",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "INPUT",
+            "PHONE_NUMBER",
+            "PRIVATE_CONTENT"
+          ],
+          "image_disclosed": false,
+          "region": null
+        },
+        {
+          "digest": "cd3afd2e76ffdabf51e0e67865c46e916d76cc30de7516f52991428008588f48",
+          "bytes": 748,
+          "latency_ms": 0,
+          "destination": "Local test driver \u2014 no AI request",
+          "id": "3e2d4ae112aa",
+          "snapshot": "s_b52fb601d9043b98ee6e5874",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "INPUT",
+            "PHONE_NUMBER",
+            "PRIVATE_CONTENT"
+          ],
+          "image_disclosed": false,
+          "region": null
+        },
+        {
+          "digest": "d94599b7ff174f97d57699b782a9ac9eca84a247a10cd7a7a3c6161f4aa9ae44",
+          "bytes": 822,
+          "latency_ms": 0,
+          "destination": "Local test driver \u2014 no AI request",
+          "id": "be1aab105d6f",
+          "snapshot": "s_8e997765fc93d0d91442e837",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "INPUT",
+            "PHONE_NUMBER",
+            "PRIVATE_CONTENT"
+          ],
+          "image_disclosed": false,
+          "region": null
+        }
+      ]
+    },
+    {
+      "scenario": "conference",
+      "mode": "contract",
+      "seed": 7,
+      "layout": 1,
+      "status": "completed",
+      "outcome": "mute",
+      "steps": 2,
+      "approvals": 0,
+      "error": null,
+      "elapsed_s": 6.72,
+      "processing_ms": [
+        2201,
+        2315
+      ],
+      "context_bytes": 16,
+      "payload_bytes": 386,
+      "receipts": [
+        {
+          "digest": "17c26fc81e84d7cd197c064dbc76223f06a7bda339dae7dc8264b3e6cacb8a43",
+          "bytes": 386,
+          "latency_ms": 0,
+          "destination": "Local test driver \u2014 no AI request",
+          "id": "36c902a2a9cb",
+          "snapshot": "s_56b02725c16211fcad2eeb9b",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "EMAIL_ADDRESS",
+            "FACE",
+            "PERSON",
+            "PRIVATE_CONTENT"
+          ],
+          "image_disclosed": false,
+          "region": null
+        }
+      ]
+    },
+    {
+      "scenario": "developer",
+      "mode": "contract",
+      "seed": 7,
+      "layout": 1,
+      "status": "completed",
+      "outcome": "revoke",
+      "steps": 3,
+      "approvals": 1,
+      "error": null,
+      "elapsed_s": 11.2,
+      "processing_ms": [
+        2886,
+        2508,
+        3050
+      ],
+      "context_bytes": 16,
+      "payload_bytes": 1004,
+      "receipts": [
+        {
+          "digest": "6562c29c6c795f3db66de6db14629b32ef42ffa7c949a4e5105c2bc2ae575ca4",
+          "bytes": 394,
+          "latency_ms": 0,
+          "destination": "Local test driver \u2014 no AI request",
+          "id": "14b41b687476",
+          "snapshot": "s_5d3676a1a3987d53818b7a21",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "API_KEY",
+            "IN_PAN",
+            "IP_ADDRESS"
+          ],
+          "image_disclosed": false,
+          "region": null
+        },
+        {
+          "digest": "46a350a10ae657625b452cfe69b03aa52777092c644ef800fa01d737e4677d24",
+          "bytes": 610,
+          "latency_ms": 0,
+          "destination": "Local test driver \u2014 no AI request",
+          "id": "6d898fca6bf9",
+          "snapshot": "s_dc6dc3b8d9446f71f41bc2cb",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "API_KEY",
+            "IN_PAN",
+            "IP_ADDRESS"
+          ],
+          "image_disclosed": false,
+          "region": null
+        }
+      ]
+    },
+    {
+      "scenario": "checkout",
+      "mode": "baseline",
+      "seed": 7,
+      "layout": 1,
+      "status": "completed",
+      "outcome": "purchase",
+      "steps": 7,
+      "approvals": 1,
+      "error": null,
+      "elapsed_s": 24.81,
+      "processing_ms": [
+        2978,
+        2929,
+        2802,
+        2999,
+        2894,
+        2539,
+        2602
+      ],
+      "context_bytes": 2712,
+      "payload_bytes": 9581,
+      "receipts": [
+        {
+          "digest": "3c499fd364d5b039f37b10b897ec085a57a5db71a7b52c4a9ad2cc978a71aa4c",
+          "bytes": 1385,
+          "latency_ms": 0,
+          "destination": "Local test driver \u2014 no AI request",
+          "id": "0ec6c1f4ee68",
+          "snapshot": "s_3113c3335c16190ff06f1b09",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "ADDRESS",
+            "CARD",
+            "CREDIT_CARD",
+            "CVV",
+            "NAME",
+            "PERSON"
+          ],
+          "image_disclosed": false,
+          "region": null
+        },
+        {
+          "digest": "aed203f957561a735c5c4245a2fb47a648de2f6db80d083cc101fe338793785c",
+          "bytes": 1454,
+          "latency_ms": 0,
+          "destination": "Local test driver \u2014 no AI request",
+          "id": "08b85146dc77",
+          "snapshot": "s_70ea7e655988d2a3cc06bfeb",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "ADDRESS",
+            "CARD",
+            "CREDIT_CARD",
+            "CVV",
+            "NAME",
+            "PERSON"
+          ],
+          "image_disclosed": false,
+          "region": null
+        },
+        {
+          "digest": "01a31121233e17a2c085c3e9d2caf8a70fad9a2dd5dc2f97c40c9cd2414c3e08",
+          "bytes": 1532,
+          "latency_ms": 0,
+          "destination": "Local test driver \u2014 no AI request",
+          "id": "d2b54f611c85",
+          "snapshot": "s_d7523e48e2f8de03e58e9304",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "ADDRESS",
+            "CARD",
+            "CREDIT_CARD",
+            "CVV",
+            "NAME",
+            "PERSON"
+          ],
+          "image_disclosed": false,
+          "region": null
+        },
+        {
+          "digest": "bebe4452b0fcd2871e71fbcb5297db81fc8a35f675e457bdab09c1efbeb43149",
+          "bytes": 1605,
+          "latency_ms": 0,
+          "destination": "Local test driver \u2014 no AI request",
+          "id": "cbee8b326d8e",
+          "snapshot": "s_9eeea4cb347488bb18dfdb21",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "ADDRESS",
+            "CARD",
+            "CREDIT_CARD",
+            "CVV",
+            "NAME",
+            "PERSON"
+          ],
+          "image_disclosed": false,
+          "region": null
+        },
+        {
+          "digest": "257ddc1f703658db316da0b4a40f870e069e1b4c4c29fff53946afe3e950b9ac",
+          "bytes": 1686,
+          "latency_ms": 0,
+          "destination": "Local test driver \u2014 no AI request",
+          "id": "5d3e2dde19d2",
+          "snapshot": "s_5b00a95156b6fd8c1fbd29cf",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "ADDRESS",
+            "CARD",
+            "CREDIT_CARD",
+            "CVV",
+            "NAME",
+            "PERSON"
+          ],
+          "image_disclosed": false,
+          "region": null
+        },
+        {
+          "digest": "da96ee22411936de283c8d612827ce6980dc146f4676dbeb931cff9395dbd5e4",
+          "bytes": 1919,
+          "latency_ms": 0,
+          "destination": "Local test driver \u2014 no AI request",
+          "id": "6a2b70780aaf",
+          "snapshot": "s_a2c0ff7450629fd4d64506bd",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "ADDRESS",
+            "CARD",
+            "CREDIT_CARD",
+            "CVV",
+            "NAME",
+            "PERSON"
+          ],
+          "image_disclosed": false,
+          "region": null
+        }
+      ]
+    },
+    {
+      "scenario": "authentication",
+      "mode": "baseline",
+      "seed": 7,
+      "layout": 1,
+      "status": "completed",
+      "outcome": "signin",
+      "steps": 5,
+      "approvals": 0,
+      "error": null,
+      "elapsed_s": 15.14,
+      "processing_ms": [
+        2268,
+        2222,
+        2452,
+        2480,
+        2187
+      ],
+      "context_bytes": 1418,
+      "payload_bytes": 5430,
+      "receipts": [
+        {
+          "digest": "ffa9d907a550001eccedb31318f239997424b683ad715bc789b99815702a910f",
+          "bytes": 1249,
+          "latency_ms": 0,
+          "destination": "Local test driver \u2014 no AI request",
+          "id": "148826017a9d",
+          "snapshot": "s_61a3fc007d9bd65db249745d",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "EMAIL",
+            "EMAIL_ADDRESS",
+            "OTP",
+            "PASSWORD",
+            "PHONE_NUMBER"
+          ],
+          "image_disclosed": false,
+          "region": null
+        },
+        {
+          "digest": "3e8a7a8a3f12a45b00f0daea3a5e87f1ffbb285f1007510f0302e54a2df31945",
+          "bytes": 1322,
+          "latency_ms": 0,
+          "destination": "Local test driver \u2014 no AI request",
+          "id": "1c9b15d4cfbe",
+          "snapshot": "s_d3a08558bbd65a7dd5854b37",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "EMAIL",
+            "EMAIL_ADDRESS",
+            "OTP",
+            "PASSWORD",
+            "PHONE_NUMBER"
+          ],
+          "image_disclosed": false,
+          "region": null
+        },
+        {
+          "digest": "96a9a9e9c9744ae503165b53b74743c3a6a371a910d13a11ac6e37f10f74e94c",
+          "bytes": 1392,
+          "latency_ms": 0,
+          "destination": "Local test driver \u2014 no AI request",
+          "id": "a930ee830978",
+          "snapshot": "s_5ce33fe9898a48e509c4d7f1",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "EMAIL",
+            "EMAIL_ADDRESS",
+            "OTP",
+            "PASSWORD",
+            "PHONE_NUMBER"
+          ],
+          "image_disclosed": false,
+          "region": null
+        },
+        {
+          "digest": "bcae379f0e7ef852bce4b7a85e121cbffd99d45041e74f834adafb47b5709c0c",
+          "bytes": 1467,
+          "latency_ms": 0,
+          "destination": "Local test driver \u2014 no AI request",
+          "id": "01ec70fc376a",
+          "snapshot": "s_10e1dde657493326f0d12841",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "EMAIL",
+            "EMAIL_ADDRESS",
+            "OTP",
+            "PASSWORD",
+            "PHONE_NUMBER"
+          ],
+          "image_disclosed": false,
+          "region": null
+        }
+      ]
+    },
+    {
+      "scenario": "support",
+      "mode": "baseline",
+      "seed": 7,
+      "layout": 1,
+      "status": "completed",
+      "outcome": "send",
+      "steps": 4,
+      "approvals": 1,
+      "error": null,
+      "elapsed_s": 12.27,
+      "processing_ms": [
+        2279,
+        2217,
+        2215,
+        2413
+      ],
+      "context_bytes": 796,
+      "payload_bytes": 2861,
+      "receipts": [
+        {
+          "digest": "79bbc245f173a4526df9b579aaca7044e93b1ff66e38dcf8f73e11f20a5b46b7",
+          "bytes": 883,
+          "latency_ms": 0,
+          "destination": "Local test driver \u2014 no AI request",
+          "id": "eb27ce2192b5",
+          "snapshot": "s_882082239e6366ebf5e1c808",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "INPUT",
+            "PHONE_NUMBER",
+            "PRIVATE_CONTENT"
+          ],
+          "image_disclosed": false,
+          "region": null
+        },
+        {
+          "digest": "aa4c6fcd976f279dd3d4d836e9ae59d22ef0dc53ad680b42701045fc4f05d1f5",
+          "bytes": 952,
+          "latency_ms": 0,
+          "destination": "Local test driver \u2014 no AI request",
+          "id": "e50467f25a77",
+          "snapshot": "s_c470afda925f0c987a441b6f",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "INPUT",
+            "PHONE_NUMBER",
+            "PRIVATE_CONTENT"
+          ],
+          "image_disclosed": false,
+          "region": null
+        },
+        {
+          "digest": "030e530d76fad05441f2cf2448e6bdcdc9763b11bbbf5f931346f2518e12e967",
+          "bytes": 1026,
+          "latency_ms": 0,
+          "destination": "Local test driver \u2014 no AI request",
+          "id": "ba0253724efd",
+          "snapshot": "s_46adb9f69f33cf7a4fc2f68b",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "INPUT",
+            "PHONE_NUMBER",
+            "PRIVATE_CONTENT"
+          ],
+          "image_disclosed": false,
+          "region": null
+        }
+      ]
+    },
+    {
+      "scenario": "conference",
+      "mode": "baseline",
+      "seed": 7,
+      "layout": 1,
+      "status": "completed",
+      "outcome": "mute",
+      "steps": 2,
+      "approvals": 0,
+      "error": null,
+      "elapsed_s": 6.12,
+      "processing_ms": [
+        2032,
+        2008
+      ],
+      "context_bytes": 499,
+      "payload_bytes": 637,
+      "receipts": [
+        {
+          "digest": "01ffe9d3e05ee764f89eea04ae5e1ced13b5027771b01fdbdc35efdd6441210c",
+          "bytes": 637,
+          "latency_ms": 0,
+          "destination": "Local test driver \u2014 no AI request",
+          "id": "7ea0080f92af",
+          "snapshot": "s_e0ac2f780e1ac476e3e72b31",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "EMAIL_ADDRESS",
+            "FACE",
+            "PERSON",
+            "PRIVATE_CONTENT"
+          ],
+          "image_disclosed": false,
+          "region": null
+        }
+      ]
+    },
+    {
+      "scenario": "developer",
+      "mode": "baseline",
+      "seed": 7,
+      "layout": 1,
+      "status": "completed",
+      "outcome": "revoke",
+      "steps": 3,
+      "approvals": 1,
+      "error": null,
+      "elapsed_s": 9.09,
+      "processing_ms": [
+        2140,
+        2044,
+        2168
+      ],
+      "context_bytes": 880,
+      "payload_bytes": 1597,
+      "receipts": [
+        {
+          "digest": "38d2c11de66eaf1f74706b6969d3afe83f8784f362db192809019da0274e2b4e",
+          "bytes": 682,
+          "latency_ms": 0,
+          "destination": "Local test driver \u2014 no AI request",
+          "id": "cf1e6da8494c",
+          "snapshot": "s_928cfbc6691d6fd62ee46aca",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "API_KEY",
+            "IN_PAN",
+            "IP_ADDRESS"
+          ],
+          "image_disclosed": false,
+          "region": null
+        },
+        {
+          "digest": "4701f87699098512f57ecb3f05fca51206038e03c4c0343726c91ae0a0abe32f",
+          "bytes": 915,
+          "latency_ms": 0,
+          "destination": "Local test driver \u2014 no AI request",
+          "id": "44cad8c46bc1",
+          "snapshot": "s_df282711ba7fe0bc4c019e6c",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "API_KEY",
+            "IN_PAN",
+            "IP_ADDRESS"
+          ],
+          "image_disclosed": false,
+          "region": null
+        }
+      ]
+    }
+  ],
+  "timestamp": 1793301038.7499094
+}

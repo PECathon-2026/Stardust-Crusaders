@@ -1,0 +1,1161 @@
+{
+  "scope": "50 actual browser screenshots, unseen seeds 11\u201315, two layouts. Detector receives no known-value vault. Coverage covers annotated visible text; whole media is conservatively masked. Not a universal pixel-PII benchmark.",
+  "cases": [
+    {
+      "scenario": "checkout",
+      "layout": 0,
+      "seed": 11,
+      "entities": [
+        {
+          "kind": "PERSON",
+          "coverage": 1.0,
+          "protected": true
+        },
+        {
+          "kind": "ADDRESS",
+          "coverage": 1.0,
+          "protected": true
+        },
+        {
+          "kind": "CREDIT_CARD",
+          "coverage": 1.0,
+          "protected": true
+        }
+      ],
+      "latency_ms": 3965,
+      "masked_pixel_fraction": 0.1199,
+      "yunet_faces": 0
+    },
+    {
+      "scenario": "checkout",
+      "layout": 0,
+      "seed": 12,
+      "entities": [
+        {
+          "kind": "PERSON",
+          "coverage": 1.0,
+          "protected": true
+        },
+        {
+          "kind": "ADDRESS",
+          "coverage": 1.0,
+          "protected": true
+        },
+        {
+          "kind": "CREDIT_CARD",
+          "coverage": 1.0,
+          "protected": true
+        }
+      ],
+      "latency_ms": 3408,
+      "masked_pixel_fraction": 0.1205,
+      "yunet_faces": 0
+    },
+    {
+      "scenario": "checkout",
+      "layout": 0,
+      "seed": 13,
+      "entities": [
+        {
+          "kind": "PERSON",
+          "coverage": 1.0,
+          "protected": true
+        },
+        {
+          "kind": "ADDRESS",
+          "coverage": 1.0,
+          "protected": true
+        },
+        {
+          "kind": "CREDIT_CARD",
+          "coverage": 1.0,
+          "protected": true
+        }
+      ],
+      "latency_ms": 3863,
+      "masked_pixel_fraction": 0.1197,
+      "yunet_faces": 0
+    },
+    {
+      "scenario": "checkout",
+      "layout": 0,
+      "seed": 14,
+      "entities": [
+        {
+          "kind": "PERSON",
+          "coverage": 1.0,
+          "protected": true
+        },
+        {
+          "kind": "ADDRESS",
+          "coverage": 1.0,
+          "protected": true
+        },
+        {
+          "kind": "CREDIT_CARD",
+          "coverage": 1.0,
+          "protected": true
+        }
+      ],
+      "latency_ms": 3581,
+      "masked_pixel_fraction": 0.1197,
+      "yunet_faces": 0
+    },
+    {
+      "scenario": "checkout",
+      "layout": 0,
+      "seed": 15,
+      "entities": [
+        {
+          "kind": "PERSON",
+          "coverage": 1.0,
+          "protected": true
+        },
+        {
+          "kind": "ADDRESS",
+          "coverage": 1.0,
+          "protected": true
+        },
+        {
+          "kind": "CREDIT_CARD",
+          "coverage": 1.0,
+          "protected": true
+        }
+      ],
+      "latency_ms": 3335,
+      "masked_pixel_fraction": 0.1202,
+      "yunet_faces": 0
+    },
+    {
+      "scenario": "checkout",
+      "layout": 1,
+      "seed": 11,
+      "entities": [
+        {
+          "kind": "PERSON",
+          "coverage": 1.0,
+          "protected": true
+        },
+        {
+          "kind": "ADDRESS",
+          "coverage": 1.0,
+          "protected": true
+        },
+        {
+          "kind": "CREDIT_CARD",
+          "coverage": 1.0,
+          "protected": true
+        }
+      ],
+      "latency_ms": 3497,
+      "masked_pixel_fraction": 0.0872,
+      "yunet_faces": 0
+    },
+    {
+      "scenario": "checkout",
+      "layout": 1,
+      "seed": 12,
+      "entities": [
+        {
+          "kind": "PERSON",
+          "coverage": 1.0,
+          "protected": true
+        },
+        {
+          "kind": "ADDRESS",
+          "coverage": 1.0,
+          "protected": true
+        },
+        {
+          "kind": "CREDIT_CARD",
+          "coverage": 1.0,
+          "protected": true
+        }
+      ],
+      "latency_ms": 3251,
+      "masked_pixel_fraction": 0.0877,
+      "yunet_faces": 0
+    },
+    {
+      "scenario": "checkout",
+      "layout": 1,
+      "seed": 13,
+      "entities": [
+        {
+          "kind": "PERSON",
+          "coverage": 1.0,
+          "protected": true
+        },
+        {
+          "kind": "ADDRESS",
+          "coverage": 1.0,
+          "protected": true
+        },
+        {
+          "kind": "CREDIT_CARD",
+          "coverage": 1.0,
+          "protected": true
+        }
+      ],
+      "latency_ms": 2729,
+      "masked_pixel_fraction": 0.087,
+      "yunet_faces": 0
+    },
+    {
+      "scenario": "checkout",
+      "layout": 1,
+      "seed": 14,
+      "entities": [
+        {
+          "kind": "PERSON",
+          "coverage": 1.0,
+          "protected": true
+        },
+        {
+          "kind": "ADDRESS",
+          "coverage": 1.0,
+          "protected": true
+        },
+        {
+          "kind": "CREDIT_CARD",
+          "coverage": 1.0,
+          "protected": true
+        }
+      ],
+      "latency_ms": 3414,
+      "masked_pixel_fraction": 0.0878,
+      "yunet_faces": 0
+    },
+    {
+      "scenario": "checkout",
+      "layout": 1,
+      "seed": 15,
+      "entities": [
+        {
+          "kind": "PERSON",
+          "coverage": 1.0,
+          "protected": true
+        },
+        {
+          "kind": "ADDRESS",
+          "coverage": 1.0,
+          "protected": true
+        },
+        {
+          "kind": "CREDIT_CARD",
+          "coverage": 1.0,
+          "protected": true
+        }
+      ],
+      "latency_ms": 3305,
+      "masked_pixel_fraction": 0.0879,
+      "yunet_faces": 0
+    },
+    {
+      "scenario": "authentication",
+      "layout": 0,
+      "seed": 11,
+      "entities": [
+        {
+          "kind": "EMAIL_ADDRESS",
+          "coverage": 1.0,
+          "protected": true
+        },
+        {
+          "kind": "PHONE_NUMBER",
+          "coverage": 1.0,
+          "protected": true
+        }
+      ],
+      "latency_ms": 2702,
+      "masked_pixel_fraction": 0.0935,
+      "yunet_faces": 0
+    },
+    {
+      "scenario": "authentication",
+      "layout": 0,
+      "seed": 12,
+      "entities": [
+        {
+          "kind": "EMAIL_ADDRESS",
+          "coverage": 1.0,
+          "protected": true
+        },
+        {
+          "kind": "PHONE_NUMBER",
+          "coverage": 1.0,
+          "protected": true
+        }
+      ],
+      "latency_ms": 2791,
+      "masked_pixel_fraction": 0.0937,
+      "yunet_faces": 0
+    },
+    {
+      "scenario": "authentication",
+      "layout": 0,
+      "seed": 13,
+      "entities": [
+        {
+          "kind": "EMAIL_ADDRESS",
+          "coverage": 1.0,
+          "protected": true
+        },
+        {
+          "kind": "PHONE_NUMBER",
+          "coverage": 1.0,
+          "protected": true
+        }
+      ],
+      "latency_ms": 2481,
+      "masked_pixel_fraction": 0.0937,
+      "yunet_faces": 0
+    },
+    {
+      "scenario": "authentication",
+      "layout": 0,
+      "seed": 14,
+      "entities": [
+        {
+          "kind": "EMAIL_ADDRESS",
+          "coverage": 1.0,
+          "protected": true
+        },
+        {
+          "kind": "PHONE_NUMBER",
+          "coverage": 1.0,
+          "protected": true
+        }
+      ],
+      "latency_ms": 2295,
+      "masked_pixel_fraction": 0.0937,
+      "yunet_faces": 0
+    },
+    {
+      "scenario": "authentication",
+      "layout": 0,
+      "seed": 15,
+      "entities": [
+        {
+          "kind": "EMAIL_ADDRESS",
+          "coverage": 1.0,
+          "protected": true
+        },
+        {
+          "kind": "PHONE_NUMBER",
+          "coverage": 1.0,
+          "protected": true
+        }
+      ],
+      "latency_ms": 2483,
+      "masked_pixel_fraction": 0.0937,
+      "yunet_faces": 0
+    },
+    {
+      "scenario": "authentication",
+      "layout": 1,
+      "seed": 11,
+      "entities": [
+        {
+          "kind": "EMAIL_ADDRESS",
+          "coverage": 1.0,
+          "protected": true
+        },
+        {
+          "kind": "PHONE_NUMBER",
+          "coverage": 1.0,
+          "protected": true
+        }
+      ],
+      "latency_ms": 2267,
+      "masked_pixel_fraction": 0.0693,
+      "yunet_faces": 0
+    },
+    {
+      "scenario": "authentication",
+      "layout": 1,
+      "seed": 12,
+      "entities": [
+        {
+          "kind": "EMAIL_ADDRESS",
+          "coverage": 1.0,
+          "protected": true
+        },
+        {
+          "kind": "PHONE_NUMBER",
+          "coverage": 1.0,
+          "protected": true
+        }
+      ],
+      "latency_ms": 2480,
+      "masked_pixel_fraction": 0.0696,
+      "yunet_faces": 0
+    },
+    {
+      "scenario": "authentication",
+      "layout": 1,
+      "seed": 13,
+      "entities": [
+        {
+          "kind": "EMAIL_ADDRESS",
+          "coverage": 1.0,
+          "protected": true
+        },
+        {
+          "kind": "PHONE_NUMBER",
+          "coverage": 1.0,
+          "protected": true
+        }
+      ],
+      "latency_ms": 2229,
+      "masked_pixel_fraction": 0.0697,
+      "yunet_faces": 0
+    },
+    {
+      "scenario": "authentication",
+      "layout": 1,
+      "seed": 14,
+      "entities": [
+        {
+          "kind": "EMAIL_ADDRESS",
+          "coverage": 1.0,
+          "protected": true
+        },
+        {
+          "kind": "PHONE_NUMBER",
+          "coverage": 1.0,
+          "protected": true
+        }
+      ],
+      "latency_ms": 2937,
+      "masked_pixel_fraction": 0.0696,
+      "yunet_faces": 0
+    },
+    {
+      "scenario": "authentication",
+      "layout": 1,
+      "seed": 15,
+      "entities": [
+        {
+          "kind": "EMAIL_ADDRESS",
+          "coverage": 1.0,
+          "protected": true
+        },
+        {
+          "kind": "PHONE_NUMBER",
+          "coverage": 1.0,
+          "protected": true
+        }
+      ],
+      "latency_ms": 2575,
+      "masked_pixel_fraction": 0.0697,
+      "yunet_faces": 0
+    },
+    {
+      "scenario": "support",
+      "layout": 0,
+      "seed": 11,
+      "entities": [
+        {
+          "kind": "PHONE_NUMBER",
+          "coverage": 1.0,
+          "protected": true
+        },
+        {
+          "kind": "PRIVATE_MESSAGE",
+          "coverage": 1.0,
+          "protected": true
+        }
+      ],
+      "latency_ms": 2900,
+      "masked_pixel_fraction": 0.047,
+      "yunet_faces": 0
+    },
+    {
+      "scenario": "support",
+      "layout": 0,
+      "seed": 12,
+      "entities": [
+        {
+          "kind": "PHONE_NUMBER",
+          "coverage": 1.0,
+          "protected": true
+        },
+        {
+          "kind": "PRIVATE_MESSAGE",
+          "coverage": 1.0,
+          "protected": true
+        }
+      ],
+      "latency_ms": 2486,
+      "masked_pixel_fraction": 0.0466,
+      "yunet_faces": 0
+    },
+    {
+      "scenario": "support",
+      "layout": 0,
+      "seed": 13,
+      "entities": [
+        {
+          "kind": "PHONE_NUMBER",
+          "coverage": 1.0,
+          "protected": true
+        },
+        {
+          "kind": "PRIVATE_MESSAGE",
+          "coverage": 1.0,
+          "protected": true
+        }
+      ],
+      "latency_ms": 2168,
+      "masked_pixel_fraction": 0.0466,
+      "yunet_faces": 0
+    },
+    {
+      "scenario": "support",
+      "layout": 0,
+      "seed": 14,
+      "entities": [
+        {
+          "kind": "PHONE_NUMBER",
+          "coverage": 1.0,
+          "protected": true
+        },
+        {
+          "kind": "PRIVATE_MESSAGE",
+          "coverage": 1.0,
+          "protected": true
+        }
+      ],
+      "latency_ms": 2616,
+      "masked_pixel_fraction": 0.0471,
+      "yunet_faces": 0
+    },
+    {
+      "scenario": "support",
+      "layout": 0,
+      "seed": 15,
+      "entities": [
+        {
+          "kind": "PHONE_NUMBER",
+          "coverage": 1.0,
+          "protected": true
+        },
+        {
+          "kind": "PRIVATE_MESSAGE",
+          "coverage": 1.0,
+          "protected": true
+        }
+      ],
+      "latency_ms": 2518,
+      "masked_pixel_fraction": 0.0466,
+      "yunet_faces": 0
+    },
+    {
+      "scenario": "support",
+      "layout": 1,
+      "seed": 11,
+      "entities": [
+        {
+          "kind": "PHONE_NUMBER",
+          "coverage": 1.0,
+          "protected": true
+        },
+        {
+          "kind": "PRIVATE_MESSAGE",
+          "coverage": 1.0,
+          "protected": true
+        }
+      ],
+      "latency_ms": 2149,
+      "masked_pixel_fraction": 0.0576,
+      "yunet_faces": 0
+    },
+    {
+      "scenario": "support",
+      "layout": 1,
+      "seed": 12,
+      "entities": [
+        {
+          "kind": "PHONE_NUMBER",
+          "coverage": 1.0,
+          "protected": true
+        },
+        {
+          "kind": "PRIVATE_MESSAGE",
+          "coverage": 1.0,
+          "protected": true
+        }
+      ],
+      "latency_ms": 2074,
+      "masked_pixel_fraction": 0.0571,
+      "yunet_faces": 0
+    },
+    {
+      "scenario": "support",
+      "layout": 1,
+      "seed": 13,
+      "entities": [
+        {
+          "kind": "PHONE_NUMBER",
+          "coverage": 1.0,
+          "protected": true
+        },
+        {
+          "kind": "PRIVATE_MESSAGE",
+          "coverage": 1.0,
+          "protected": true
+        }
+      ],
+      "latency_ms": 2249,
+      "masked_pixel_fraction": 0.0571,
+      "yunet_faces": 0
+    },
+    {
+      "scenario": "support",
+      "layout": 1,
+      "seed": 14,
+      "entities": [
+        {
+          "kind": "PHONE_NUMBER",
+          "coverage": 1.0,
+          "protected": true
+        },
+        {
+          "kind": "PRIVATE_MESSAGE",
+          "coverage": 1.0,
+          "protected": true
+        }
+      ],
+      "latency_ms": 2195,
+      "masked_pixel_fraction": 0.0577,
+      "yunet_faces": 0
+    },
+    {
+      "scenario": "support",
+      "layout": 1,
+      "seed": 15,
+      "entities": [
+        {
+          "kind": "PHONE_NUMBER",
+          "coverage": 1.0,
+          "protected": true
+        },
+        {
+          "kind": "PRIVATE_MESSAGE",
+          "coverage": 1.0,
+          "protected": true
+        }
+      ],
+      "latency_ms": 2171,
+      "masked_pixel_fraction": 0.0577,
+      "yunet_faces": 0
+    },
+    {
+      "scenario": "conference",
+      "layout": 0,
+      "seed": 11,
+      "entities": [
+        {
+          "kind": "PERSON",
+          "coverage": 1.0,
+          "protected": true
+        },
+        {
+          "kind": "EMAIL_ADDRESS",
+          "coverage": 1.0,
+          "protected": true
+        },
+        {
+          "kind": "PRIVATE_MESSAGE",
+          "coverage": 1.0,
+          "protected": true
+        }
+      ],
+      "latency_ms": 2629,
+      "masked_pixel_fraction": 0.1279,
+      "yunet_faces": 2
+    },
+    {
+      "scenario": "conference",
+      "layout": 0,
+      "seed": 12,
+      "entities": [
+        {
+          "kind": "PERSON",
+          "coverage": 1.0,
+          "protected": true
+        },
+        {
+          "kind": "EMAIL_ADDRESS",
+          "coverage": 1.0,
+          "protected": true
+        },
+        {
+          "kind": "PRIVATE_MESSAGE",
+          "coverage": 1.0,
+          "protected": true
+        }
+      ],
+      "latency_ms": 2554,
+      "masked_pixel_fraction": 0.1284,
+      "yunet_faces": 2
+    },
+    {
+      "scenario": "conference",
+      "layout": 0,
+      "seed": 13,
+      "entities": [
+        {
+          "kind": "PERSON",
+          "coverage": 1.0,
+          "protected": true
+        },
+        {
+          "kind": "EMAIL_ADDRESS",
+          "coverage": 1.0,
+          "protected": true
+        },
+        {
+          "kind": "PRIVATE_MESSAGE",
+          "coverage": 1.0,
+          "protected": true
+        }
+      ],
+      "latency_ms": 2126,
+      "masked_pixel_fraction": 0.1277,
+      "yunet_faces": 2
+    },
+    {
+      "scenario": "conference",
+      "layout": 0,
+      "seed": 14,
+      "entities": [
+        {
+          "kind": "PERSON",
+          "coverage": 1.0,
+          "protected": true
+        },
+        {
+          "kind": "EMAIL_ADDRESS",
+          "coverage": 1.0,
+          "protected": true
+        },
+        {
+          "kind": "PRIVATE_MESSAGE",
+          "coverage": 1.0,
+          "protected": true
+        }
+      ],
+      "latency_ms": 2839,
+      "masked_pixel_fraction": 0.128,
+      "yunet_faces": 2
+    },
+    {
+      "scenario": "conference",
+      "layout": 0,
+      "seed": 15,
+      "entities": [
+        {
+          "kind": "PERSON",
+          "coverage": 1.0,
+          "protected": true
+        },
+        {
+          "kind": "EMAIL_ADDRESS",
+          "coverage": 1.0,
+          "protected": true
+        },
+        {
+          "kind": "PRIVATE_MESSAGE",
+          "coverage": 1.0,
+          "protected": true
+        }
+      ],
+      "latency_ms": 2326,
+      "masked_pixel_fraction": 0.1282,
+      "yunet_faces": 2
+    },
+    {
+      "scenario": "conference",
+      "layout": 1,
+      "seed": 11,
+      "entities": [
+        {
+          "kind": "PERSON",
+          "coverage": 1.0,
+          "protected": true
+        },
+        {
+          "kind": "EMAIL_ADDRESS",
+          "coverage": 1.0,
+          "protected": true
+        },
+        {
+          "kind": "PRIVATE_MESSAGE",
+          "coverage": 1.0,
+          "protected": true
+        }
+      ],
+      "latency_ms": 2322,
+      "masked_pixel_fraction": 0.0946,
+      "yunet_faces": 2
+    },
+    {
+      "scenario": "conference",
+      "layout": 1,
+      "seed": 12,
+      "entities": [
+        {
+          "kind": "PERSON",
+          "coverage": 1.0,
+          "protected": true
+        },
+        {
+          "kind": "EMAIL_ADDRESS",
+          "coverage": 1.0,
+          "protected": true
+        },
+        {
+          "kind": "PRIVATE_MESSAGE",
+          "coverage": 1.0,
+          "protected": true
+        }
+      ],
+      "latency_ms": 2439,
+      "masked_pixel_fraction": 0.0955,
+      "yunet_faces": 2
+    },
+    {
+      "scenario": "conference",
+      "layout": 1,
+      "seed": 13,
+      "entities": [
+        {
+          "kind": "PERSON",
+          "coverage": 1.0,
+          "protected": true
+        },
+        {
+          "kind": "EMAIL_ADDRESS",
+          "coverage": 1.0,
+          "protected": true
+        },
+        {
+          "kind": "PRIVATE_MESSAGE",
+          "coverage": 1.0,
+          "protected": true
+        }
+      ],
+      "latency_ms": 2156,
+      "masked_pixel_fraction": 0.0945,
+      "yunet_faces": 2
+    },
+    {
+      "scenario": "conference",
+      "layout": 1,
+      "seed": 14,
+      "entities": [
+        {
+          "kind": "PERSON",
+          "coverage": 1.0,
+          "protected": true
+        },
+        {
+          "kind": "EMAIL_ADDRESS",
+          "coverage": 1.0,
+          "protected": true
+        },
+        {
+          "kind": "PRIVATE_MESSAGE",
+          "coverage": 1.0,
+          "protected": true
+        }
+      ],
+      "latency_ms": 2385,
+      "masked_pixel_fraction": 0.0948,
+      "yunet_faces": 2
+    },
+    {
+      "scenario": "conference",
+      "layout": 1,
+      "seed": 15,
+      "entities": [
+        {
+          "kind": "PERSON",
+          "coverage": 1.0,
+          "protected": true
+        },
+        {
+          "kind": "EMAIL_ADDRESS",
+          "coverage": 1.0,
+          "protected": true
+        },
+        {
+          "kind": "PRIVATE_MESSAGE",
+          "coverage": 1.0,
+          "protected": true
+        }
+      ],
+      "latency_ms": 2366,
+      "masked_pixel_fraction": 0.095,
+      "yunet_faces": 2
+    },
+    {
+      "scenario": "developer",
+      "layout": 0,
+      "seed": 11,
+      "entities": [
+        {
+          "kind": "API_KEY",
+          "coverage": 1.0,
+          "protected": true
+        },
+        {
+          "kind": "IP_ADDRESS",
+          "coverage": 1.0,
+          "protected": true
+        },
+        {
+          "kind": "IN_PAN",
+          "coverage": 1.0,
+          "protected": true
+        }
+      ],
+      "latency_ms": 2692,
+      "masked_pixel_fraction": 0.0203,
+      "yunet_faces": 0
+    },
+    {
+      "scenario": "developer",
+      "layout": 0,
+      "seed": 12,
+      "entities": [
+        {
+          "kind": "API_KEY",
+          "coverage": 1.0,
+          "protected": true
+        },
+        {
+          "kind": "IP_ADDRESS",
+          "coverage": 1.0,
+          "protected": true
+        },
+        {
+          "kind": "IN_PAN",
+          "coverage": 1.0,
+          "protected": true
+        }
+      ],
+      "latency_ms": 2775,
+      "masked_pixel_fraction": 0.0203,
+      "yunet_faces": 0
+    },
+    {
+      "scenario": "developer",
+      "layout": 0,
+      "seed": 13,
+      "entities": [
+        {
+          "kind": "API_KEY",
+          "coverage": 1.0,
+          "protected": true
+        },
+        {
+          "kind": "IP_ADDRESS",
+          "coverage": 1.0,
+          "protected": true
+        },
+        {
+          "kind": "IN_PAN",
+          "coverage": 1.0,
+          "protected": true
+        }
+      ],
+      "latency_ms": 2706,
+      "masked_pixel_fraction": 0.0203,
+      "yunet_faces": 0
+    },
+    {
+      "scenario": "developer",
+      "layout": 0,
+      "seed": 14,
+      "entities": [
+        {
+          "kind": "API_KEY",
+          "coverage": 1.0,
+          "protected": true
+        },
+        {
+          "kind": "IP_ADDRESS",
+          "coverage": 1.0,
+          "protected": true
+        },
+        {
+          "kind": "IN_PAN",
+          "coverage": 1.0,
+          "protected": true
+        }
+      ],
+      "latency_ms": 2795,
+      "masked_pixel_fraction": 0.0203,
+      "yunet_faces": 0
+    },
+    {
+      "scenario": "developer",
+      "layout": 0,
+      "seed": 15,
+      "entities": [
+        {
+          "kind": "API_KEY",
+          "coverage": 1.0,
+          "protected": true
+        },
+        {
+          "kind": "IP_ADDRESS",
+          "coverage": 1.0,
+          "protected": true
+        },
+        {
+          "kind": "IN_PAN",
+          "coverage": 1.0,
+          "protected": true
+        }
+      ],
+      "latency_ms": 2608,
+      "masked_pixel_fraction": 0.0203,
+      "yunet_faces": 0
+    },
+    {
+      "scenario": "developer",
+      "layout": 1,
+      "seed": 11,
+      "entities": [
+        {
+          "kind": "API_KEY",
+          "coverage": 1.0,
+          "protected": true
+        },
+        {
+          "kind": "IP_ADDRESS",
+          "coverage": 1.0,
+          "protected": true
+        },
+        {
+          "kind": "IN_PAN",
+          "coverage": 1.0,
+          "protected": true
+        }
+      ],
+      "latency_ms": 2301,
+      "masked_pixel_fraction": 0.0203,
+      "yunet_faces": 0
+    },
+    {
+      "scenario": "developer",
+      "layout": 1,
+      "seed": 12,
+      "entities": [
+        {
+          "kind": "API_KEY",
+          "coverage": 1.0,
+          "protected": true
+        },
+        {
+          "kind": "IP_ADDRESS",
+          "coverage": 1.0,
+          "protected": true
+        },
+        {
+          "kind": "IN_PAN",
+          "coverage": 1.0,
+          "protected": true
+        }
+      ],
+      "latency_ms": 2431,
+      "masked_pixel_fraction": 0.0203,
+      "yunet_faces": 0
+    },
+    {
+      "scenario": "developer",
+      "layout": 1,
+      "seed": 13,
+      "entities": [
+        {
+          "kind": "API_KEY",
+          "coverage": 1.0,
+          "protected": true
+        },
+        {
+          "kind": "IP_ADDRESS",
+          "coverage": 1.0,
+          "protected": true
+        },
+        {
+          "kind": "IN_PAN",
+          "coverage": 1.0,
+          "protected": true
+        }
+      ],
+      "latency_ms": 2705,
+      "masked_pixel_fraction": 0.0203,
+      "yunet_faces": 0
+    },
+    {
+      "scenario": "developer",
+      "layout": 1,
+      "seed": 14,
+      "entities": [
+        {
+          "kind": "API_KEY",
+          "coverage": 1.0,
+          "protected": true
+        },
+        {
+          "kind": "IP_ADDRESS",
+          "coverage": 1.0,
+          "protected": true
+        },
+        {
+          "kind": "IN_PAN",
+          "coverage": 1.0,
+          "protected": true
+        }
+      ],
+      "latency_ms": 2668,
+      "masked_pixel_fraction": 0.0203,
+      "yunet_faces": 0
+    },
+    {
+      "scenario": "developer",
+      "layout": 1,
+      "seed": 15,
+      "entities": [
+        {
+          "kind": "API_KEY",
+          "coverage": 1.0,
+          "protected": true
+        },
+        {
+          "kind": "IP_ADDRESS",
+          "coverage": 1.0,
+          "protected": true
+        },
+        {
+          "kind": "IN_PAN",
+          "coverage": 1.0,
+          "protected": true
+        }
+      ],
+      "latency_ms": 2399,
+      "masked_pixel_fraction": 0.0203,
+      "yunet_faces": 0
+    }
+  ],
+  "entity_regions": 130,
+  "protected_regions": 130,
+  "region_recall": 1.0,
+  "p50_ms": 2564.5,
+  "p95_ms": 3497,
+  "mean_masked_fraction": 0.07385
+}

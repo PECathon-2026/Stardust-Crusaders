@@ -1,0 +1,628 @@
+{
+  "runs": [
+    {
+      "scenario": "checkout",
+      "provider": "gemini",
+      "status": "blocked",
+      "outcome": null,
+      "steps": 12,
+      "error": "Step budget reached",
+      "receipts": [
+        {
+          "digest": "c498a75f16c3de754cee0088120f091ca0ad61791dbf99dbe7b16a06fc1fc6b0",
+          "bytes": 2863,
+          "latency_ms": 2416,
+          "destination": "Gemini",
+          "transport": "response received",
+          "image_disclosed": false,
+          "id": "729d7091a61d",
+          "snapshot": "s_5d6b87416053f0a0062c377e",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "ADDRESS",
+            "CARD",
+            "CREDIT_CARD",
+            "CVV",
+            "NAME",
+            "PERSON"
+          ],
+          "region": null
+        },
+        {
+          "digest": "1d8128e93274bb83157a1e61b2734270a7d68844035fbaf189d3460ed82e1fb8",
+          "bytes": 2862,
+          "latency_ms": 2224,
+          "destination": "Gemini",
+          "transport": "response received",
+          "image_disclosed": false,
+          "id": "67c50270719f",
+          "snapshot": "s_1e226aa7f8cbbf3f2e0dfcbc",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "ADDRESS",
+            "CARD",
+            "CREDIT_CARD",
+            "CVV",
+            "NAME",
+            "PERSON"
+          ],
+          "region": null
+        },
+        {
+          "digest": "0e255ff33be95d2b5712d75c3bf3c7a30fec684082fec76341893844d1598758",
+          "bytes": 2861,
+          "latency_ms": 1799,
+          "destination": "Gemini",
+          "transport": "response received",
+          "image_disclosed": false,
+          "id": "15aab282d2b1",
+          "snapshot": "s_df55b481afffe4bd5db77047",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "ADDRESS",
+            "CARD",
+            "CREDIT_CARD",
+            "CVV",
+            "NAME",
+            "PERSON"
+          ],
+          "region": null
+        },
+        {
+          "digest": "8676cb6924515bca3dca2cc9e287a5cf88a73b25ab0970c143b47ce02d746174",
+          "bytes": 2860,
+          "latency_ms": 3590,
+          "destination": "Gemini",
+          "transport": "response received",
+          "image_disclosed": false,
+          "id": "5a03c10b1ddc",
+          "snapshot": "s_fa126f263fc64ea8633bbe95",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "ADDRESS",
+            "CARD",
+            "CREDIT_CARD",
+            "CVV",
+            "NAME",
+            "PERSON"
+          ],
+          "region": null
+        },
+        {
+          "digest": "3b4dc5ab79bced3fcd9e61d38d10841013a22f7f5d5427352837039b93374b62",
+          "bytes": 2859,
+          "latency_ms": 1864,
+          "destination": "Gemini",
+          "transport": "response received",
+          "image_disclosed": false,
+          "id": "bce706f1618a",
+          "snapshot": "s_4d1e0292dd55666a33d5cb9f",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "ADDRESS",
+            "CARD",
+            "CREDIT_CARD",
+            "CVV",
+            "NAME",
+            "PERSON"
+          ],
+          "region": null
+        },
+        {
+          "digest": "58a50f89caa04f7efc0e4ce2481ad7f9ce5ec64ff4d15fe646cafe371c32d55f",
+          "bytes": 3011,
+          "latency_ms": 3942,
+          "destination": "Gemini",
+          "transport": "response received",
+          "image_disclosed": false,
+          "id": "efe09ed1c57a",
+          "snapshot": "s_756d25d8a53e2e20f9e5a038",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "ADDRESS",
+            "CARD",
+            "CREDIT_CARD",
+            "CVV",
+            "NAME",
+            "PERSON"
+          ],
+          "region": null
+        },
+        {
+          "digest": "a7f9b2eb7be138780fdd573d01fa01db1a45a152cd30c585acb3eb80bf62ba33",
+          "bytes": 3011,
+          "latency_ms": 1618,
+          "destination": "Gemini",
+          "transport": "response received",
+          "image_disclosed": false,
+          "id": "d2699fa3a640",
+          "snapshot": "s_10239674ac406cc8e6399380",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "ADDRESS",
+            "CARD",
+            "CREDIT_CARD",
+            "CVV",
+            "NAME",
+            "PERSON"
+          ],
+          "region": null
+        },
+        {
+          "digest": "8323980018e84fe4b9b7efc1cfe974aded140b2882ef52b10afd4c89ee1e860f",
+          "bytes": 3011,
+          "latency_ms": 1522,
+          "destination": "Gemini",
+          "transport": "response received",
+          "image_disclosed": false,
+          "id": "25ef16f3fc22",
+          "snapshot": "s_96bd413789818e67a695e662",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "ADDRESS",
+            "CARD",
+            "CREDIT_CARD",
+            "CVV",
+            "NAME",
+            "PERSON"
+          ],
+          "region": null
+        },
+        {
+          "digest": "dfd06fa78bb12aecec451c1753d08a5a005e0b728a51330770573e27050e546b",
+          "bytes": 3011,
+          "latency_ms": 1744,
+          "destination": "Gemini",
+          "transport": "response received",
+          "image_disclosed": false,
+          "id": "bf445d30ad02",
+          "snapshot": "s_2cfaa29526deb560cc7c3443",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "ADDRESS",
+            "CARD",
+            "CREDIT_CARD",
+            "CVV",
+            "NAME",
+            "PERSON"
+          ],
+          "region": null
+        },
+        {
+          "digest": "864f2669a0afc68898a1132c9364a307cbce88acffb3cfadf362442d4dc98e6e",
+          "bytes": 3011,
+          "latency_ms": 1485,
+          "destination": "Gemini",
+          "transport": "response received",
+          "image_disclosed": false,
+          "id": "77c2c0cebe8b",
+          "snapshot": "s_1366a95a13577d631b6677fd",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "ADDRESS",
+            "CARD",
+            "CREDIT_CARD",
+            "CVV",
+            "NAME",
+            "PERSON"
+          ],
+          "region": null
+        },
+        {
+          "digest": "709bba3c0db3eeb592cf7bbcd30ebd4cb1bb2b15af38c75757a4af4b341e1b96",
+          "bytes": 3011,
+          "latency_ms": 1742,
+          "destination": "Gemini",
+          "transport": "response received",
+          "image_disclosed": false,
+          "id": "ce4d50dac6b5",
+          "snapshot": "s_7e037dbe0d92f98c58c620b5",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "ADDRESS",
+            "CARD",
+            "CREDIT_CARD",
+            "CVV",
+            "NAME",
+            "PERSON"
+          ],
+          "region": null
+        },
+        {
+          "digest": "b224b77513b745036fa3dcce3478950e80b6a778f99038b37bb0585f793deb8f",
+          "bytes": 3011,
+          "latency_ms": 1515,
+          "destination": "Gemini",
+          "transport": "response received",
+          "image_disclosed": false,
+          "id": "6a50381ab9f7",
+          "snapshot": "s_955b25aa3b84efe2b867a376",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "ADDRESS",
+            "CARD",
+            "CREDIT_CARD",
+            "CVV",
+            "NAME",
+            "PERSON"
+          ],
+          "region": null
+        },
+        {
+          "id": "1f92b7a18b56",
+          "contract": "task-bound-v1",
+          "decision": "blocked",
+          "reason": "Step budget reached",
+          "bytes": 0,
+          "digest": null,
+          "image_disclosed": false,
+          "categories": []
+        }
+      ],
+      "elapsed_s": 71.45
+    },
+    {
+      "scenario": "authentication",
+      "provider": "gemini",
+      "status": "blocked",
+      "outcome": null,
+      "steps": 2,
+      "error": "Model response did not satisfy the action contract",
+      "receipts": [
+        {
+          "digest": "d5f9b861e7e17abfe6f6a55b1e2b7a50ec809d4a0ac7348ff8c94608319599aa",
+          "bytes": 2795,
+          "latency_ms": 1416,
+          "destination": "Gemini",
+          "transport": "response received",
+          "image_disclosed": false,
+          "id": "2115f131b017",
+          "snapshot": "s_ee015ba6d5f8b5233e22f2e8",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "EMAIL",
+            "EMAIL_ADDRESS",
+            "OTP",
+            "PASSWORD",
+            "PHONE_NUMBER"
+          ],
+          "region": null
+        },
+        {
+          "id": "13e74c5a2892",
+          "contract": "task-bound-v1",
+          "decision": "blocked",
+          "reason": "Model response did not satisfy the action contract",
+          "bytes": 0,
+          "digest": null,
+          "image_disclosed": false,
+          "categories": []
+        },
+        {
+          "digest": "15376173c24dbb4e27f99d55e9763ce85983d7e93b8baaf60355b8ccc1abde47",
+          "bytes": 2794,
+          "latency_ms": null,
+          "destination": "Gemini",
+          "transport": "attempted",
+          "image_disclosed": false,
+          "id": "5f556ab8b4d6",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [],
+          "note": "Transport attempted before run failure; response not validated"
+        }
+      ],
+      "elapsed_s": 11.66
+    },
+    {
+      "scenario": "support",
+      "provider": "gemini",
+      "status": "needs_review",
+      "outcome": "planner_finished",
+      "steps": 1,
+      "error": null,
+      "receipts": [
+        {
+          "digest": "3059218c7adb4fae472a311a5bbb4633842223e825efbe39881efbaef349ff26",
+          "bytes": 2525,
+          "latency_ms": 1913,
+          "destination": "Gemini",
+          "transport": "response received",
+          "image_disclosed": false,
+          "id": "bfb10f513fc3",
+          "snapshot": "s_bc3353553cb8ac6c466a5f78",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "INPUT",
+            "PHONE_NUMBER",
+            "PRIVATE_CONTENT"
+          ],
+          "region": null
+        }
+      ],
+      "elapsed_s": 6.73
+    },
+    {
+      "scenario": "conference",
+      "provider": "gemini",
+      "status": "completed",
+      "outcome": "mute",
+      "steps": 2,
+      "error": null,
+      "receipts": [
+        {
+          "digest": "a89c0347b62e4d1831a56b1753ab1eda46845196ca0688d963eb7f1f41b565cf",
+          "bytes": 2154,
+          "latency_ms": 2778,
+          "destination": "Gemini",
+          "transport": "response received",
+          "image_disclosed": false,
+          "id": "86b7c98377f2",
+          "snapshot": "s_f6589ccb6765e27128363aea",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "EMAIL_ADDRESS",
+            "FACE",
+            "PERSON",
+            "PRIVATE_CONTENT"
+          ],
+          "region": null
+        }
+      ],
+      "elapsed_s": 10.62
+    },
+    {
+      "scenario": "developer",
+      "provider": "gemini",
+      "status": "blocked",
+      "outcome": null,
+      "steps": 12,
+      "error": "Step budget reached",
+      "receipts": [
+        {
+          "digest": "5698a08a8015698f55510898fdff960a479453774bfab63dbfc863d79e6828d6",
+          "bytes": 2155,
+          "latency_ms": 1507,
+          "destination": "Gemini",
+          "transport": "response received",
+          "image_disclosed": false,
+          "id": "7264979ac002",
+          "snapshot": "s_7769462f87f187ed1e4d59d7",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "API_KEY",
+            "IN_PAN",
+            "IP_ADDRESS"
+          ],
+          "region": null
+        },
+        {
+          "digest": "49eaf9489a6beb14ffa5d2adcfa6d87ca875c543b04049f7e1f47d122e89fc12",
+          "bytes": 2306,
+          "latency_ms": 1677,
+          "destination": "Gemini",
+          "transport": "response received",
+          "image_disclosed": false,
+          "id": "11c21bf9a4c7",
+          "snapshot": "s_cf8b416f0e27787bca8c8ddf",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "API_KEY",
+            "IN_PAN",
+            "IP_ADDRESS"
+          ],
+          "region": null
+        },
+        {
+          "digest": "9a5b1ed3c24f7e476a3a3f517dea210aa9c2cacc12e95fea3eb0396c131d02b8",
+          "bytes": 2306,
+          "latency_ms": 1574,
+          "destination": "Gemini",
+          "transport": "response received",
+          "image_disclosed": false,
+          "id": "e7d83c44847c",
+          "snapshot": "s_eae05e23ead4f1a4257a0dd8",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "API_KEY",
+            "IN_PAN",
+            "IP_ADDRESS"
+          ],
+          "region": null
+        },
+        {
+          "digest": "2d9df57abd5c0add66280f09b0eb46c8aa55602fafb4b8660414d0bd0cffaa1a",
+          "bytes": 2306,
+          "latency_ms": 1433,
+          "destination": "Gemini",
+          "transport": "response received",
+          "image_disclosed": false,
+          "id": "3ac6d7e16ef7",
+          "snapshot": "s_39930f09991e8626f21e0183",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "API_KEY",
+            "IN_PAN",
+            "IP_ADDRESS"
+          ],
+          "region": null
+        },
+        {
+          "digest": "48b774c47a371e2f4f0084b4524354803da0844309d90be0eb2f420b4da9bae7",
+          "bytes": 2306,
+          "latency_ms": 1869,
+          "destination": "Gemini",
+          "transport": "response received",
+          "image_disclosed": false,
+          "id": "5a10fa770150",
+          "snapshot": "s_abbf3da6886cc785918a2a0b",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "API_KEY",
+            "IN_PAN",
+            "IP_ADDRESS"
+          ],
+          "region": null
+        },
+        {
+          "digest": "737a5f831fcf3a170fbd0a2eb5ab8b2a69a8775caaf9a218d1f1bfbf79d0dac8",
+          "bytes": 2306,
+          "latency_ms": 2105,
+          "destination": "Gemini",
+          "transport": "response received",
+          "image_disclosed": false,
+          "id": "9396de840e41",
+          "snapshot": "s_d832675303528a1a0bb48da8",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "API_KEY",
+            "IN_PAN",
+            "IP_ADDRESS"
+          ],
+          "region": null
+        },
+        {
+          "digest": "b92bbc7ae2237e0fb90a14954a81677dc67c3d273d26f61e97a0cc26562c9062",
+          "bytes": 2306,
+          "latency_ms": 2033,
+          "destination": "Gemini",
+          "transport": "response received",
+          "image_disclosed": false,
+          "id": "1b118f984f81",
+          "snapshot": "s_6fb964b9a38ded2d9437074a",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "API_KEY",
+            "IN_PAN",
+            "IP_ADDRESS"
+          ],
+          "region": null
+        },
+        {
+          "digest": "c37d48c3492a1be296b3f870933c57fac9bb505f95eacae6c1ff1ad24dc59fb3",
+          "bytes": 2306,
+          "latency_ms": 2127,
+          "destination": "Gemini",
+          "transport": "response received",
+          "image_disclosed": false,
+          "id": "1078a9acfeca",
+          "snapshot": "s_02d2d1b36b8a5b94e064d5d2",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "API_KEY",
+            "IN_PAN",
+            "IP_ADDRESS"
+          ],
+          "region": null
+        },
+        {
+          "digest": "ae4e991b1415248a05e6667aa26a0e090438d7b553b2f68774557479a37319b3",
+          "bytes": 2306,
+          "latency_ms": 1666,
+          "destination": "Gemini",
+          "transport": "response received",
+          "image_disclosed": false,
+          "id": "7ff0402f7a46",
+          "snapshot": "s_c2c79006f12f9b1a5690cb05",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "API_KEY",
+            "IN_PAN",
+            "IP_ADDRESS"
+          ],
+          "region": null
+        },
+        {
+          "digest": "a90ac2726c78496ca59818b709163881e9f03d77300c8313407c8560f5a27c7f",
+          "bytes": 2306,
+          "latency_ms": 2107,
+          "destination": "Gemini",
+          "transport": "response received",
+          "image_disclosed": false,
+          "id": "aa6c50b261a3",
+          "snapshot": "s_04a4ce46fcefbf47c9c6b862",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "API_KEY",
+            "IN_PAN",
+            "IP_ADDRESS"
+          ],
+          "region": null
+        },
+        {
+          "digest": "5c480f0d496cf304527320ee955da6383a9e6219d8c1ab1616a7be04e94cad24",
+          "bytes": 2306,
+          "latency_ms": 3520,
+          "destination": "Gemini",
+          "transport": "response received",
+          "image_disclosed": false,
+          "id": "0ccf807f8878",
+          "snapshot": "s_5d2f4ff5dda0a8a595a8babf",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "API_KEY",
+            "IN_PAN",
+            "IP_ADDRESS"
+          ],
+          "region": null
+        },
+        {
+          "digest": "ccfa765738751f089ab6bcd6e6d299b5ba82d7618a2f78d8c8194acf57cef4ca",
+          "bytes": 2306,
+          "latency_ms": 1905,
+          "destination": "Gemini",
+          "transport": "response received",
+          "image_disclosed": false,
+          "id": "b1a1515a7af6",
+          "snapshot": "s_7837dcf68d73f7a8627eb003",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "API_KEY",
+            "IN_PAN",
+            "IP_ADDRESS"
+          ],
+          "region": null
+        },
+        {
+          "id": "d339a9f1589f",
+          "contract": "task-bound-v1",
+          "decision": "blocked",
+          "reason": "Step budget reached",
+          "bytes": 0,
+          "digest": null,
+          "image_disclosed": false,
+          "categories": []
+        }
+      ],
+      "elapsed_s": 61.05
+    }
+  ],
+  "timestamp": 1793300587.2404408
+}

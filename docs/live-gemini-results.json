@@ -1,0 +1,62 @@
+{
+  "runs": [
+    {
+      "scenario": "checkout",
+      "provider": "gemini",
+      "status": "blocked",
+      "outcome": null,
+      "steps": 1,
+      "error": "Model request failed (HTTP 402); inspect key, model access or quota in Settings",
+      "receipts": [
+        {
+          "id": "4899ab55bb6c",
+          "contract": "task-bound-v1",
+          "decision": "blocked",
+          "reason": "Model request failed (HTTP 402); inspect key, model access or quota in Settings",
+          "bytes": 0,
+          "digest": null,
+          "image_disclosed": false,
+          "categories": []
+        },
+        {
+          "digest": "26656d64acd0c2a1c3dba351d668e1781f73f9c5c62b1737952252557fe712d4",
+          "bytes": 4783,
+          "latency_ms": null,
+          "destination": "Gemini",
+          "transport": "attempted",
+          "image_disclosed": false,
+          "id": "6f5db3926922",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [],
+          "note": "Transport attempted before run failure; response not validated"
+        }
+      ],
+      "events": [
+        {
+          "id": 0,
+          "time": "00:47:51",
+          "title": "Browser connected",
+          "detail": "Private ephemeral Chromium context",
+          "kind": "info"
+        },
+        {
+          "id": 1,
+          "time": "00:47:55",
+          "title": "Observation protected",
+          "detail": "10 findings \u00b7 3899 ms",
+          "kind": "privacy"
+        },
+        {
+          "id": 2,
+          "time": "00:47:58",
+          "title": "Run blocked",
+          "detail": "Model request failed (HTTP 402); inspect key, model access or quota in Settings",
+          "kind": "blocked"
+        }
+      ],
+      "elapsed_s": 8.88
+    }
+  ],
+  "timestamp": 1793301478.8384407
+}

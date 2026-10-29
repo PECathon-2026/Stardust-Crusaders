@@ -1,0 +1,39 @@
+{
+  "runs": [
+    {
+      "scenario": "checkout",
+      "provider": "gemini",
+      "status": "blocked",
+      "outcome": null,
+      "steps": 1,
+      "error": "Model request failed (HTTP 503); inspect key, model access or quota in Settings",
+      "receipts": [
+        {
+          "id": "857f69773f9a",
+          "contract": "task-bound-v1",
+          "decision": "blocked",
+          "reason": "Model request failed (HTTP 503); inspect key, model access or quota in Settings",
+          "bytes": 0,
+          "digest": null,
+          "image_disclosed": false,
+          "categories": []
+        },
+        {
+          "digest": "08e0e61fdef8e643233a831a0948ecf16a78f58cd0f8d899b7490db2f7cdf5c5",
+          "bytes": 2863,
+          "latency_ms": null,
+          "destination": "Gemini",
+          "transport": "attempted",
+          "image_disclosed": false,
+          "id": "c0ca60c7f5cd",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [],
+          "note": "Transport attempted before run failure; response not validated"
+        }
+      ],
+      "elapsed_s": 26.06
+    }
+  ],
+  "timestamp": 1793300321.1588116
+}
