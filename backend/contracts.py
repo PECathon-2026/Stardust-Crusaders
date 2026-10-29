@@ -69,6 +69,12 @@ class ApprovalRequest(Strict):
     approved: bool
 
 
+class PromptRequest(Strict):
+    url: str = Field(min_length=1, max_length=500)
+    task: str = Field(min_length=3, max_length=2000)
+    provider: Literal["groq", "gemini", "ollama"] = "groq"
+
+
 class SettingsRequest(Strict):
     api_key: str = Field(default="", max_length=300)
     gemini_model: str = Field(
@@ -87,7 +93,7 @@ class SecretEntry(Strict):
 DEFAULT_TASKS = {
     "checkout": "Fill the checkout form using the permitted secret references, then review the order and request approval before placing it.",
     "authentication": "Fill the email, password and one-time code using local secret references, then sign in.",
-    "support": 'Choose Billing as the issue category, enter the public reply "I can help with your billing question.", and request approval to send it.',
+    "support": 'Set the issue category to "Billing". Enter the public reply "I can help with your billing question.", and request approval to send it.',
     "conference": "Mute the microphone without disclosing participant identities or private chat.",
     "developer": "Open the key details and request approval before revoking the demo key.",
     "wikipedia": "Search Wikipedia for Privacy and open the article.",
@@ -184,16 +190,12 @@ def planner_schema(observation, refs, allow_context=True):
 
 def groq_schema(observation, refs):
     """Use one fixed object for the provider; enforce dependent fields locally."""
-    branches = planner_schema(observation, refs, allow_context=False)["properties"]["action"]["anyOf"]
     properties = {
-        "type": {"type": "string", "enum": [b["properties"]["type"]["enum"][0] for b in branches]},
-        "snapshot_id": {"type": "string", "enum": [observation.get("snapshot_id", "snapshot")]},
+        "type": {"type": "string", "enum": ["click", "fill_public", "fill_secret", "select", "scroll", "wait", "done"]},
+        "snapshot_id": {"type": "string"},
     }
     for field in ("target_id", "text", "secret_ref", "direction"):
         properties[field] = {"type": ["string", "null"]}
-        if field != "text":
-            values = list(dict.fromkeys(value for b in branches for value in b["properties"].get(field, {}).get("enum", [])))
-            properties[field]["enum"] = [*values, None]
     return {
         "type": "object",
         "properties": {"action": {

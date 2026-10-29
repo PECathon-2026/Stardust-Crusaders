@@ -284,6 +284,9 @@ class Gateway:
                     state = "invalid_request"
                     message = "Groq rejected the request format. Provider access is not yet verified."
                     for marker, safe_message in [
+                        ("discriminator_multiple_candidates", "Groq rejected competing discriminator fields in the action schema."),
+                        ("failed_generation", "Groq could not generate a response satisfying the requested format. No action was executed."),
+                        ("failed to generate", "Groq could not generate a response satisfying the requested format. No action was executed."),
                         ("organization", "Groq reports an organization or account restriction. Check your Groq console."),
                         ("reasoning_effort", "Groq rejected the reasoning configuration."),
                         ("max_completion_tokens", "Groq rejected the output token configuration."),

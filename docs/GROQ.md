@@ -14,3 +14,7 @@ References: [structured outputs](https://console.groq.com/docs/structured-output
 
 ## Reliability follow-up (Eshan)
 The next stage adds sanitized dropdown choices/current selection and validation feedback, a repeated-action guard and a rolling request budget estimated from payload bytes plus output allowance. Waiting is cancellable and shown in the dashboard. Shared-account activity and estimator error can still produce 429 responses; no automatic error retries are made. Live validation of this stage is pending; see STAGE-TESTING.md.
+## Latest live results
+The stable wire schema now contains no per-observation IDs or nullable enums; the local validator enforces all changing constraints. Conference and developer passed with verified outcomes. Support initially stopped via the no-progress guard: real NER redacted the phrase "Choose Billing" in the instruction. The revised quoted-category prompt completed (6 steps, 75.39 seconds). The detector was not weakened. General prompt false positives remain a limitation.
+
+Evidence: `live-groq-followup-results.json` preserves the failed support attempt and successful conference/developer runs; `live-groq-support-results.json` records the revised support success. A further live conference task completed through the prompt workspace itself. These selected successes across revisions do not establish a consecutive five-task success rate.

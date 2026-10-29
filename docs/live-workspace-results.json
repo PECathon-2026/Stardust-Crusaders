@@ -1,0 +1,67 @@
+{
+  "scenario": "conference",
+  "provider": "groq",
+  "status": "completed",
+  "outcome": "mute",
+  "steps": 2,
+  "receipts": [
+    {
+      "digest": "6ba2d993c62e607b204571d18be530578704df5738a40eb119f703fcbe3ef386",
+      "bytes": 2918,
+      "latency_ms": 925,
+      "destination": "Groq",
+      "transport": "response received",
+      "image_disclosed": false,
+      "http_status": 200,
+      "id": "0afeaed2571a",
+      "snapshot": "s_104066bd9c57314db63049a0",
+      "contract": "task-bound-v1",
+      "decision": "allowed",
+      "categories": [
+        "EMAIL_ADDRESS",
+        "FACE",
+        "PERSON",
+        "PRIVATE_CONTENT"
+      ],
+      "region": null
+    }
+  ],
+  "events": [
+    {
+      "id": 0,
+      "time": "02:42:29",
+      "title": "Browser connected",
+      "detail": "Private ephemeral Chromium context",
+      "kind": "info"
+    },
+    {
+      "id": 1,
+      "time": "02:42:31",
+      "title": "Observation protected",
+      "detail": "8 findings \u00b7 2008 ms",
+      "kind": "privacy"
+    },
+    {
+      "id": 2,
+      "time": "02:42:32",
+      "title": "Action executed",
+      "detail": "click",
+      "kind": "success"
+    },
+    {
+      "id": 3,
+      "time": "02:42:35",
+      "title": "Observation protected",
+      "detail": "8 findings \u00b7 2185 ms",
+      "kind": "privacy"
+    },
+    {
+      "id": 4,
+      "time": "02:42:35",
+      "title": "Task completed",
+      "detail": "Observed the expected page outcome",
+      "kind": "success"
+    }
+  ],
+  "entrypoint": "Browser workspace UI: prompt, Start task, verified result"
+}

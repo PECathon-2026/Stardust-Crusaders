@@ -1,0 +1,225 @@
+{
+  "runs": [
+    {
+      "scenario": "support",
+      "provider": "groq",
+      "status": "completed",
+      "outcome": "send",
+      "steps": 6,
+      "error": null,
+      "receipts": [
+        {
+          "digest": "562b1fb9d03130fb4de3b9ee07287e9563b5e01ce11456370980480637dd8bd9",
+          "bytes": 3500,
+          "latency_ms": 1182,
+          "destination": "Groq",
+          "transport": "response received",
+          "image_disclosed": false,
+          "http_status": 200,
+          "id": "1f7995ef34ef",
+          "snapshot": "s_446b20bfbe1dd5fcf3d8340f",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "INPUT",
+            "PHONE_NUMBER",
+            "PRIVATE_CONTENT"
+          ],
+          "region": null
+        },
+        {
+          "digest": "33545c45a1c92e7489999fed1ba84da354049698a34a0f4acfc04fae1e537722",
+          "bytes": 3618,
+          "latency_ms": 1152,
+          "destination": "Groq",
+          "transport": "response received",
+          "image_disclosed": false,
+          "http_status": 200,
+          "id": "bdde7286566b",
+          "snapshot": "s_2857ee006b20577dd47b4956",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "INPUT",
+            "PHONE_NUMBER",
+            "PRIVATE_CONTENT"
+          ],
+          "region": null
+        },
+        {
+          "digest": "7e0ac6a42d465b4cee5c0cdf0414b0611eddd2a1b50ef8a50cf33527ef715a52",
+          "bytes": 3691,
+          "latency_ms": 1246,
+          "destination": "Groq",
+          "transport": "response received",
+          "image_disclosed": false,
+          "http_status": 200,
+          "id": "ca9b3503af77",
+          "snapshot": "s_f7cbf554df66fa3371175a46",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "INPUT",
+            "PHONE_NUMBER",
+            "PRIVATE_CONTENT"
+          ],
+          "region": null
+        },
+        {
+          "digest": "1d273f423366ce071f2080d359ca3b36d63e93d6c7afb56548519c69528d8916",
+          "bytes": 3769,
+          "latency_ms": 1306,
+          "destination": "Groq",
+          "transport": "response received",
+          "image_disclosed": false,
+          "http_status": 200,
+          "id": "f7a7b41d0946",
+          "snapshot": "s_1e918d1c31a31a405510cc08",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "INPUT",
+            "PHONE_NUMBER",
+            "PRIVATE_CONTENT"
+          ],
+          "region": null
+        },
+        {
+          "digest": "91ddafe0351a8cfd02a59907fd1d71f7fe310cab7cce982ce8e5bc68f3fde48c",
+          "bytes": 3849,
+          "latency_ms": 1199,
+          "destination": "Groq",
+          "transport": "response received",
+          "image_disclosed": false,
+          "http_status": 200,
+          "id": "e54b517f277d",
+          "snapshot": "s_007043d1a1a44b6defb801d8",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "INPUT",
+            "PHONE_NUMBER",
+            "PRIVATE_CONTENT"
+          ],
+          "region": null
+        }
+      ],
+      "events": [
+        {
+          "id": 0,
+          "time": "02:40:37",
+          "title": "Browser connected",
+          "detail": "Private ephemeral Chromium context",
+          "kind": "info"
+        },
+        {
+          "id": 1,
+          "time": "02:40:39",
+          "title": "Observation protected",
+          "detail": "5 findings \u00b7 2268 ms",
+          "kind": "privacy"
+        },
+        {
+          "id": 2,
+          "time": "02:40:41",
+          "title": "Approval required",
+          "detail": "Send reply",
+          "kind": "approval"
+        },
+        {
+          "id": 3,
+          "time": "02:40:41",
+          "title": "Action executed",
+          "detail": "click",
+          "kind": "success"
+        },
+        {
+          "id": 4,
+          "time": "02:40:43",
+          "title": "Observation protected",
+          "detail": "5 findings \u00b7 2108 ms",
+          "kind": "privacy"
+        },
+        {
+          "id": 5,
+          "time": "02:40:47",
+          "title": "Approval required",
+          "detail": "Send reply",
+          "kind": "approval"
+        },
+        {
+          "id": 6,
+          "time": "02:40:47",
+          "title": "Action executed",
+          "detail": "click",
+          "kind": "success"
+        },
+        {
+          "id": 7,
+          "time": "02:40:50",
+          "title": "Observation protected",
+          "detail": "5 findings \u00b7 2420 ms",
+          "kind": "privacy"
+        },
+        {
+          "id": 8,
+          "time": "02:40:52",
+          "title": "Action executed",
+          "detail": "select",
+          "kind": "success"
+        },
+        {
+          "id": 9,
+          "time": "02:40:54",
+          "title": "Observation protected",
+          "detail": "5 findings \u00b7 2291 ms",
+          "kind": "privacy"
+        },
+        {
+          "id": 10,
+          "time": "02:41:42",
+          "title": "Action executed",
+          "detail": "fill public",
+          "kind": "success"
+        },
+        {
+          "id": 11,
+          "time": "02:41:45",
+          "title": "Observation protected",
+          "detail": "5 findings \u00b7 2452 ms",
+          "kind": "privacy"
+        },
+        {
+          "id": 12,
+          "time": "02:41:48",
+          "title": "Approval required",
+          "detail": "Send reply",
+          "kind": "approval"
+        },
+        {
+          "id": 13,
+          "time": "02:41:48",
+          "title": "Action executed",
+          "detail": "click",
+          "kind": "success"
+        },
+        {
+          "id": 14,
+          "time": "02:41:51",
+          "title": "Observation protected",
+          "detail": "5 findings \u00b7 2379 ms",
+          "kind": "privacy"
+        },
+        {
+          "id": 15,
+          "time": "02:41:51",
+          "title": "Task completed",
+          "detail": "Observed the expected page outcome",
+          "kind": "success"
+        }
+      ],
+      "elapsed_s": 75.39
+    }
+  ],
+  "timestamp": 1793308312.0960076
+}

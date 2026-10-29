@@ -37,3 +37,23 @@ For a fair AI ablation, use the same Gemini model, seed, task and core enforceme
 
 ## Remaining validation
 The revised cloud flow most recently received HTTP 402 before producing an action. Its successful end-to-end validation remains open pending project billing/access and a locally entered key. Both external tasks passed after relocation: Wikipedia reached the verified Privacy article in 28.73 seconds; SauceDemo reached a verified backpack-only cart in 23.77 seconds. Earlier repetitions encountered browser/capture failures, preserved in the first commit, so reliability across arbitrary sites is not established. The captioned local-driver demo is 143 seconds and does not claim cloud-AI performance.
+
+
+## Groq live follow-up and prompt workspace
+The earlier Gemini billing limitation remains provider-specific. Groq returned successful actions using `openai/gpt-oss-120b`; the selected successful outcomes below occurred across different attempts and revisions, **not one 5/5 consecutive trial**:
+
+| Synthetic scenario | Verified outcome | Steps | Seconds | Evidence |
+|---|---|---:|---:|---|
+| Checkout | purchase | 7 | 30.75 | live-groq-results.json |
+| Authentication | signin | 5 | 21.53 | live-groq-results.json |
+| Support, revised prompt | send | 6 | 75.39 | live-groq-support-results.json |
+| Conference | mute | 2 | 8.27 | live-groq-followup-results.json |
+| Developer | revoke | 3 | 55.16 | live-groq-followup-results.json |
+
+Failures are preserved. Support previously repeated actions, hit HTTP 429, encountered schema rejection, and then stopped via the no-progress guard. The real NER detector misclassified "Choose Billing" in the task as a person, deleting required context. Rephrasing the fixture's example to `Set the issue category to "Billing"` preserved the category instruction without bypassing detection. Arbitrary free-form tasks may still suffer contextual false positives. Live times include local processing, inference and conservative quota pacing.
+
+The cloud wire schema is now fixed across snapshots, with all changing target/snapshot constraints enforced locally. Full automated suite passed 85 tests before the final prompt-wording regression was added; 22 focused tests then passed, including that real-detector regression. UI checks cover prompt submission, approval rejection, unsupported-address rejection, protected key entry, mobile layout and Privacy Lab navigation. Mocked UI results are not AI success evidence.
+
+
+## Live external-site Groq validation
+The two external-site tasks completed with live Groq on this revision: Wikipedia reached the verified Privacy article in 4 steps / 143.28 seconds; SauceDemo reached the verified backpack-only cart in 6 steps / 122.14 seconds. The run stopped before checkout. Evidence: `live-groq-wikipedia-saucedemo-results.json`. These are one successful attempt each, not a general reliability benchmark. Free-tier pacing dominates demo duration, so plan a short live action plus clearly labeled recorded evidence for a 2–3 minute presentation.

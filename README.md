@@ -11,7 +11,11 @@ powershell -ExecutionPolicy Bypass -File .\start.ps1
 ```
 Setup is needed once; start is used thereafter. Open http://127.0.0.1:8765. Fixtures run on 8766. Requires Node/npm, Python with pip, internet for initial dependency/model downloads and roughly 16 GB RAM. Python 3.11.9 is isolated. An ephemeral Microsoft Edge session is used if Playwright Chromium is absent; it never attaches to your normal browser profile.
 
-Wait for “Local protection ready”. Choose a scenario and Start protected task. Inspect original/sanitized views locally; approve consequential actions when prompted. Stop & clear closes the controlled browser and clears run secrets/previews.
+The home page is the prompt-driven **Browser Agent**: select a supported page or enter its listed address, type instructions, and start the task. Its sidebar shows progress and approval requests beside a protected browser preview. Settings accepts your session API key. **Privacy Lab** at `/lab` contains scenario runs, detection/attack tests and evidence. Stop closes the controlled browser and clears run secrets/previews.
+
+This is a web workspace for a separate controlled browser, not an extension attached to your existing tabs. Navigation is limited to five synthetic pages, Wikipedia and SauceDemo. Arbitrary websites are rejected. The local test driver is available in the Privacy Lab, not presented as AI in the prompt workspace.
+
+![Prompt-driven PrivacyLens workspace](docs/agent-workspace.png)
 
 ### Planner choices
 - **Local test driver:** deterministic fixture walkthrough, no AI call or key. Exercises the real privacy pipeline; not an AI success benchmark.
@@ -29,7 +33,9 @@ Five synthetic profiles cover checkout, authentication, support, conference and 
 .\.venv\Scripts\python.exe evaluate_pixels.py
 .\.venv\Scripts\python.exe verify_external.py
 # Once a key is saved locally:
-.\.venv\Scripts\python.exe live_check.py gemini
+.\.venv\Scripts\python.exe live_check.py groq
+# Repeat selected cases without overwriting the full suite result:
+.\.venv\Scripts\python.exe live_check.py groq support conference developer
 # Captioned synthetic local-driver video (app must be idle):
 .\.venv\Scripts\python.exe record_demo.py
 ```

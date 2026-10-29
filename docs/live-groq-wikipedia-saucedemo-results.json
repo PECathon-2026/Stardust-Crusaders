@@ -1,0 +1,329 @@
+{
+  "runs": [
+    {
+      "scenario": "wikipedia",
+      "provider": "groq",
+      "status": "completed",
+      "outcome": "article_verified",
+      "steps": 4,
+      "error": null,
+      "receipts": [
+        {
+          "digest": "2c8632e342c21116fc1933272b32d81a92e878354958fc4d9c52e293f1b08b02",
+          "bytes": 11798,
+          "latency_ms": 1722,
+          "destination": "Groq",
+          "transport": "response received",
+          "image_disclosed": false,
+          "http_status": 200,
+          "id": "102a7ea2cfaa",
+          "snapshot": "s_52f34687dfcb619fdba3c6cf",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "FACE",
+            "INPUT",
+            "PERSON"
+          ],
+          "region": null
+        },
+        {
+          "digest": "c9a371e01cc75e6a662a9bfb554b768e32a3b1da4c6313c82d300e5afa4969e0",
+          "bytes": 7728,
+          "latency_ms": 1602,
+          "destination": "Groq",
+          "transport": "response received",
+          "image_disclosed": false,
+          "http_status": 200,
+          "id": "2fbdb286ee8e",
+          "snapshot": "s_5fe202d84984243babe600be",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "INPUT"
+          ],
+          "region": null
+        },
+        {
+          "digest": "75c62f966bb93c74e934e79f331fcbc3fb608d9ed39c419f99e25fdec4084327",
+          "bytes": 9688,
+          "latency_ms": 1867,
+          "destination": "Groq",
+          "transport": "response received",
+          "image_disclosed": false,
+          "http_status": 200,
+          "id": "492c88c8b38b",
+          "snapshot": "s_2e5dc6e97153e05311ea4058",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "INPUT"
+          ],
+          "region": null
+        }
+      ],
+      "events": [
+        {
+          "id": 0,
+          "time": "02:46:06",
+          "title": "Browser connected",
+          "detail": "Private ephemeral Chromium context",
+          "kind": "info"
+        },
+        {
+          "id": 1,
+          "time": "02:46:14",
+          "title": "Observation protected",
+          "detail": "9 findings \u00b7 7848 ms",
+          "kind": "privacy"
+        },
+        {
+          "id": 2,
+          "time": "02:46:16",
+          "title": "Action executed",
+          "detail": "click",
+          "kind": "success"
+        },
+        {
+          "id": 3,
+          "time": "02:46:21",
+          "title": "Observation protected",
+          "detail": "2 findings \u00b7 4496 ms",
+          "kind": "privacy"
+        },
+        {
+          "id": 4,
+          "time": "02:47:17",
+          "title": "Action executed",
+          "detail": "fill public",
+          "kind": "success"
+        },
+        {
+          "id": 5,
+          "time": "02:47:23",
+          "title": "Observation protected",
+          "detail": "2 findings \u00b7 5866 ms",
+          "kind": "privacy"
+        },
+        {
+          "id": 6,
+          "time": "02:48:19",
+          "title": "Action executed",
+          "detail": "click",
+          "kind": "success"
+        },
+        {
+          "id": 7,
+          "time": "02:48:26",
+          "title": "Observation protected",
+          "detail": "2 findings \u00b7 7361 ms",
+          "kind": "privacy"
+        },
+        {
+          "id": 8,
+          "time": "02:48:26",
+          "title": "Task completed",
+          "detail": "External page result independently checked",
+          "kind": "success"
+        }
+      ],
+      "elapsed_s": 143.28
+    },
+    {
+      "scenario": "saucedemo",
+      "provider": "groq",
+      "status": "completed",
+      "outcome": "cart_verified",
+      "steps": 6,
+      "error": null,
+      "receipts": [
+        {
+          "digest": "2932f59977c2c8febe6a2feebbeb870a93f5946c99ceb39f16409af429a4a5cc",
+          "bytes": 3298,
+          "latency_ms": 1215,
+          "destination": "Groq",
+          "transport": "response received",
+          "image_disclosed": false,
+          "http_status": 200,
+          "id": "682762c3c65e",
+          "snapshot": "s_05f2f017604a63469cce7986",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "PASSWORD",
+            "SECRET",
+            "USERNAME"
+          ],
+          "region": null
+        },
+        {
+          "digest": "26f594fc1d621fcf5aa7b62dc7f2853fc90c91e4bd033ddcefd68792c938651d",
+          "bytes": 3373,
+          "latency_ms": 981,
+          "destination": "Groq",
+          "transport": "response received",
+          "image_disclosed": false,
+          "http_status": 200,
+          "id": "d722391c5f0c",
+          "snapshot": "s_68f589296c656d9f5e3f441c",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "PASSWORD",
+            "SECRET",
+            "USERNAME"
+          ],
+          "region": null
+        },
+        {
+          "digest": "39043667e7b47d783c9a60205b28887e0c3475e2c0dc55daf7d07a86c6430da0",
+          "bytes": 3449,
+          "latency_ms": 1451,
+          "destination": "Groq",
+          "transport": "response received",
+          "image_disclosed": false,
+          "http_status": 200,
+          "id": "ef4dcebe5542",
+          "snapshot": "s_676c3fb4c8ffef5686e6a077",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "PASSWORD",
+            "SECRET",
+            "USERNAME"
+          ],
+          "region": null
+        },
+        {
+          "digest": "dacd5077219042efc4306776d58d6c07dbfad5fb8ff6cafc71d1c714cc630a57",
+          "bytes": 6908,
+          "latency_ms": 1544,
+          "destination": "Groq",
+          "transport": "response received",
+          "image_disclosed": false,
+          "http_status": 200,
+          "id": "da7dbbba7c1e",
+          "snapshot": "s_b6f7bf9554781219ff907e9f",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "PERSON"
+          ],
+          "region": null
+        },
+        {
+          "digest": "b3895e7dcecc7296bda8940795679ea58ea1d12c508835e9646b44eb3347940e",
+          "bytes": 7001,
+          "latency_ms": 1025,
+          "destination": "Groq",
+          "transport": "response received",
+          "image_disclosed": false,
+          "http_status": 200,
+          "id": "ad4d3046be86",
+          "snapshot": "s_c4512c56a7d6db2b1686bc26",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "PERSON"
+          ],
+          "region": null
+        }
+      ],
+      "events": [
+        {
+          "id": 0,
+          "time": "02:48:30",
+          "title": "Browser connected",
+          "detail": "Private ephemeral Chromium context",
+          "kind": "info"
+        },
+        {
+          "id": 1,
+          "time": "02:48:33",
+          "title": "Observation protected",
+          "detail": "4 findings \u00b7 3117 ms",
+          "kind": "privacy"
+        },
+        {
+          "id": 2,
+          "time": "02:48:34",
+          "title": "Action executed",
+          "detail": "fill secret",
+          "kind": "success"
+        },
+        {
+          "id": 3,
+          "time": "02:48:36",
+          "title": "Observation protected",
+          "detail": "4 findings \u00b7 1913 ms",
+          "kind": "privacy"
+        },
+        {
+          "id": 4,
+          "time": "02:49:18",
+          "title": "Action executed",
+          "detail": "fill secret",
+          "kind": "success"
+        },
+        {
+          "id": 5,
+          "time": "02:49:20",
+          "title": "Observation protected",
+          "detail": "4 findings \u00b7 1871 ms",
+          "kind": "privacy"
+        },
+        {
+          "id": 6,
+          "time": "02:49:22",
+          "title": "Action executed",
+          "detail": "click",
+          "kind": "success"
+        },
+        {
+          "id": 7,
+          "time": "02:49:28",
+          "title": "Observation protected",
+          "detail": "12 findings \u00b7 5472 ms",
+          "kind": "privacy"
+        },
+        {
+          "id": 8,
+          "time": "02:50:20",
+          "title": "Action executed",
+          "detail": "click",
+          "kind": "success"
+        },
+        {
+          "id": 9,
+          "time": "02:50:25",
+          "title": "Observation protected",
+          "detail": "12 findings \u00b7 4519 ms",
+          "kind": "privacy"
+        },
+        {
+          "id": 10,
+          "time": "02:50:26",
+          "title": "Action executed",
+          "detail": "click",
+          "kind": "success"
+        },
+        {
+          "id": 11,
+          "time": "02:50:29",
+          "title": "Observation protected",
+          "detail": "6 findings \u00b7 2547 ms",
+          "kind": "privacy"
+        },
+        {
+          "id": 12,
+          "time": "02:50:29",
+          "title": "Task completed",
+          "detail": "External page result independently checked",
+          "kind": "success"
+        }
+      ],
+      "elapsed_s": 122.14
+    }
+  ],
+  "timestamp": 1793308830.1626267
+}

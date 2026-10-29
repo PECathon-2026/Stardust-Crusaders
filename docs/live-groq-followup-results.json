@@ -1,0 +1,396 @@
+{
+  "runs": [
+    {
+      "scenario": "support",
+      "provider": "groq",
+      "status": "blocked",
+      "outcome": null,
+      "steps": 5,
+      "error": "The planner repeated the same action without observable progress. Review the form before retrying.",
+      "receipts": [
+        {
+          "digest": "520fbda4867a01ce1aaf73849888f8fb65d74fc72bbe65a54ac2e10dac47f443",
+          "bytes": 3498,
+          "latency_ms": 1222,
+          "destination": "Groq",
+          "transport": "response received",
+          "image_disclosed": false,
+          "http_status": 200,
+          "id": "8c4e86dc5c99",
+          "snapshot": "s_f341343afb3a81ba6e9bd82a",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "INPUT",
+            "PHONE_NUMBER",
+            "PRIVATE_CONTENT"
+          ],
+          "region": null
+        },
+        {
+          "digest": "12f7f382f8152922b5d8106cf9646eee315df3c1834f3254436fa080f11ec6a6",
+          "bytes": 3616,
+          "latency_ms": 916,
+          "destination": "Groq",
+          "transport": "response received",
+          "image_disclosed": false,
+          "http_status": 200,
+          "id": "495201055b92",
+          "snapshot": "s_781205e2b4e84265991e17b0",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "INPUT",
+            "PHONE_NUMBER",
+            "PRIVATE_CONTENT"
+          ],
+          "region": null
+        },
+        {
+          "digest": "785762a40c27b52e14423d3407d0ed2890b5bfe3240d3f78ab55b9dcba62010e",
+          "bytes": 3696,
+          "latency_ms": 1112,
+          "destination": "Groq",
+          "transport": "response received",
+          "image_disclosed": false,
+          "http_status": 200,
+          "id": "42687df0f791",
+          "snapshot": "s_3d2bbf81cf1f4e1eb6e505c2",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "INPUT",
+            "PHONE_NUMBER",
+            "PRIVATE_CONTENT"
+          ],
+          "region": null
+        },
+        {
+          "digest": "31422a3b8785ba7ec4c96dbc081f4d4d477a186b68ed3a3225eca61c3b7fc775",
+          "bytes": 3769,
+          "latency_ms": 1683,
+          "destination": "Groq",
+          "transport": "response received",
+          "image_disclosed": false,
+          "http_status": 200,
+          "id": "cc327b18fb99",
+          "snapshot": "s_3363ff539cd50f7ecba33e12",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "INPUT",
+            "PHONE_NUMBER",
+            "PRIVATE_CONTENT"
+          ],
+          "region": null
+        },
+        {
+          "digest": "a8311448ba07fa6e7b9474faf3711589ea80e3c3f476cd3f2bb6288d87400206",
+          "bytes": 3842,
+          "latency_ms": 843,
+          "destination": "Groq",
+          "transport": "response received",
+          "image_disclosed": false,
+          "http_status": 200,
+          "id": "3842e8c6e22f",
+          "snapshot": "s_97e216e4edd5ab2420c05edf",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "INPUT",
+            "PHONE_NUMBER",
+            "PRIVATE_CONTENT"
+          ],
+          "region": null
+        },
+        {
+          "id": "2b61473399bf",
+          "contract": "task-bound-v1",
+          "decision": "blocked",
+          "reason": "The planner repeated the same action without observable progress. Review the form before retrying.",
+          "bytes": 0,
+          "digest": null,
+          "image_disclosed": false,
+          "categories": []
+        }
+      ],
+      "events": [
+        {
+          "id": 0,
+          "time": "02:37:39",
+          "title": "Browser connected",
+          "detail": "Private ephemeral Chromium context",
+          "kind": "info"
+        },
+        {
+          "id": 1,
+          "time": "02:37:42",
+          "title": "Observation protected",
+          "detail": "5 findings \u00b7 2974 ms",
+          "kind": "privacy"
+        },
+        {
+          "id": 2,
+          "time": "02:37:44",
+          "title": "Approval required",
+          "detail": "Send reply",
+          "kind": "approval"
+        },
+        {
+          "id": 3,
+          "time": "02:37:44",
+          "title": "Action executed",
+          "detail": "click",
+          "kind": "success"
+        },
+        {
+          "id": 4,
+          "time": "02:37:47",
+          "title": "Observation protected",
+          "detail": "5 findings \u00b7 2365 ms",
+          "kind": "privacy"
+        },
+        {
+          "id": 5,
+          "time": "02:37:48",
+          "title": "Action executed",
+          "detail": "fill public",
+          "kind": "success"
+        },
+        {
+          "id": 6,
+          "time": "02:37:50",
+          "title": "Observation protected",
+          "detail": "5 findings \u00b7 2329 ms",
+          "kind": "privacy"
+        },
+        {
+          "id": 7,
+          "time": "02:37:52",
+          "title": "Approval required",
+          "detail": "Send reply",
+          "kind": "approval"
+        },
+        {
+          "id": 8,
+          "time": "02:37:52",
+          "title": "Action executed",
+          "detail": "click",
+          "kind": "success"
+        },
+        {
+          "id": 9,
+          "time": "02:37:54",
+          "title": "Observation protected",
+          "detail": "5 findings \u00b7 2165 ms",
+          "kind": "privacy"
+        },
+        {
+          "id": 10,
+          "time": "02:38:45",
+          "title": "Approval required",
+          "detail": "Send reply",
+          "kind": "approval"
+        },
+        {
+          "id": 11,
+          "time": "02:38:46",
+          "title": "Action executed",
+          "detail": "click",
+          "kind": "success"
+        },
+        {
+          "id": 12,
+          "time": "02:38:48",
+          "title": "Observation protected",
+          "detail": "5 findings \u00b7 2205 ms",
+          "kind": "privacy"
+        },
+        {
+          "id": 13,
+          "time": "02:38:49",
+          "title": "Run blocked",
+          "detail": "The planner repeated the same action without observable progress. Review the form before retrying.",
+          "kind": "blocked"
+        }
+      ],
+      "elapsed_s": 71.12
+    },
+    {
+      "scenario": "conference",
+      "provider": "groq",
+      "status": "completed",
+      "outcome": "mute",
+      "steps": 2,
+      "error": null,
+      "receipts": [
+        {
+          "digest": "a5602ce57cc414559b8553f5c989b5e0f51b8fbe6ce84c6b3a6ebcc47b92eae8",
+          "bytes": 2918,
+          "latency_ms": 1197,
+          "destination": "Groq",
+          "transport": "response received",
+          "image_disclosed": false,
+          "http_status": 200,
+          "id": "a59dc1ed193f",
+          "snapshot": "s_9cabfdf714c9aa70a4594322",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "EMAIL_ADDRESS",
+            "FACE",
+            "PERSON",
+            "PRIVATE_CONTENT"
+          ],
+          "region": null
+        }
+      ],
+      "events": [
+        {
+          "id": 0,
+          "time": "02:38:51",
+          "title": "Browser connected",
+          "detail": "Private ephemeral Chromium context",
+          "kind": "info"
+        },
+        {
+          "id": 1,
+          "time": "02:38:53",
+          "title": "Observation protected",
+          "detail": "8 findings \u00b7 2279 ms",
+          "kind": "privacy"
+        },
+        {
+          "id": 2,
+          "time": "02:38:55",
+          "title": "Action executed",
+          "detail": "click",
+          "kind": "success"
+        },
+        {
+          "id": 3,
+          "time": "02:38:57",
+          "title": "Observation protected",
+          "detail": "8 findings \u00b7 2371 ms",
+          "kind": "privacy"
+        },
+        {
+          "id": 4,
+          "time": "02:38:57",
+          "title": "Task completed",
+          "detail": "Observed the expected page outcome",
+          "kind": "success"
+        }
+      ],
+      "elapsed_s": 8.27
+    },
+    {
+      "scenario": "developer",
+      "provider": "groq",
+      "status": "completed",
+      "outcome": "revoke",
+      "steps": 3,
+      "error": null,
+      "receipts": [
+        {
+          "digest": "d20cce796b46605c8883a31703b0c59ed2ad0957891366d58d714ec397f5aad5",
+          "bytes": 2919,
+          "latency_ms": 1013,
+          "destination": "Groq",
+          "transport": "response received",
+          "image_disclosed": false,
+          "http_status": 200,
+          "id": "9180484766a8",
+          "snapshot": "s_955ec3fcd65d5f9730f770a6",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "API_KEY",
+            "IN_PAN",
+            "IP_ADDRESS"
+          ],
+          "region": null
+        },
+        {
+          "digest": "f8e7ea8a54c6425f32731ced4ecc2cfc51dc2778893e88d31d531542284229d9",
+          "bytes": 3148,
+          "latency_ms": 945,
+          "destination": "Groq",
+          "transport": "response received",
+          "image_disclosed": false,
+          "http_status": 200,
+          "id": "caed8a5662aa",
+          "snapshot": "s_fc7e14e8d53de6a19af6e02a",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "API_KEY",
+            "IN_PAN",
+            "IP_ADDRESS"
+          ],
+          "region": null
+        }
+      ],
+      "events": [
+        {
+          "id": 0,
+          "time": "02:39:00",
+          "title": "Browser connected",
+          "detail": "Private ephemeral Chromium context",
+          "kind": "info"
+        },
+        {
+          "id": 1,
+          "time": "02:39:02",
+          "title": "Observation protected",
+          "detail": "6 findings \u00b7 2505 ms",
+          "kind": "privacy"
+        },
+        {
+          "id": 2,
+          "time": "02:39:46",
+          "title": "Action executed",
+          "detail": "click",
+          "kind": "success"
+        },
+        {
+          "id": 3,
+          "time": "02:39:49",
+          "title": "Observation protected",
+          "detail": "6 findings \u00b7 2634 ms",
+          "kind": "privacy"
+        },
+        {
+          "id": 4,
+          "time": "02:39:50",
+          "title": "Approval required",
+          "detail": "Revoke demo key",
+          "kind": "approval"
+        },
+        {
+          "id": 5,
+          "time": "02:39:50",
+          "title": "Action executed",
+          "detail": "click",
+          "kind": "success"
+        },
+        {
+          "id": 6,
+          "time": "02:39:53",
+          "title": "Observation protected",
+          "detail": "6 findings \u00b7 2599 ms",
+          "kind": "privacy"
+        },
+        {
+          "id": 7,
+          "time": "02:39:53",
+          "title": "Task completed",
+          "detail": "Observed the expected page outcome",
+          "kind": "success"
+        }
+      ],
+      "elapsed_s": 55.16
+    }
+  ],
+  "timestamp": 1793308193.99692
+}

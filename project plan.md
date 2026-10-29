@@ -209,3 +209,7 @@ Groq is the working text-only cloud alternative. The schema compatibility fix is
 
 ## Eshan reliability-stage checkpoint
 Implemented sanitized select-option/current-selection context, form-error feedback, a repeated-action guard, and cancellable Groq pacing. Local automated and deterministic scenario checks pass. Next gate: user tests STAGE-TESTING.md and live Groq support/conference/developer regression after re-entering the session key. Give the user a feature checklist at every subsequent stage boundary.
+## Prompt experience checkpoint
+The primary route now offers a prompt sidebar beside a protected browser preview; Privacy Lab is separate at `/lab`. User instructions and one of seven exact supported addresses enter the existing privacy/automation engine. Unsupported URLs are rejected server-side. This initial product stage is a controlled-browser web workspace, not a browser extension or general existing-tab agent.
+
+Acceptance checks cover prompt submission, settings, approvals, Stop, protected/original preview, URL rejection, Privacy Lab navigation and mobile layout. A live conference task also passed through the prompt UI. Groq success evidence exists across all five synthetic scenarios across separate attempts/revisions, with failures retained. Support required prompt rephrasing after a contextual NER false positive. Next: user acceptance and an updated presentation/demo showing the prompt interface and measured limitations; broader website/extension support requires separate implementation and evaluation.

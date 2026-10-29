@@ -11,6 +11,7 @@ from .contracts import (
     ApprovalRequest,
     DEFAULT_TASKS,
     SecretEntry,
+    PromptRequest,
 )
 from .privacy import Detector
 from .browser import Browser
@@ -172,6 +173,27 @@ async def start(payload: StartRequest):
     return {"id": run.id}
 
 
+SUPPORTED_PAGES = {
+    **{f"http://127.0.0.1:8766/scenario/{s}": s for s in ("checkout", "authentication", "support", "conference", "developer")},
+    "https://en.wikipedia.org/wiki/Main_Page": "wikipedia",
+    "https://www.saucedemo.com/": "saucedemo",
+}
+
+
+@app.get("/api/pages")
+async def supported_pages():
+    return {"pages": [{"url": url, "name": name, "example": DEFAULT_TASKS[name]} for url, name in SUPPORTED_PAGES.items()]}
+
+
+@app.post("/api/agent/runs")
+async def prompt_run(payload: PromptRequest):
+    # Exact allowlist: no user-controlled URLs enter the browser or network.
+    scenario = SUPPORTED_PAGES.get(payload.url.strip())
+    if not scenario:
+        raise HTTPException(400, "This page is not supported yet. Choose a listed page; arbitrary sites are not enabled.")
+    return await start(StartRequest(scenario=scenario, task=payload.task, provider=payload.provider))
+
+
 @app.post("/api/stop")
 async def stop():
     global run
@@ -282,6 +304,7 @@ if (dist / "assets").exists():
 
 
 @app.get("/")
+@app.get("/lab")
 async def home():
     if (dist / "index.html").exists():
         return FileResponse(dist / "index.html")

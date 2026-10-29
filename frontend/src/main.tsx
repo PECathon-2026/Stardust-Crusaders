@@ -30,10 +30,13 @@ import {
   Layers,
 } from "lucide-react";
 import "./style.css";
+import AgentWorkspace from "./AgentWorkspace";
 
 type Obj = Record<string, any>;
 let token = "";
-function explainError(message: string) { return message; }
+function explainError(message: string) {
+  return message;
+}
 async function api(path: string, body?: unknown) {
   const request = () =>
     fetch("/api/" + path, {
@@ -178,11 +181,17 @@ function App() {
           <sup>LAB</sup>
         </a>
         <div className="workspace-label">
-          LOCAL WORKSPACE <span>01</span>
+          PRIVACY LAB <span>01</span>
         </div>
+        <a
+          href="/"
+          style={{ margin: "0 12px 18px", color: "#315e42", fontSize: 13 }}
+        >
+          Back to Browser agent
+        </a>
         <nav>
           {[
-            ["workspace", "Agent workspace", Layers],
+            ["workspace", "Scenario runs", Layers],
             ["contract", "Privacy contract", Fingerprint],
             ["attacks", "Attack lab", FlaskConical],
             ["evidence", "Evidence & results", FileCheck2],
@@ -395,13 +404,18 @@ function App() {
                       ? "The local test driver checks the pipeline without an AI request. Its results are not AI task-success scores."
                       : provider === "groq"
                         ? "Sanitized text planning with Groq. Add your Groq key in Settings. Free accounts have rate limits."
-                      : provider === "gemini"
-                        ? "Only sanitized context reaches Gemini. Add your API key in Settings."
-                        : "Requires a running local Ollama instance with qwen3:4b. No cloud fallback."}
+                        : provider === "gemini"
+                          ? "Only sanitized context reaches Gemini. Add your API key in Settings."
+                          : "Requires a running local Ollama instance with qwen3:4b. No cloud fallback."}
                   </p>
-                  {active && provider === "groq" && state.provider_status?.state === "pacing" && (
-                    <p className="helper" role="status">Waiting for the Groq request budget. The task will continue automatically; Stop remains available.</p>
-                  )}
+                  {active &&
+                    provider === "groq" &&
+                    state.provider_status?.state === "pacing" && (
+                      <p className="helper" role="status">
+                        Waiting for the Groq request budget. The task will
+                        continue automatically; Stop remains available.
+                      </p>
+                    )}
                   <div className="button-row">
                     <button
                       className="primary"
@@ -905,11 +919,28 @@ function App() {
               Keys and secret overrides are held in backend memory. They are
               never returned to the dashboard or saved to source files.
             </p>
-            <label className="field-label" htmlFor="groq-key">Groq API key</label>
+            <label className="field-label" htmlFor="groq-key">
+              Groq API key
+            </label>
             <p className="helper" role="status">
-              {state.provider_status?.provider === "groq" ? state.provider_status.message : state.groq_configured ? "Groq key saved locally. Access is checked when a task runs." : "Paste your Groq key here. Model: openai/gpt-oss-120b."}
+              {state.provider_status?.provider === "groq"
+                ? state.provider_status.message
+                : state.groq_configured
+                  ? "Groq key saved locally. Access is checked when a task runs."
+                  : "Paste your Groq key here. Model: openai/gpt-oss-120b."}
             </p>
-            <input id="groq-key" type="password" autoComplete="off" value={groqKey} onChange={(e) => setGroqKey(e.target.value)} placeholder={state.groq_configured ? "Groq key already configured" : "Paste Groq key locally"} />
+            <input
+              id="groq-key"
+              type="password"
+              autoComplete="off"
+              value={groqKey}
+              onChange={(e) => setGroqKey(e.target.value)}
+              placeholder={
+                state.groq_configured
+                  ? "Groq key already configured"
+                  : "Paste Groq key locally"
+              }
+            />
             <label className="field-label">Gemini API key</label>
             <p className="helper" role="status">
               {state.provider_status?.provider === "gemini"
@@ -1032,4 +1063,6 @@ function PageTitle({ eyebrow, title, text }: any) {
     </div>
   );
 }
-createRoot(document.getElementById("root")!).render(<App />);
+createRoot(document.getElementById("root")!).render(
+  window.location.pathname === "/lab" ? <App /> : <AgentWorkspace />,
+);

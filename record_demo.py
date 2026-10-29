@@ -32,7 +32,7 @@ async def main():
             record_video_size={"width": 1440, "height": 1000},
         )
         page = await context.new_page()
-        await page.goto("http://127.0.0.1:8765")
+        await page.goto("http://127.0.0.1:8765/lab")
         await page.wait_for_timeout(1800)
         started = time.monotonic()
 
@@ -53,7 +53,7 @@ async def main():
             "conference",
             "developer",
         ]:
-            await page.get_by_role("button", name="Agent workspace", exact=True).click()
+            await page.get_by_role("button", name="Scenario runs", exact=True).click()
             await c.post(
                 "/api/runs",
                 json={"scenario": scenario, "provider": "demo", "seed": 1, "layout": 0},

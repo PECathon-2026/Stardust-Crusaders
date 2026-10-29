@@ -35,7 +35,8 @@ Secret values are in memory, bound to scenario, origin, recognized field purpose
 | `agent.py` | Planner adapters, bounded loop, vault, approvals and receipts | Model proposes; local policy authorizes |
 | `evaluation.py` | Text corpus and local adversarial probes | Evidence rather than hard-coded success claims |
 | `app.py` | Local API, session/origin boundary and fixtures | Separate control origin (8765) from untrusted pages (8766) |
-| `frontend/src/main.tsx` | Task studio, preview, approvals, evidence | Make the trust boundary inspectable |
+| `frontend/src/main.tsx` | Privacy Lab scenario studio, preview, approvals, evidence | Make the trust boundary inspectable |
+| `frontend/src/AgentWorkspace.tsx` | Prompt sidebar, supported address, action status, previews and approval | Primary user workflow, separate from evaluation |
 
 ## Capture and disclosure
 Visible DOM text is scanned locally. Every input field and unsupported media surface is conservatively covered. Private conversation/participant regions are protected by contextual policy. OCR scans the full screenshot to catch text in pixels; YuNet adds detected face boxes. The screenshot is rebuilt as RGB PNG with solid rectangles, not blur, and no original image metadata. Original and sanitized previews are local only.
@@ -49,3 +50,7 @@ Missing required NLP/OCR, changing capture, stale target, invalid action, unappr
 This is a hackathon prototype, not a proof of complete privacy. Unknown PII, novel encodings, split text, CSS-generated content and small/occluded faces can evade detection. Conservative media masking loses context. Screenshots/DOM can differ in dynamic applications. The page fingerprint is a practical stale-action defense, not atomic execution or a defense against a compromised browser. The host OS, local processes, malicious extensions and provider retention policies are outside the guarantee. Local dashboard access is not multi-user authentication. Cloud data handling depends on the provider/account. Raw data exists briefly in memory and the local preview; never export it in real-user runs.
 
 Receipts are hashes of checked bytes and disclosures, not independently signed proofs and not evidence that all sensitive data was detected. A blocked action may follow an earlier permitted request. A model saying `done` is reported separately from a verified fixture outcome. The local deterministic driver verifies plumbing, not AI reasoning quality.
+
+
+## Prompt entry and Groq schema update
+The root route is the prompt-driven Browser Agent; `/lab` is the scenario/evidence workspace. `/api/agent/runs` accepts instructions and an exact allowlisted page URL, then reuses the existing task/origin policy. Unsupported addresses are rejected before navigation. Groq uses a stable required-nullable wire schema to avoid provider discriminator conflicts; the current snapshot/action/target restrictions are enforced locally by `validate_text_proposal` and the executor. Gemini retains the per-observation schema. Groq pacing estimates a rolling token budget; shared-account use can still cause rate limits.

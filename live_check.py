@@ -5,6 +5,7 @@ Never reads or exports a key. Only synthetic actions are auto-approved.
 import asyncio, json, time, sys
 from pathlib import Path
 import httpx
+from backend.contracts import DEFAULT_TASKS
 
 
 async def main():
@@ -30,6 +31,7 @@ async def main():
                 json={
                     "scenario": scenario,
                     "provider": provider,
+                    "task": DEFAULT_TASKS[scenario],
                     "seed": 9,
                     "layout": 0,
                 },
@@ -80,7 +82,7 @@ async def main():
             if run.get("error") and "HTTP" in run["error"]:
                 break
     if rows:
-        suffix = "-followup" if len(sys.argv) > 2 else ""
+        suffix = "-" + "-".join(scenarios) if len(sys.argv) > 2 else ""
         path = Path(__file__).parent / "docs" / f"live-{provider}{suffix}-results.json"
         path.write_text(
             json.dumps({"runs": rows, "timestamp": time.time()}, indent=2),
