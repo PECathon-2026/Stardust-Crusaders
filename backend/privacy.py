@@ -215,8 +215,12 @@ class Detector:
                 merged.append(f)
         return merged
 
-    def sanitize(self, text, known=(), public_literals=()):
+    def sanitize(self, text, known=(), public_literals=(), public_context=False):
         findings = self.detect(text)
+        if public_context:
+            # Explicit public-content policy suppresses name classification only.
+            # Strong identifiers and known local secrets still take precedence.
+            findings = [f for f in findings if f.kind != 'PERSON']
         public_spans = [
             (m.start(), m.end())
             for value in public_literals
@@ -253,17 +257,21 @@ class Detector:
             text = text[: f.start] + f"[REDACTED:{f.kind}]" + text[f.end :]
         return text, merged
 
-    def visual_boxes(self, png, known=(), public_literals=()):
+    def visual_boxes(self, png, known=(), public_literals=(), public_regions=()):
         import numpy as np
 
         image = Image.open(io.BytesIO(png)).convert("RGB")
         arr = np.asarray(image)
         boxes = []
+        def public_box(x, y, width, height):
+            return any(x >= r['x'] and y >= r['y'] and x+width <= r['x']+r['width'] and y+height <= r['y']+r['height'] for r in public_regions)
         if self.ocr:
             result = self.ocr(arr)
             if result.txts is not None:
                 for box, text in zip(result.boxes, result.txts):
-                    _, findings = self.sanitize(str(text), known, public_literals)
+                    xs = [float(p[0]) for p in box]
+                    ys = [float(p[1]) for p in box]
+                    _, findings = self.sanitize(str(text), known, public_literals, public_context=public_box(min(xs),min(ys),max(xs)-min(xs),max(ys)-min(ys)))
                     if findings:
                         xs = [float(p[0]) for p in box]
                         ys = [float(p[1]) for p in box]
@@ -285,6 +293,8 @@ class Detector:
             _, faces = self.face.detect(bgr)
             if faces is not None:
                 for f in faces:
+                    if public_box(float(f[0]),float(f[1]),float(f[2]),float(f[3])):
+                        continue
                     boxes.append(
                         {
                             "x": float(f[0]),

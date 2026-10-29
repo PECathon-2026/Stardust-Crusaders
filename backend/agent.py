@@ -135,7 +135,7 @@ class Gateway:
     async def plan(self, observation, task, refs, known, provider, image=None):
         self.last_receipt = None
         sanitized_task, _ = self.detector.sanitize(
-            task, known, observation.get("public_literals", ())
+            task, known, observation.get("public_literals", ()), public_context=observation.get('privacy_profile')=='public'
         )
         packet = {
             "task": sanitized_task,
@@ -439,7 +439,7 @@ class Run:
         try:
             await self.browser.open(url, headless)
             self.status = "running"
-            self.event("Browser connected", "Private ephemeral Chromium context")
+            self.event("Browser connected", "Your attached browser tab" if getattr(self.browser, 'extension_mode', False) else "Private ephemeral Chromium context")
             deadline = time.monotonic() + (480 if self.request.provider == "groq" else 180)
             for step in range(12):
                 if self.stop:
@@ -447,7 +447,12 @@ class Run:
                 if time.monotonic() > deadline:
                     raise PrivacyError("Task time budget reached")
                 self.steps = step + 1
-                self.preview = await self.browser.capture(self.known, self.request.mode)
+                try:
+                    self.preview = await self.browser.capture(self.known, self.request.mode, self.request.privacy_profile)
+                except StaleObservation:
+                    self.event("Page still changing", "Discarded the stale preview; recapturing before any model request", "privacy")
+                    await asyncio.sleep(0.4)
+                    continue
                 obs = dict(self.preview["observation"])
                 obs["recent_actions"] = self.history[-6:]
                 self.event(
@@ -505,6 +510,7 @@ class Run:
                         "id": secrets.token_hex(6),
                         "snapshot": self.browser.snapshot,
                         "contract": "task-bound-v1",
+                        "privacy_profile": self.request.privacy_profile,
                         "decision": "allowed",
                         "categories": sorted(
                             set(f["kind"] for f in self.preview["findings"])

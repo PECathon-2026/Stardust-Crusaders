@@ -1,5 +1,5 @@
 {
-  "scope": "50 actual browser screenshots, unseen seeds 11-15, two layouts. Detector receives no known-value vault. Coverage covers annotated visible text; private/unsupported media remains conservatively masked while ordinary images are scanned with OCR and face detection. Not a universal pixel-PII benchmark.",
+  "scope": "50 actual browser screenshots, unseen seeds 11\u201315, two layouts. Detector receives no known-value vault. Coverage covers annotated visible text; private/unsupported media is conservatively masked, while ordinary images are scanned with OCR and face detection. Not a universal pixel-PII benchmark.",
   "cases": [
     {
       "scenario": "checkout",
@@ -22,7 +22,7 @@
           "protected": true
         }
       ],
-      "latency_ms": 6889,
+      "latency_ms": 3928,
       "masked_pixel_fraction": 0.1199,
       "yunet_faces": 0
     },
@@ -47,7 +47,7 @@
           "protected": true
         }
       ],
-      "latency_ms": 3653,
+      "latency_ms": 2400,
       "masked_pixel_fraction": 0.1205,
       "yunet_faces": 0
     },
@@ -72,7 +72,7 @@
           "protected": true
         }
       ],
-      "latency_ms": 4643,
+      "latency_ms": 2262,
       "masked_pixel_fraction": 0.1197,
       "yunet_faces": 0
     },
@@ -97,7 +97,7 @@
           "protected": true
         }
       ],
-      "latency_ms": 3046,
+      "latency_ms": 2353,
       "masked_pixel_fraction": 0.1197,
       "yunet_faces": 0
     },
@@ -122,7 +122,7 @@
           "protected": true
         }
       ],
-      "latency_ms": 2922,
+      "latency_ms": 2539,
       "masked_pixel_fraction": 0.1202,
       "yunet_faces": 0
     },
@@ -147,7 +147,7 @@
           "protected": true
         }
       ],
-      "latency_ms": 3150,
+      "latency_ms": 2745,
       "masked_pixel_fraction": 0.0872,
       "yunet_faces": 0
     },
@@ -172,7 +172,7 @@
           "protected": true
         }
       ],
-      "latency_ms": 3351,
+      "latency_ms": 2149,
       "masked_pixel_fraction": 0.0877,
       "yunet_faces": 0
     },
@@ -197,7 +197,7 @@
           "protected": true
         }
       ],
-      "latency_ms": 2798,
+      "latency_ms": 2451,
       "masked_pixel_fraction": 0.087,
       "yunet_faces": 0
     },
@@ -222,7 +222,7 @@
           "protected": true
         }
       ],
-      "latency_ms": 2841,
+      "latency_ms": 2294,
       "masked_pixel_fraction": 0.0878,
       "yunet_faces": 0
     },
@@ -247,7 +247,7 @@
           "protected": true
         }
       ],
-      "latency_ms": 2506,
+      "latency_ms": 2410,
       "masked_pixel_fraction": 0.0879,
       "yunet_faces": 0
     },
@@ -265,10 +265,20 @@
           "kind": "PHONE_NUMBER",
           "coverage": 1.0,
           "protected": true
+        },
+        {
+          "kind": "IN_AADHAAR",
+          "coverage": 1.0,
+          "protected": true
+        },
+        {
+          "kind": "IN_PAN",
+          "coverage": 1.0,
+          "protected": true
         }
       ],
-      "latency_ms": 2546,
-      "masked_pixel_fraction": 0.0935,
+      "latency_ms": 2623,
+      "masked_pixel_fraction": 0.1029,
       "yunet_faces": 0
     },
     {
@@ -285,10 +295,20 @@
           "kind": "PHONE_NUMBER",
           "coverage": 1.0,
           "protected": true
+        },
+        {
+          "kind": "IN_AADHAAR",
+          "coverage": 1.0,
+          "protected": true
+        },
+        {
+          "kind": "IN_PAN",
+          "coverage": 1.0,
+          "protected": true
         }
       ],
-      "latency_ms": 2209,
-      "masked_pixel_fraction": 0.0937,
+      "latency_ms": 2434,
+      "masked_pixel_fraction": 0.1031,
       "yunet_faces": 0
     },
     {
@@ -305,10 +325,20 @@
           "kind": "PHONE_NUMBER",
           "coverage": 1.0,
           "protected": true
+        },
+        {
+          "kind": "IN_AADHAAR",
+          "coverage": 1.0,
+          "protected": true
+        },
+        {
+          "kind": "IN_PAN",
+          "coverage": 1.0,
+          "protected": true
         }
       ],
-      "latency_ms": 2270,
-      "masked_pixel_fraction": 0.0937,
+      "latency_ms": 2355,
+      "masked_pixel_fraction": 0.1033,
       "yunet_faces": 0
     },
     {
@@ -325,10 +355,20 @@
           "kind": "PHONE_NUMBER",
           "coverage": 1.0,
           "protected": true
+        },
+        {
+          "kind": "IN_AADHAAR",
+          "coverage": 1.0,
+          "protected": true
+        },
+        {
+          "kind": "IN_PAN",
+          "coverage": 1.0,
+          "protected": true
         }
       ],
-      "latency_ms": 2427,
-      "masked_pixel_fraction": 0.0937,
+      "latency_ms": 2652,
+      "masked_pixel_fraction": 0.1033,
       "yunet_faces": 0
     },
     {
@@ -345,10 +385,20 @@
           "kind": "PHONE_NUMBER",
           "coverage": 1.0,
           "protected": true
+        },
+        {
+          "kind": "IN_AADHAAR",
+          "coverage": 1.0,
+          "protected": true
+        },
+        {
+          "kind": "IN_PAN",
+          "coverage": 1.0,
+          "protected": true
         }
       ],
-      "latency_ms": 2338,
-      "masked_pixel_fraction": 0.0937,
+      "latency_ms": 2252,
+      "masked_pixel_fraction": 0.1031,
       "yunet_faces": 0
     },
     {
@@ -365,10 +415,20 @@
           "kind": "PHONE_NUMBER",
           "coverage": 1.0,
           "protected": true
+        },
+        {
+          "kind": "IN_AADHAAR",
+          "coverage": 1.0,
+          "protected": true
+        },
+        {
+          "kind": "IN_PAN",
+          "coverage": 1.0,
+          "protected": true
         }
       ],
-      "latency_ms": 2448,
-      "masked_pixel_fraction": 0.0693,
+      "latency_ms": 2475,
+      "masked_pixel_fraction": 0.0792,
       "yunet_faces": 0
     },
     {
@@ -385,10 +445,20 @@
           "kind": "PHONE_NUMBER",
           "coverage": 1.0,
           "protected": true
+        },
+        {
+          "kind": "IN_AADHAAR",
+          "coverage": 1.0,
+          "protected": true
+        },
+        {
+          "kind": "IN_PAN",
+          "coverage": 1.0,
+          "protected": true
         }
       ],
-      "latency_ms": 2302,
-      "masked_pixel_fraction": 0.0696,
+      "latency_ms": 2471,
+      "masked_pixel_fraction": 0.0792,
       "yunet_faces": 0
     },
     {
@@ -405,10 +475,20 @@
           "kind": "PHONE_NUMBER",
           "coverage": 1.0,
           "protected": true
+        },
+        {
+          "kind": "IN_AADHAAR",
+          "coverage": 1.0,
+          "protected": true
+        },
+        {
+          "kind": "IN_PAN",
+          "coverage": 1.0,
+          "protected": true
         }
       ],
-      "latency_ms": 2253,
-      "masked_pixel_fraction": 0.0697,
+      "latency_ms": 2852,
+      "masked_pixel_fraction": 0.0792,
       "yunet_faces": 0
     },
     {
@@ -425,10 +505,20 @@
           "kind": "PHONE_NUMBER",
           "coverage": 1.0,
           "protected": true
+        },
+        {
+          "kind": "IN_AADHAAR",
+          "coverage": 1.0,
+          "protected": true
+        },
+        {
+          "kind": "IN_PAN",
+          "coverage": 1.0,
+          "protected": true
         }
       ],
-      "latency_ms": 2069,
-      "masked_pixel_fraction": 0.0696,
+      "latency_ms": 2552,
+      "masked_pixel_fraction": 0.0792,
       "yunet_faces": 0
     },
     {
@@ -445,10 +535,20 @@
           "kind": "PHONE_NUMBER",
           "coverage": 1.0,
           "protected": true
+        },
+        {
+          "kind": "IN_AADHAAR",
+          "coverage": 1.0,
+          "protected": true
+        },
+        {
+          "kind": "IN_PAN",
+          "coverage": 1.0,
+          "protected": true
         }
       ],
-      "latency_ms": 2358,
-      "masked_pixel_fraction": 0.0697,
+      "latency_ms": 3296,
+      "masked_pixel_fraction": 0.0792,
       "yunet_faces": 0
     },
     {
@@ -465,10 +565,15 @@
           "kind": "PRIVATE_MESSAGE",
           "coverage": 1.0,
           "protected": true
+        },
+        {
+          "kind": "MEDICAL_RECORD",
+          "coverage": 1.0,
+          "protected": true
         }
       ],
-      "latency_ms": 2242,
-      "masked_pixel_fraction": 0.0222,
+      "latency_ms": 3018,
+      "masked_pixel_fraction": 0.0446,
       "yunet_faces": 0
     },
     {
@@ -485,10 +590,15 @@
           "kind": "PRIVATE_MESSAGE",
           "coverage": 1.0,
           "protected": true
+        },
+        {
+          "kind": "MEDICAL_RECORD",
+          "coverage": 1.0,
+          "protected": true
         }
       ],
-      "latency_ms": 2189,
-      "masked_pixel_fraction": 0.0218,
+      "latency_ms": 2782,
+      "masked_pixel_fraction": 0.0441,
       "yunet_faces": 0
     },
     {
@@ -505,10 +615,15 @@
           "kind": "PRIVATE_MESSAGE",
           "coverage": 1.0,
           "protected": true
+        },
+        {
+          "kind": "MEDICAL_RECORD",
+          "coverage": 1.0,
+          "protected": true
         }
       ],
-      "latency_ms": 2228,
-      "masked_pixel_fraction": 0.0218,
+      "latency_ms": 3013,
+      "masked_pixel_fraction": 0.0441,
       "yunet_faces": 0
     },
     {
@@ -525,10 +640,15 @@
           "kind": "PRIVATE_MESSAGE",
           "coverage": 1.0,
           "protected": true
+        },
+        {
+          "kind": "MEDICAL_RECORD",
+          "coverage": 1.0,
+          "protected": true
         }
       ],
-      "latency_ms": 2303,
-      "masked_pixel_fraction": 0.0223,
+      "latency_ms": 2527,
+      "masked_pixel_fraction": 0.0447,
       "yunet_faces": 0
     },
     {
@@ -545,10 +665,15 @@
           "kind": "PRIVATE_MESSAGE",
           "coverage": 1.0,
           "protected": true
+        },
+        {
+          "kind": "MEDICAL_RECORD",
+          "coverage": 1.0,
+          "protected": true
         }
       ],
-      "latency_ms": 2230,
-      "masked_pixel_fraction": 0.0218,
+      "latency_ms": 2557,
+      "masked_pixel_fraction": 0.0441,
       "yunet_faces": 0
     },
     {
@@ -565,10 +690,15 @@
           "kind": "PRIVATE_MESSAGE",
           "coverage": 1.0,
           "protected": true
+        },
+        {
+          "kind": "MEDICAL_RECORD",
+          "coverage": 1.0,
+          "protected": true
         }
       ],
-      "latency_ms": 2352,
-      "masked_pixel_fraction": 0.0217,
+      "latency_ms": 2252,
+      "masked_pixel_fraction": 0.0432,
       "yunet_faces": 0
     },
     {
@@ -585,10 +715,15 @@
           "kind": "PRIVATE_MESSAGE",
           "coverage": 1.0,
           "protected": true
+        },
+        {
+          "kind": "MEDICAL_RECORD",
+          "coverage": 1.0,
+          "protected": true
         }
       ],
-      "latency_ms": 2056,
-      "masked_pixel_fraction": 0.0212,
+      "latency_ms": 2558,
+      "masked_pixel_fraction": 0.0432,
       "yunet_faces": 0
     },
     {
@@ -605,10 +740,15 @@
           "kind": "PRIVATE_MESSAGE",
           "coverage": 1.0,
           "protected": true
+        },
+        {
+          "kind": "MEDICAL_RECORD",
+          "coverage": 1.0,
+          "protected": true
         }
       ],
-      "latency_ms": 2098,
-      "masked_pixel_fraction": 0.0212,
+      "latency_ms": 2500,
+      "masked_pixel_fraction": 0.0427,
       "yunet_faces": 0
     },
     {
@@ -625,10 +765,15 @@
           "kind": "PRIVATE_MESSAGE",
           "coverage": 1.0,
           "protected": true
+        },
+        {
+          "kind": "MEDICAL_RECORD",
+          "coverage": 1.0,
+          "protected": true
         }
       ],
-      "latency_ms": 2179,
-      "masked_pixel_fraction": 0.0218,
+      "latency_ms": 2487,
+      "masked_pixel_fraction": 0.0427,
       "yunet_faces": 0
     },
     {
@@ -645,10 +790,15 @@
           "kind": "PRIVATE_MESSAGE",
           "coverage": 1.0,
           "protected": true
+        },
+        {
+          "kind": "MEDICAL_RECORD",
+          "coverage": 1.0,
+          "protected": true
         }
       ],
-      "latency_ms": 2104,
-      "masked_pixel_fraction": 0.0218,
+      "latency_ms": 2534,
+      "masked_pixel_fraction": 0.0427,
       "yunet_faces": 0
     },
     {
@@ -672,7 +822,7 @@
           "protected": true
         }
       ],
-      "latency_ms": 2517,
+      "latency_ms": 2393,
       "masked_pixel_fraction": 0.1279,
       "yunet_faces": 2
     },
@@ -697,7 +847,7 @@
           "protected": true
         }
       ],
-      "latency_ms": 2202,
+      "latency_ms": 2093,
       "masked_pixel_fraction": 0.1284,
       "yunet_faces": 2
     },
@@ -722,7 +872,7 @@
           "protected": true
         }
       ],
-      "latency_ms": 2178,
+      "latency_ms": 2377,
       "masked_pixel_fraction": 0.1277,
       "yunet_faces": 2
     },
@@ -747,7 +897,7 @@
           "protected": true
         }
       ],
-      "latency_ms": 2012,
+      "latency_ms": 1991,
       "masked_pixel_fraction": 0.128,
       "yunet_faces": 2
     },
@@ -772,7 +922,7 @@
           "protected": true
         }
       ],
-      "latency_ms": 2142,
+      "latency_ms": 2016,
       "masked_pixel_fraction": 0.1282,
       "yunet_faces": 2
     },
@@ -797,7 +947,7 @@
           "protected": true
         }
       ],
-      "latency_ms": 2326,
+      "latency_ms": 2370,
       "masked_pixel_fraction": 0.0946,
       "yunet_faces": 2
     },
@@ -822,7 +972,7 @@
           "protected": true
         }
       ],
-      "latency_ms": 1935,
+      "latency_ms": 2332,
       "masked_pixel_fraction": 0.0955,
       "yunet_faces": 2
     },
@@ -847,7 +997,7 @@
           "protected": true
         }
       ],
-      "latency_ms": 2081,
+      "latency_ms": 2320,
       "masked_pixel_fraction": 0.0945,
       "yunet_faces": 2
     },
@@ -872,7 +1022,7 @@
           "protected": true
         }
       ],
-      "latency_ms": 2022,
+      "latency_ms": 1852,
       "masked_pixel_fraction": 0.0948,
       "yunet_faces": 2
     },
@@ -897,7 +1047,7 @@
           "protected": true
         }
       ],
-      "latency_ms": 2126,
+      "latency_ms": 2623,
       "masked_pixel_fraction": 0.095,
       "yunet_faces": 2
     },
@@ -922,7 +1072,7 @@
           "protected": true
         }
       ],
-      "latency_ms": 2255,
+      "latency_ms": 2602,
       "masked_pixel_fraction": 0.0203,
       "yunet_faces": 0
     },
@@ -947,7 +1097,7 @@
           "protected": true
         }
       ],
-      "latency_ms": 2396,
+      "latency_ms": 2124,
       "masked_pixel_fraction": 0.0203,
       "yunet_faces": 0
     },
@@ -972,7 +1122,7 @@
           "protected": true
         }
       ],
-      "latency_ms": 2387,
+      "latency_ms": 2142,
       "masked_pixel_fraction": 0.0203,
       "yunet_faces": 0
     },
@@ -997,7 +1147,7 @@
           "protected": true
         }
       ],
-      "latency_ms": 2231,
+      "latency_ms": 2428,
       "masked_pixel_fraction": 0.0203,
       "yunet_faces": 0
     },
@@ -1022,7 +1172,7 @@
           "protected": true
         }
       ],
-      "latency_ms": 2145,
+      "latency_ms": 2330,
       "masked_pixel_fraction": 0.0203,
       "yunet_faces": 0
     },
@@ -1047,7 +1197,7 @@
           "protected": true
         }
       ],
-      "latency_ms": 2746,
+      "latency_ms": 2430,
       "masked_pixel_fraction": 0.0203,
       "yunet_faces": 0
     },
@@ -1072,7 +1222,7 @@
           "protected": true
         }
       ],
-      "latency_ms": 2319,
+      "latency_ms": 2214,
       "masked_pixel_fraction": 0.0203,
       "yunet_faces": 0
     },
@@ -1097,7 +1247,7 @@
           "protected": true
         }
       ],
-      "latency_ms": 2434,
+      "latency_ms": 2317,
       "masked_pixel_fraction": 0.0203,
       "yunet_faces": 0
     },
@@ -1122,7 +1272,7 @@
           "protected": true
         }
       ],
-      "latency_ms": 2042,
+      "latency_ms": 2411,
       "masked_pixel_fraction": 0.0203,
       "yunet_faces": 0
     },
@@ -1147,15 +1297,15 @@
           "protected": true
         }
       ],
-      "latency_ms": 2027,
+      "latency_ms": 2237,
       "masked_pixel_fraction": 0.0203,
       "yunet_faces": 0
     }
   ],
-  "entity_regions": 130,
-  "protected_regions": 130,
+  "entity_regions": 160,
+  "protected_regions": 160,
   "region_recall": 1.0,
-  "p50_ms": 2286.0,
-  "p95_ms": 3351,
-  "mean_masked_fraction": 0.06778
+  "p50_ms": 2419.5,
+  "p95_ms": 3013,
+  "mean_masked_fraction": 0.07406
 }

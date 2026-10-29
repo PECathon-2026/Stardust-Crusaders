@@ -13,7 +13,9 @@ Setup is needed once; start is used thereafter. Open http://127.0.0.1:8765. Fixt
 
 The home page is the prompt-driven **Browser Agent**: select a supported page or enter its listed address, type instructions, and start the task. Its sidebar shows progress and approval requests beside a protected browser preview. Settings accepts your session API key. **Privacy Lab** at `/lab` contains scenario runs, detection/attack tests and evidence. Stop closes the controlled browser and clears run secrets/previews.
 
-This is a web workspace for a separate controlled browser, not an extension attached to your existing tabs. Navigation is limited to five synthetic pages, Wikipedia and SauceDemo. Arbitrary websites are rejected. The local test driver is available in the Privacy Lab, not presented as AI in the prompt workspace.
+The primary demo is now a **genuine browser extension**. With the server running, launch `launch-extension.ps1`, pair the side panel using its connection page, and save your provider key in panel Settings. Open a demo from the panel and run a prompt beside the actual interactive website. **Take control** pauses automation while keeping your tab and session open. See [extension setup](docs/EXTENSION.md) and [hands-on testing](docs/EXTENSION-TESTING.md).
+
+The earlier web workspace remains available as optional evidence tooling. The extension supports five synthetic pages and SauceDemo; Wikipedia stays in the earlier workspace. Arbitrary-site access is not implemented. The local test driver is explicitly labeled and is not AI.
 
 ![Prompt-driven PrivacyLens workspace](docs/agent-workspace.png)
 

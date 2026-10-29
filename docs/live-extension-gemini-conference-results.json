@@ -1,0 +1,73 @@
+{
+  "transport": "Installed MV3 extension, actual side panel, chrome.debugger, localhost WebSocket",
+  "tested_at": "2026-10-30T04:23:37.2737676+05:30",
+  "run": {
+    "id": "36718379bb0fc7b7",
+    "scenario": "conference",
+    "provider": "gemini",
+    "status": "completed",
+    "error": null,
+    "steps": 2,
+    "outcome": "mute",
+    "events": [
+      {
+        "id": 0,
+        "time": "04:23:06",
+        "title": "Browser connected",
+        "detail": "Your attached browser tab",
+        "kind": "info"
+      },
+      {
+        "id": 1,
+        "time": "04:23:10",
+        "title": "Observation protected",
+        "detail": "8 findings · 3423 ms",
+        "kind": "privacy"
+      },
+      {
+        "id": 2,
+        "time": "04:23:12",
+        "title": "Action executed",
+        "detail": "click",
+        "kind": "success"
+      },
+      {
+        "id": 3,
+        "time": "04:23:14",
+        "title": "Observation protected",
+        "detail": "8 findings · 2356 ms",
+        "kind": "privacy"
+      },
+      {
+        "id": 4,
+        "time": "04:23:14",
+        "title": "Task completed",
+        "detail": "Observed the expected page outcome",
+        "kind": "success"
+      }
+    ],
+    "receipts": [
+      {
+        "digest": "7d429235f43ed80115ce4f2de3a1c6374ea2c89b55e67ceb8bde962334d129b3",
+        "bytes": 3460,
+        "latency_ms": 1586,
+        "destination": "Gemini",
+        "transport": "response received",
+        "image_disclosed": false,
+        "http_status": 200,
+        "id": "6ff6370e5469",
+        "snapshot": "s_4f3863e628f793b439077f5e",
+        "contract": "task-bound-v1",
+        "privacy_profile": "private",
+        "decision": "allowed",
+        "categories": [
+          "EMAIL_ADDRESS",
+          "FACE",
+          "PERSON",
+          "PRIVATE_CONTENT"
+        ],
+        "region": null
+      }
+    ]
+  }
+}

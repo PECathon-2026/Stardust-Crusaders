@@ -1,0 +1,13 @@
+{
+  "manifest_version": 3,
+  "name": "PrivacyLens — Private Browser Agent",
+  "version": "0.2.0",
+  "description": "A same-tab browser agent with local privacy screening, approvals and manual takeover.",
+  "minimum_chrome_version": "116",
+  "permissions": ["sidePanel", "debugger", "tabs", "storage"],
+  "host_permissions": ["http://127.0.0.1:8765/*"],
+  "background": {"service_worker": "background.js"},
+  "action": {"default_title": "Open PrivacyLens"},
+  "side_panel": {"default_path": "panel.html"},
+  "content_security_policy": {"extension_pages": "script-src 'self'; object-src 'self'; connect-src http://127.0.0.1:8765 ws://127.0.0.1:8765; img-src 'self' data:; style-src 'self'"}
+}

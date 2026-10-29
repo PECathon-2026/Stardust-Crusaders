@@ -39,3 +39,11 @@ The two external-site tasks completed with live Groq on this revision: Wikipedia
 
 
 Selective-redaction validation: 130/130 annotated text regions covered in 50 screenshots; median 2286 ms, p95 3351 ms (still above the 3-second target). Real-site checks preserved public images, but public-text false positives remain. The full suite passed 88 tests before the final search-field test; the expanded browser suite passed all 18 tests afterward.
+
+
+## Genuine extension checkpoint — Eshan, 30 October 2026
+The actual Manifest V3 side panel is implemented and tested beside a real interactive tab. Pairing, same-tab browser control, local provider settings, prompts, approvals, Take control, preserved tab/session, local privacy preview and request receipts are available. The explicit Private/Public toggle replaces the proposed automatic classification; Private is the default. Recognized identifiers, local secrets and private regions remain protected in Public mode. Added synthetic Aadhaar/PAN and medical-record examples and bounded recapture for pages changing during capture.
+
+Validation: 108 automated tests passed. Installed-extension integration verified manual prefilled sign-in, session retention, pause/edit, inspection and Stop using the local driver. Live Gemini through the actual side panel completed the conference mute task in two observations with HTTP 200 and no image disclosure. Evidence is in live-extension-gemini-conference-results.json. Expanded screenshot corpus: 160/160 annotated text regions, 50 screenshots, median 2419.5 ms, p95 3013 ms (still above the 3-second target).
+
+User acceptance instructions: docs/EXTENSION-TESTING.md (or EXTENSION-TESTING.md from this docs directory). Supported targets remain five local demos and SauceDemo; Wikipedia is unchanged in the earlier workspace. Remaining phase: live extension validation of sign-in, checkout approval/denial, support, developer and SauceDemo; user acceptance; presentation refresh. Arbitrary-site access and universal detection accuracy are not claimed. Earlier entries are historical milestones superseded by this checkpoint.

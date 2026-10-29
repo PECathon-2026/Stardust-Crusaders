@@ -1,0 +1,74 @@
+{
+  "runs": [
+    {
+      "scenario": "conference",
+      "provider": "gemini",
+      "status": "completed",
+      "outcome": "mute",
+      "steps": 2,
+      "error": null,
+      "receipts": [
+        {
+          "digest": "8f9b0714fb0da007910535fda3763937ee014baaa60b4585325fcc9fcf619d7b",
+          "bytes": 3462,
+          "latency_ms": 2057,
+          "destination": "Gemini",
+          "transport": "response received",
+          "image_disclosed": false,
+          "http_status": 200,
+          "id": "a49b747e54b7",
+          "snapshot": "s_f9b8e0383bd45c42c80d7c04",
+          "contract": "task-bound-v1",
+          "privacy_profile": "private",
+          "decision": "allowed",
+          "categories": [
+            "EMAIL_ADDRESS",
+            "FACE",
+            "PERSON",
+            "PRIVATE_CONTENT"
+          ],
+          "region": null
+        }
+      ],
+      "events": [
+        {
+          "id": 0,
+          "time": "04:20:30",
+          "title": "Browser connected",
+          "detail": "Private ephemeral Chromium context",
+          "kind": "info"
+        },
+        {
+          "id": 1,
+          "time": "04:20:33",
+          "title": "Observation protected",
+          "detail": "8 findings \u00b7 2858 ms",
+          "kind": "privacy"
+        },
+        {
+          "id": 2,
+          "time": "04:20:36",
+          "title": "Action executed",
+          "detail": "click",
+          "kind": "success"
+        },
+        {
+          "id": 3,
+          "time": "04:20:38",
+          "title": "Observation protected",
+          "detail": "8 findings \u00b7 2270 ms",
+          "kind": "privacy"
+        },
+        {
+          "id": 4,
+          "time": "04:20:38",
+          "title": "Task completed",
+          "detail": "Observed the expected page outcome",
+          "kind": "success"
+        }
+      ],
+      "elapsed_s": 9.47
+    }
+  ],
+  "timestamp": 1793314238.9978733
+}

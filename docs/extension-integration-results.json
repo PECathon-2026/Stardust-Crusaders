@@ -1,0 +1,10 @@
+{
+  "transport": "Real installed MV3 extension + chrome.debugger + paired localhost WebSocket",
+  "manual_login": "verified signin with prefilled values; no demo vault",
+  "session_preserved": true,
+  "pause_keeps_tab_interactive": true,
+  "local_inspection": true,
+  "stop_keeps_tab_open": true,
+  "model": "deterministic local driver, not AI",
+  "errors": []
+}

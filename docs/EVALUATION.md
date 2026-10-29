@@ -1,5 +1,7 @@
 # Measured evaluation
 
+Latest extension checkpoint: **108 automated tests passed**. Expanded screenshot corpus: **160/160 annotated visible text regions across 50 screenshots**, median 2419.5 ms and p95 3013 ms. The latency target remains unmet. Live Gemini completed the meeting task through the actual side panel and attached tab, with a text-only request and verified mute outcome (`live-extension-gemini-conference-results.json`). This single success does not establish all-scenario reliability. Earlier measurements below describe their recorded revisions.
+
 Measured on this Windows laptop (16 GB RAM, CPU local inference; GTX 1650 is not required). These are hackathon fixture results, not production guarantees. Machine-readable evidence is saved beside this document.
 
 ## Current verified results

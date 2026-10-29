@@ -60,6 +60,7 @@ class StartRequest(Strict):
     task: str = Field(default="", max_length=2000)
     provider: Literal["demo", "gemini", "groq", "ollama"] = "demo"
     mode: Literal["contract", "baseline"] = "contract"
+    privacy_profile: Literal["private", "public"] = "private"
     seed: int = Field(default=1, ge=1, le=10000)
     layout: int = Field(default=0, ge=0, le=1)
 

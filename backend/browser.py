@@ -17,6 +17,8 @@ COLLECT = r"""() => {
  const visible=e=>{const r=e.getBoundingClientRect(),s=getComputedStyle(e);return r.width>0&&r.height>0&&s.visibility!=='hidden'&&s.display!=='none'&&r.bottom>0&&r.top<innerHeight&&r.right>0&&r.left<innerWidth};
  for(const e of document.querySelectorAll('[data-pl-target]'))e.removeAttribute('data-pl-target');
  const rect=e=>{const r=e.getBoundingClientRect();return {x:r.x,y:r.y,width:r.width,height:r.height}};
+ const privateContext=e=>{for(let n=e;n&&n!==document.body;n=n.parentElement){if(/private|participant|medical|patient|diagnosis|prescription/i.test(n.getAttribute('aria-label')||''))return true}return false};
+ const publicSelector='article,main,[role=main],.inventory_item,.mw-parser-output,[itemtype*="/Product"]';
  const controls=[]; let i=0;
  for(const e of document.querySelectorAll('button,a,input:not([type=hidden]),textarea,select,[role=button]')){
   if(!visible(e))continue;
@@ -25,7 +27,7 @@ COLLECT = r"""() => {
   const product=e.closest('.inventory_item')?.querySelector('.inventory_item_name')?.textContent;
   if(product&&e.tagName==='BUTTON')label+=' — '+product;
   if(e.classList.contains('shopping_cart_link'))label='Shopping cart';
-  controls.push({id,label:label.slice(0,300),tag:e.tagName.toLowerCase(),type:e.type||'',autocomplete:e.autocomplete||'',name:e.name||e.id||'',value:e.value||'',disabled:!!e.disabled,rect:rect(e),href:e.tagName==='A'?e.href:null,options:e.tagName==='SELECT'?Array.from(e.options).slice(0,50).map(o=>({label:o.label.slice(0,300),selected:o.selected,disabled:o.disabled})):[]});
+  controls.push({id,label:label.slice(0,300),tag:e.tagName.toLowerCase(),type:e.type||'',autocomplete:e.autocomplete||'',name:e.name||e.id||'',value:e.value||'',disabled:!!e.disabled,private:privateContext(e),public_region:!!e.closest(publicSelector),rect:rect(e),href:e.tagName==='A'?e.href:null,options:e.tagName==='SELECT'?Array.from(e.options).slice(0,50).map(o=>({label:o.label.slice(0,300),selected:o.selected,disabled:o.disabled})):[]});
  }
  const texts=[];const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;
  while(n=walker.nextNode()){
@@ -33,12 +35,13 @@ COLLECT = r"""() => {
   const range=document.createRange();range.selectNodeContents(n);
   const boxes=Array.from(range.getClientRects()).map(r=>({x:r.x,y:r.y,width:r.width,height:r.height}));
   const scope=e.closest('section,[aria-label]');
-  texts.push({node_index:texts.length,trim_start:n.textContent.length-n.textContent.trimStart().length,text:n.textContent.trim().slice(0,3000),context:(scope?.getAttribute('aria-label')||'')+' '+(e.getAttribute('aria-label')||''),boxes});
+  texts.push({node_index:texts.length,trim_start:n.textContent.length-n.textContent.trimStart().length,text:n.textContent.trim().slice(0,3000),private:privateContext(e),public_region:!!e.closest(publicSelector),context:(scope?.getAttribute('aria-label')||'')+' '+(e.getAttribute('aria-label')||''),boxes});
  }
- const media=Array.from(document.querySelectorAll('img,canvas,video,iframe,[role=img]')).filter(visible).map(e=>({...rect(e),tag:e.tagName.toLowerCase(),private:/private|participant|medical/i.test((e.closest('section,[aria-label]')?.getAttribute('aria-label')||'')+' '+(e.getAttribute('aria-label')||'')),kind:'MEDIA',source:'conservative-media'}));
+ const media=Array.from(document.querySelectorAll('img,canvas,video,iframe,[role=img]')).filter(visible).map(e=>({...rect(e),tag:e.tagName.toLowerCase(),private:privateContext(e),kind:'MEDIA',source:'conservative-media'}));
+ const public_regions=Array.from(document.querySelectorAll(publicSelector)).filter(e=>visible(e)&&!privateContext(e)).map(rect);
  const regions=Array.from(document.querySelectorAll('section')).filter(visible).map((e,j)=>({id:'r'+j,label:e.querySelector('h2')?.innerText||'Page section',...rect(e)}));
  if(!regions.length)regions.push({id:'r0',label:'Current viewport',x:0,y:0,width:innerWidth,height:innerHeight});
- return {controls,texts,media,regions,width:innerWidth,height:innerHeight,title:document.title};
+ return {controls,texts,media,regions,public_regions,width:innerWidth,height:innerHeight,title:document.title};
 }"""
 FINGERPRINT = r"""() => JSON.stringify({url:location.href,text:document.body.innerText,fields:Array.from(document.querySelectorAll('input,textarea,select')).map(e=>[e.value,e.type,e.disabled]),controls:Array.from(document.querySelectorAll('[data-pl-target]')).map(e=>{const r=e.getBoundingClientRect();return[e.getAttribute('data-pl-target'),e.getAttribute('aria-label'),e.name,e.type,e.disabled,e.href,r.x,r.y,r.width,r.height]}),scroll:[scrollX,scrollY],size:[innerWidth,innerHeight]})"""
 
@@ -155,7 +158,7 @@ class Browser:
                 return "cart_verified"
         return None
 
-    async def capture(self, known=(), mode="contract"):
+    async def capture(self, known=(), mode="contract", privacy_profile="private"):
         started = __import__("time").perf_counter()
         if not self.page:
             raise PrivacyError("Browser is not running")
@@ -179,7 +182,7 @@ class Browser:
         # Explicit public demo product dictionary; never exempts regex secrets or vault values.
         public_literals = PUBLIC_LABELS.get(self.origin, ())
         for item in raw["texts"]:
-            private = any(
+            private = item.get('private', False) or any(
                 w in item["context"].lower()
                 for w in ["private", "participant", "medical"]
             )
@@ -198,7 +201,7 @@ class Browser:
                     }
                 )
             else:
-                safe, fs = self.detector.sanitize(item["text"], known, public_literals)
+                safe, fs = self.detector.sanitize(item["text"], known, public_literals, public_context=privacy_profile=='public' and item.get('public_region',False))
                 if fs:
                     for finding in fs:
                         # Python offsets count Unicode points; DOM Range uses UTF-16.
@@ -214,7 +217,7 @@ class Browser:
             texts.append(safe)
         for c in raw["controls"]:
             p = purpose(c) if c["tag"] in ("input", "textarea") else None
-            label, fs = self.detector.sanitize(c["label"], known, public_literals)
+            label, fs = self.detector.sanitize(c["label"], known, public_literals, public_context=privacy_profile=='public' and c.get('public_region',False) and not c.get('private',False) and not p)
             if c["tag"] in ("input", "textarea") and c["type"] not in (
                 "submit",
                 "button",
@@ -255,7 +258,7 @@ class Browser:
                      "selected": option["selected"], "disabled": option["disabled"]}
                     for option in c.get("options", [])
                 ]
-        visual = await asyncio.to_thread(self.detector.visual_boxes, png, known=known, public_literals=public_literals)
+        visual = await asyncio.to_thread(self.detector.visual_boxes, png, known=known, public_literals=public_literals, public_regions=raw.get('public_regions',[]) if privacy_profile=='public' else ())
         if await self.signature() != after:
             raise StaleObservation("Page changed while applying privacy masks")
         masks.extend(visual)
@@ -301,6 +304,7 @@ class Browser:
             else "current-task-page"
         )
         obs = {
+            "privacy_profile": privacy_profile,
             "snapshot_id": self.snapshot,
             "page": page_state,
             "controls": controls,

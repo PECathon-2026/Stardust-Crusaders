@@ -5,7 +5,7 @@ A local browser-agent control plane with task-scoped disclosure. It deliberately
 
 ```mermaid
 flowchart LR
-  B[Ephemeral Chromium] --> D[Local DOM / NLP / OCR / face detectors]
+  B[Attached extension tab or isolated Chromium] --> D[Local DOM / NLP / OCR / face detectors]
   D --> S[Sanitized semantic observation + opaque PNG]
   S --> C[Task contract: minimal context]
   C --> G[Exact serialized payload gate]
@@ -15,6 +15,8 @@ flowchart LR
   A --> B
   G --> R[Digest + disclosure receipt]
 ```
+
+The primary interaction surface is now `extension/panel.html`: prompts, approvals, manual handoff and privacy evidence beside an ordinary interactive tab. `extension_api.py` pairs an explicit extension origin and session token, and `extension_transport.py` adapts its loopback WebSocket/CDP commands to the existing browser pipeline. The extension's tab survives stopping; the earlier isolated-browser adapter still closes its own browser. The five local fixtures and SauceDemo remain the supported targets. See EXTENSION.md for trust limits and EXTENSION-TESTING.md for acceptance steps.
 
 ## Trust boundaries
 The webpage, model output, target labels and task text may contain hostile instructions. They never become executable code, arbitrary selectors or a destination supplied to the model gateway. The model receives random target handles and permitted secret-reference names. The browser resolves handles locally and checks a fingerprint of URL, visible text, fields and geometry before acting. A stale action fails rather than operating on a new page.

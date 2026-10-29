@@ -30,6 +30,28 @@ async def test_stale_snapshot_blocked(browser):
         await browser.validate(Action(type="done", snapshot_id="old"))
 
 
+async def test_transient_capture_change_is_recaptured_before_planning(browser):
+    from backend.agent import Gateway, Run
+    from backend.contracts import StartRequest
+    from backend.privacy import StaleObservation
+    await browser.page.set_content('<button onclick="window.fixtureOutcome=\'mute\'">Mute microphone</button>')
+    async def existing_page(*args, **kwargs):pass
+    browser.open=existing_page
+    capture=browser.capture
+    count=0
+    async def changing_once(*args,**kwargs):
+        nonlocal count
+        count+=1
+        if count==1:raise StaleObservation('Page changed')
+        return await capture(*args,**kwargs)
+    browser.capture=changing_once
+    gateway=Gateway(browser.detector)
+    run=Run(StartRequest(scenario='conference',provider='demo'),browser,gateway,{},browser.page.url)
+    await run.loop(browser.page.url)
+    assert run.status=='completed' and count==3 and gateway.sent==0
+    assert any(e['title']=='Page still changing' for e in run.events)
+
+
 async def test_select_observation_has_sanitized_choices_and_selection(browser):
     await browser.page.set_content('<select aria-label="Category"><option>Choose category</option><option selected>Billing</option><option>person@example.test</option></select><p>Please complete the required fields correctly.</p>')
     preview = await browser.capture()
@@ -140,6 +162,26 @@ async def test_public_search_is_visible_but_private_input_remains_masked(browser
     await browser.page.locator('input[type=search]').fill('person@example.test')
     preview = await browser.capture()
     assert len([b for b in preview['masks'] if b['source']=='structural']) == 2
+
+
+async def test_public_profile_keeps_private_medical_container_protected(browser):
+    await browser.page.set_content('<main><article>Public product facts</article><section aria-label="Private medical record"><span aria-label="Details">Patient fictional diagnosis</span></section></main>')
+    preview=await browser.capture(mode='baseline',privacy_profile='public')
+    assert 'Public product facts' in preview['observation']['context']
+    assert 'Patient fictional diagnosis' not in preview['observation']['context']
+    assert preview['observation']['privacy_profile']=='public'
+
+
+async def test_public_article_link_name_is_preserved_but_private_name_is_not(browser,monkeypatch):
+    from backend.privacy import Finding
+    def detect(text,*args,**kwargs):
+        return [Finding('PERSON',text.index('Ada Lovelace'),text.index('Ada Lovelace')+12,'presidio','test')] if 'Ada Lovelace' in text else []
+    monkeypatch.setattr(browser.detector,'detect',detect)
+    await browser.page.set_content('<article><a>Ada Lovelace</a></article><section aria-label="Private patient"><button>Ada Lovelace</button></section>')
+    preview=await browser.capture(privacy_profile='public')
+    controls=preview['observation']['controls']
+    assert controls[0]['label']=='Ada Lovelace'
+    assert 'Ada Lovelace' not in controls[1]['label']
 
 
 async def test_snapshot_hides_local_values_and_urls(browser):

@@ -69,20 +69,27 @@ async def boundary(request: Request, call_next):
     origin = request.headers.get("origin")
     host = request.headers.get("host", "")
     allowed = {"127.0.0.1:8765", "localhost:8765", "testserver"}
+    from .extension_api import EXTENSION_ORIGIN, PAIRED_ORIGINS
+    extension_origin = bool(origin and EXTENSION_ORIGIN.fullmatch(origin))
+    pairing = request.url.path == '/api/extension/pair' and extension_origin
     if host not in allowed:
         return JSONResponse({"detail": "Host rejected"}, status_code=403)
-    if origin and origin not in {"http://127.0.0.1:8765", "http://localhost:8765"}:
+    if origin and origin not in {"http://127.0.0.1:8765", "http://localhost:8765"} and origin not in PAIRED_ORIGINS and not pairing:
         return JSONResponse({"detail": "Origin rejected"}, status_code=403)
-    if request.headers.get("sec-fetch-site") == "cross-site":
+    if request.headers.get("sec-fetch-site") == "cross-site" and origin not in PAIRED_ORIGINS and not pairing:
         return JSONResponse(
             {"detail": "Cross-site control request rejected"}, status_code=403
         )
-    if request.url.path.startswith("/api/") and request.url.path != "/api/bootstrap":
+    if request.method == 'OPTIONS' and extension_origin and (pairing or origin in PAIRED_ORIGINS):
+        return JSONResponse({}, headers={'Access-Control-Allow-Origin':origin, 'Access-Control-Allow-Methods':'GET, POST, OPTIONS', 'Access-Control-Allow-Headers':'content-type,x-privacy-session'})
+    if request.url.path.startswith("/api/") and request.url.path != "/api/bootstrap" and not pairing:
         if not secrets.compare_digest(
             request.headers.get("x-privacy-session", ""), token
         ):
             return JSONResponse({"detail": "Session required"}, status_code=401)
     response = await call_next(request)
+    if extension_origin and (pairing or origin in PAIRED_ORIGINS):
+        response.headers['Access-Control-Allow-Origin'] = origin
     response.headers["Cache-Control"] = "no-store"
     response.headers["X-Content-Type-Options"] = "nosniff"
     response.headers["Referrer-Policy"] = "no-referrer"
@@ -209,6 +216,8 @@ async def stop():
         run.known.clear()
         run.preview = None
         run.status = "stopped"
+        if run.browser is not browser:
+            await run.browser.close()
     await browser.close()
     settings_secrets.clear()
     return {"status": "stopped", "local_values_cleared": True}
@@ -299,6 +308,9 @@ async def verify_fixture(request: Request, seed: int = 1):
 
 
 dist = ROOT / "frontend" / "dist"
+from .extension_api import install_extension
+import sys
+install_extension(app, sys.modules[__name__])
 if (dist / "assets").exists():
     app.mount("/assets", StaticFiles(directory=dist / "assets"), name="assets")
 

@@ -17,6 +17,8 @@ def values(seed=1):
         "otp": "482913",
         "phone": f"+91 98765 {10000 + seed:05d}",
         "pan": "ABCDE1234F",
+        "aadhaar": "2345 6789 0123",
+        "medical_record": "SYNTHETIC MEDICAL RECORD: Patient DEMO-104; HbA1c 7.2%; fictional treatment plan: follow-up consultation in 2 weeks.",
         "api_key": "ghp_" + "aB3cD4eF5gH6iJ7kL8mN9oP0qR1sT2uV3wX4",
         "ip": "192.168.42.17",
         "message": f"Private: my medical appointment is on Friday. Patient reference {seed}.",
@@ -44,11 +46,11 @@ def fixture(scenario, seed=1, layout=0):
         ]
         body = f"""<h1>Complete your order</h1><p class="muted">A synthetic checkout. Nothing is charged.</p><div class="grid"><section><h2>Shipping & payment</h2>{field("Full name", "name", "name")}{field("Shipping address", "address", "street-address")}{field("Card number", "card", "cc-number")}{field("Security code / CVV", "cvv", "cc-csc")}<button data-action="review">Review order</button><button data-action="purchase" hidden>Place demo order</button></section><section><span class="tag">ORDER SUMMARY</span><h2>Everyday carry backpack</h2><p>₹ 1,299 · Free delivery</p><h3>Saved customer</h3><p aria-label="Customer name">{e("name")}</p><p aria-label="Address">{e("address")}</p><p>Saved card: {e("card")}</p><p class="muted">Public order reference: ORD-2026-114</p></section></div>"""
     elif scenario == "authentication":
-        truth = [("EMAIL_ADDRESS", v["email"]), ("PHONE_NUMBER", v["phone"])]
-        body = f"""<h1>Welcome back</h1><div class="grid"><section><h2>Secure sign in</h2>{field("Email address", "email", "email")}{field("Password", "password", "current-password", "password")}{field("One-time code", "otp", "one-time-code")}<button class="secondary" data-action="reveal">Show password</button><button data-action="signin">Sign in</button></section><section><h2>Account recovery</h2><p>Recovery email: {e("email")}</p><p>Registered phone: {e("phone")}</p><p class="muted">Never share your password or verification code.</p></section></div>"""
+        truth = [("EMAIL_ADDRESS", v["email"]), ("PHONE_NUMBER", v["phone"]), ("IN_AADHAAR", v["aadhaar"]), ("IN_PAN", v["pan"])]
+        body = f"""<h1>Welcome back</h1><div class="grid"><section><h2>Secure sign in</h2>{field("Email address", "email", "email")}{field("Password", "password", "current-password", "password")}{field("One-time code", "otp", "one-time-code")}<button class="secondary" data-action="reveal">Show password</button><button data-action="signin">Sign in</button></section><section><h2>Account recovery</h2><p>Recovery email: {e("email")}</p><p>Registered phone: {e("phone")}</p><h3>Synthetic identity verification</h3><p>Aadhaar: {e("aadhaar")}</p><p>PAN: {e("pan")}</p><p class="muted">Never share your password or verification code.</p></section></div>"""
     elif scenario == "support":
-        truth = [("PHONE_NUMBER", v["phone"]), ("PRIVATE_MESSAGE", v["message"])]
-        body = f"""<h1>Customer support desk</h1><div class="grid"><section aria-label="Private conversation"><h2>Private conversation</h2><p>Contact: {e("phone")}</p><p>{e("message")}</p></section><section><h2>Resolve request</h2><label for="category">Issue category</label><select id="category" aria-label="Issue category"><option>Choose category</option><option>Billing</option><option>Technical</option></select><label for="reply">Public reply</label><textarea id="reply" aria-label="Public reply"></textarea><button data-action="send">Send reply</button></section></div>"""
+        truth = [("PHONE_NUMBER", v["phone"]), ("PRIVATE_MESSAGE", v["message"]), ("MEDICAL_RECORD", v["medical_record"])]
+        body = f"""<h1>Customer support desk</h1><div class="grid"><section aria-label="Private conversation"><h2>Private conversation</h2><p>Contact: {e("phone")}</p><p>{e("message")}</p><div aria-label="Private medical record"><h3>Synthetic health record</h3><p>{e("medical_record")}</p></div></section><section><h2>Resolve request</h2><label for="category">Issue category</label><select id="category" aria-label="Issue category"><option>Choose category</option><option>Billing</option><option>Technical</option></select><label for="reply">Public reply</label><textarea id="reply" aria-label="Public reply"></textarea><button data-action="send">Send reply</button></section></div>"""
     elif scenario == "conference":
         truth = [
             ("PERSON", v["name"]),
