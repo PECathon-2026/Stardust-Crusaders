@@ -30,7 +30,6 @@ import {
   Layers,
 } from "lucide-react";
 import "./style.css";
-import AgentWorkspace from "./AgentWorkspace";
 
 type Obj = Record<string, any>;
 let token = "";
@@ -187,7 +186,7 @@ function App() {
           href="/"
           style={{ margin: "0 12px 18px", color: "#315e42", fontSize: 13 }}
         >
-          Back to Browser agent
+          Extension setup
         </a>
         <nav>
           {[
@@ -1063,6 +1062,13 @@ function PageTitle({ eyebrow, title, text }: any) {
     </div>
   );
 }
-createRoot(document.getElementById("root")!).render(
-  window.location.pathname === "/lab" ? <App /> : <AgentWorkspace />,
-);
+function ExtensionHome() {
+  return <main style={{maxWidth:760, margin:'8vh auto', padding:32}}>
+    <h1>PrivacyLens lives beside your website.</h1>
+    <p>Use the PrivacyLens side panel in Chrome for Testing to enter a prompt, run a task and take control whenever you need.</p>
+    <ol><li>Start the local server, then run launch-extension.ps1 from the project folder.</li><li>Open the side panel and connect using the connection page.</li><li>Save your provider key in panel Settings, open a supported website and enter your task.</li></ol>
+    <p><a href="/extension-connect">Open connection page</a> · <a href="/lab">Open privacy evidence lab</a></p>
+    <p>The evidence lab contains detection tests and receipts. Your interactive browser agent is in the extension.</p>
+  </main>;
+}
+createRoot(document.getElementById("root")!).render(window.location.pathname === "/lab" ? <App /> : <ExtensionHome />);

@@ -119,6 +119,7 @@ async function refresh() {
   if(!ready||polling)return;polling=true;
   try {
     state=await api('status');const r=state.run;
+    for(const name of Object.keys(examples))if(state.scenarios?.[name])examples[name]=state.scenarios[name];
     $('status').textContent=state.initializing?'Preparing local detectors…':r?.status==='paused'?'You have control. Run again to continue from the current page.':state.provider_status?.state==='pacing'&&controlling?'Waiting for the local request budget. Take control remains available.':r?.status==='completed'?'Verified page outcome: '+r.outcome:r?.status==='needs_review'?'Planner finished; inspect the website to confirm the result.':r?.status||'Ready';
     if(r?.error)error(r.error);
     $('approval').hidden=!r?.approval;

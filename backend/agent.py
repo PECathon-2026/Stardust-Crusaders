@@ -463,7 +463,7 @@ class Run:
                 outcome = await self.browser.page.evaluate(
                     "window.fixtureOutcome || null"
                 )
-                if self.request.scenario in ("wikipedia", "saucedemo"):
+                if self.request.verify_scenario_outcome and self.request.scenario in ("wikipedia", "saucedemo"):
                     outcome = await self.browser.verified_external_outcome(
                         self.request.scenario
                     )
@@ -476,7 +476,7 @@ class Run:
                             "success",
                         )
                         break
-                if outcome in ["purchase", "signin", "send", "mute", "revoke"]:
+                if self.request.verify_scenario_outcome and outcome in ["purchase", "signin", "send", "mute", "revoke"]:
                     self.outcome = outcome
                     self.status = "completed"
                     self.event(

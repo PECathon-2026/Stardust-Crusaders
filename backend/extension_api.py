@@ -135,7 +135,8 @@ def install_extension(app, state):
         if payload.demo_secrets and scenario == 'saucedemo':
             data['password'] = data['sauce_password']
         data.update(state.settings_secrets)
-        request = StartRequest(scenario=scenario, task=payload.task, provider=payload.provider, seed=seed, layout=layout, privacy_profile=payload.privacy_profile)
+        request = StartRequest(scenario=scenario, task=payload.task, provider=payload.provider, seed=seed, layout=layout, privacy_profile=payload.privacy_profile,
+                               verify_scenario_outcome=payload.provider == 'demo' or payload.task.strip() == DEFAULT_TASKS[scenario])
         adapter = ExtensionBrowser(state.detector, connection, payload.url)
         state.run = Run(request, adapter, state.gateway, data, payload.url)
         state.run.task = asyncio.create_task(state.run.loop(payload.url))

@@ -297,8 +297,9 @@ async def verify_fixture(request: Request, seed: int = 1):
     elif scenario == "support":
         valid = (
             action == "send"
-            and fields.get("category") == "Billing"
-            and fields.get("reply") == "I can help with your billing question."
+            and fields.get("category") in ("Billing", "Technical")
+            and isinstance(fields.get("reply"), str)
+            and 0 < len(fields["reply"].strip()) <= 500
         )
     elif scenario == "conference":
         valid = action == "mute"

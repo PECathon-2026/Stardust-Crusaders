@@ -19,7 +19,7 @@ For each row, open a fresh demo, use **Use this page's example**, and choose Gem
 
 | Demo | What you should see | Data demonstrated |
 |---|---|---|
-| Sign-in & identity | Enable **Use synthetic demo secrets**, then run. Fake fields fill locally and sign-in completes. Alternatively fill the fields yourself first. | Password, OTP, email, Aadhaar, PAN |
+| Sign-in & identity | Enable **Use fake demo values to fill forms**, then run. Fake fields fill locally and sign-in completes. Alternatively fill the fields yourself first. | Password, OTP, email, Aadhaar, PAN |
 | Checkout | Enable synthetic demo secrets. Agent fills fake checkout fields and asks approval before placing the synthetic order. Deny first to verify it does not submit; approve on a fresh run to test completion. | Card, CVV, address |
 | Support & health | Agent selects Billing, drafts the example reply, and asks approval before sending on the fake site. | Private messages and synthetic medical record |
 | Developer console | Agent opens details and asks approval before revoking the fake key. | API key, token, IP, PAN |
@@ -38,3 +38,9 @@ Start a task and click **Take control** before it finishes. Wait for paused stat
 - Detectors can miss sensitive material or mask useful content. Report the page, prompt and wrong mask when that happens; do not submit real secrets in bug reports.
 - The fixture purchase/reply/revocation and meeting controls are synthetic, not real transactions, messages, cloud-key changes or microphone access.
 - Server restarts clear provider keys and pairing. Refresh the connection page, reconnect and save the key again when needed.
+
+
+## Custom prompts
+Type your own task instead of the example. The cloud planner receives that instruction, subject to privacy screening and supported actions. Try: `Set the issue category to "Technical". Write "Please restart the demo app." in the public reply box. Do not send it.` The expected page state is Technical selected, the requested draft present and no submitted-reply result. Custom tasks end with a request to inspect the result, not a claim of independent verification. The local test driver remains scripted and does not support arbitrary instructions.
+
+Supported actions are clicks, text entry, explicit local-secret entry, dropdown selection, scrolling and waiting. Arbitrary sites, arbitrary browser/system operations, uploads and password-store extraction are not implemented. Custom prompt support does not mean every possible request can be completed.

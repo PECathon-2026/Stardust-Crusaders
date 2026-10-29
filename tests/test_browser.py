@@ -30,6 +30,27 @@ async def test_stale_snapshot_blocked(browser):
         await browser.validate(Action(type="done", snapshot_id="old"))
 
 
+async def test_custom_prompt_does_not_stop_at_preset_outcome(browser):
+    from backend.agent import Run
+    from backend.contracts import StartRequest
+    await browser.page.evaluate("window.fixtureOutcome='mute'")
+    async def existing_page(*args, **kwargs): pass
+    browser.open = existing_page
+    class Planner:
+        last_receipt = None
+        calls = 0
+        async def plan(self, obs, task, refs, known, provider):
+            self.calls += 1
+            assert task == 'Inspect the meeting controls and stop.'
+            return Action(type='done', snapshot_id=obs['snapshot_id']), {'bytes':0, 'destination':'Test planner'}
+    planner = Planner()
+    run = Run(StartRequest(scenario='conference',provider='gemini',task='Inspect the meeting controls and stop.',verify_scenario_outcome=False),browser,planner,{},browser.page.url)
+    await run.loop(browser.page.url)
+    assert planner.calls == 1
+    assert run.status == 'needs_review'
+    assert run.outcome == 'planner_finished'
+
+
 async def test_transient_capture_change_is_recaptured_before_planning(browser):
     from backend.agent import Gateway, Run
     from backend.contracts import StartRequest

@@ -61,6 +61,7 @@ class StartRequest(Strict):
     provider: Literal["demo", "gemini", "groq", "ollama"] = "demo"
     mode: Literal["contract", "baseline"] = "contract"
     privacy_profile: Literal["private", "public"] = "private"
+    verify_scenario_outcome: bool = True
     seed: int = Field(default=1, ge=1, le=10000)
     layout: int = Field(default=0, ge=0, le=1)
 
