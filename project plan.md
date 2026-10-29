@@ -206,3 +206,6 @@ Novelty comparison remains a required phase-0 check; these sources establish tha
 
 ## Live provider follow-up
 Groq is the working text-only cloud alternative. The schema compatibility fix is verified by completed checkout and sign-in tasks. Next: resolve support action repetition and category selection, pace free-tier requests, validate support/conference/developer, then update the final presentation with measured cloud results. Keep local screenshot protection active; Groq text planning does not receive pixels.
+
+## Eshan reliability-stage checkpoint
+Implemented sanitized select-option/current-selection context, form-error feedback, a repeated-action guard, and cancellable Groq pacing. Local automated and deterministic scenario checks pass. Next gate: user tests STAGE-TESTING.md and live Groq support/conference/developer regression after re-entering the session key. Give the user a feature checklist at every subsequent stage boundary.

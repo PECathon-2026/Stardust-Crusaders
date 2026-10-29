@@ -115,6 +115,22 @@ class Gateway:
         self.sent = 0
         self.last_receipt = None
         self.provider_status = None
+        self.groq_reservations = []
+
+    async def pace_groq(self, byte_count):
+        # Conservative estimate, not a tokenizer or a promise of provider quota.
+        cost = (byte_count + 2) // 3 + 1024
+        if cost > 7000:
+            raise PrivacyError("This observation exceeds the Groq free-tier request budget. Use task-bound context.")
+        while True:
+            now = time.monotonic()
+            self.groq_reservations = [(stamp, tokens) for stamp, tokens in self.groq_reservations if now - stamp < 61]
+            if sum(tokens for _, tokens in self.groq_reservations) + cost <= 7000:
+                self.groq_reservations.append((now, cost))
+                return
+            delay = max(0.1, 61 - (now - self.groq_reservations[0][0]))
+            self.provider_status = {"provider": "groq", "state": "pacing", "message": "Waiting briefly for the local Groq request budget. You can stop the task at any time."}
+            await asyncio.sleep(delay)
 
     async def plan(self, observation, task, refs, known, provider, image=None):
         self.last_receipt = None
@@ -201,6 +217,8 @@ class Gateway:
             self.detector,
             approved_image=image if provider == "gemini" else None,
         )
+        if provider == "groq":
+            await self.pace_groq(len(data))
         self.last_receipt = {
             "digest": digest,
             "bytes": len(data),
@@ -352,6 +370,7 @@ class Run:
         self.outcome = None
         self.gateway.last_receipt = None
         self.history = []
+        self.proposal_counts = {}
 
     def event(self, title, detail="", kind="info"):
         # Callers must use fixed/sanitized strings, not exception/server bodies.
@@ -418,7 +437,7 @@ class Run:
             await self.browser.open(url, headless)
             self.status = "running"
             self.event("Browser connected", "Private ephemeral Chromium context")
-            deadline = time.monotonic() + 180
+            deadline = time.monotonic() + (480 if self.request.provider == "groq" else 180)
             for step in range(12):
                 if self.stop:
                     break
@@ -573,6 +592,17 @@ class Run:
                         self.outcome = "planner_finished"
                         break
                 c = self.browser.registry.get(action.target_id, {})
+                # IDs change each capture, so compare semantic state rather than handles.
+                semantic_state = {
+                    "page": obs.get("page"), "context": obs.get("context"),
+                    "controls": [{k: v for k, v in control.items() if k != "id"} for control in obs.get("controls", [])],
+                    "action": action.type, "target": c.get("safe_label"),
+                    "text": action.text, "direction": action.direction,
+                }
+                signature = hashlib.sha256(json.dumps(semantic_state, sort_keys=True).encode()).hexdigest()
+                self.proposal_counts[signature] = self.proposal_counts.get(signature, 0) + 1
+                if self.proposal_counts[signature] >= 3:
+                    raise PrivacyError("The planner repeated the same action without observable progress. Review the form before retrying.")
                 if action.type == "click" and consequential(c):
                     start = time.monotonic()
                     await self.ask("action", action, c["safe_label"])

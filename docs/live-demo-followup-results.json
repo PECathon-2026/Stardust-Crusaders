@@ -1,0 +1,308 @@
+{
+  "runs": [
+    {
+      "scenario": "support",
+      "provider": "demo",
+      "status": "completed",
+      "outcome": "send",
+      "steps": 4,
+      "error": null,
+      "receipts": [
+        {
+          "digest": "a39937db9469dd08dc93eb4f57b7aa62443b9d9d31cb4e19acb05e59083784e9",
+          "bytes": 881,
+          "latency_ms": 0,
+          "destination": "Local test driver \u2014 no AI request",
+          "id": "2a11d278e2c3",
+          "snapshot": "s_43d14be55ae543bbb442302c",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "INPUT",
+            "PHONE_NUMBER",
+            "PRIVATE_CONTENT"
+          ],
+          "image_disclosed": false,
+          "region": null
+        },
+        {
+          "digest": "237bd706e417c97674f78b77517e63be3b7e0dbad37feef2c8b529a3993b1d81",
+          "bytes": 950,
+          "latency_ms": 0,
+          "destination": "Local test driver \u2014 no AI request",
+          "id": "b7979472db2b",
+          "snapshot": "s_dc355225580bf684fca014ca",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "INPUT",
+            "PHONE_NUMBER",
+            "PRIVATE_CONTENT"
+          ],
+          "image_disclosed": false,
+          "region": null
+        },
+        {
+          "digest": "62ca41aced9951124ec8ed9ea3476c8fcca137bf9a614d4f4268fcaaf632bd47",
+          "bytes": 1024,
+          "latency_ms": 0,
+          "destination": "Local test driver \u2014 no AI request",
+          "id": "780f6bb4d858",
+          "snapshot": "s_164d897694e72ed621210d03",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "INPUT",
+            "PHONE_NUMBER",
+            "PRIVATE_CONTENT"
+          ],
+          "image_disclosed": false,
+          "region": null
+        }
+      ],
+      "events": [
+        {
+          "id": 0,
+          "time": "02:21:41",
+          "title": "Browser connected",
+          "detail": "Private ephemeral Chromium context",
+          "kind": "info"
+        },
+        {
+          "id": 1,
+          "time": "02:21:45",
+          "title": "Observation protected",
+          "detail": "5 findings \u00b7 3558 ms",
+          "kind": "privacy"
+        },
+        {
+          "id": 2,
+          "time": "02:21:45",
+          "title": "Action executed",
+          "detail": "select",
+          "kind": "success"
+        },
+        {
+          "id": 3,
+          "time": "02:21:47",
+          "title": "Observation protected",
+          "detail": "5 findings \u00b7 2270 ms",
+          "kind": "privacy"
+        },
+        {
+          "id": 4,
+          "time": "02:21:48",
+          "title": "Action executed",
+          "detail": "fill public",
+          "kind": "success"
+        },
+        {
+          "id": 5,
+          "time": "02:21:50",
+          "title": "Observation protected",
+          "detail": "5 findings \u00b7 2401 ms",
+          "kind": "privacy"
+        },
+        {
+          "id": 6,
+          "time": "02:21:50",
+          "title": "Approval required",
+          "detail": "Send reply",
+          "kind": "approval"
+        },
+        {
+          "id": 7,
+          "time": "02:21:51",
+          "title": "Action executed",
+          "detail": "click",
+          "kind": "success"
+        },
+        {
+          "id": 8,
+          "time": "02:21:53",
+          "title": "Observation protected",
+          "detail": "5 findings \u00b7 2182 ms",
+          "kind": "privacy"
+        },
+        {
+          "id": 9,
+          "time": "02:21:53",
+          "title": "Task completed",
+          "detail": "Observed the expected page outcome",
+          "kind": "success"
+        }
+      ],
+      "elapsed_s": 14.45
+    },
+    {
+      "scenario": "conference",
+      "provider": "demo",
+      "status": "completed",
+      "outcome": "mute",
+      "steps": 2,
+      "error": null,
+      "receipts": [
+        {
+          "digest": "b914a7c27e2f450b2d5e59aff0bd623883b5fc867135a682725abf1518302024",
+          "bytes": 386,
+          "latency_ms": 0,
+          "destination": "Local test driver \u2014 no AI request",
+          "id": "52ee3c7ca342",
+          "snapshot": "s_46a948ac7347115a58284e72",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "EMAIL_ADDRESS",
+            "FACE",
+            "PERSON",
+            "PRIVATE_CONTENT"
+          ],
+          "image_disclosed": false,
+          "region": null
+        }
+      ],
+      "events": [
+        {
+          "id": 0,
+          "time": "02:21:56",
+          "title": "Browser connected",
+          "detail": "Private ephemeral Chromium context",
+          "kind": "info"
+        },
+        {
+          "id": 1,
+          "time": "02:21:58",
+          "title": "Observation protected",
+          "detail": "8 findings \u00b7 2303 ms",
+          "kind": "privacy"
+        },
+        {
+          "id": 2,
+          "time": "02:21:58",
+          "title": "Action executed",
+          "detail": "click",
+          "kind": "success"
+        },
+        {
+          "id": 3,
+          "time": "02:22:01",
+          "title": "Observation protected",
+          "detail": "8 findings \u00b7 2431 ms",
+          "kind": "privacy"
+        },
+        {
+          "id": 4,
+          "time": "02:22:01",
+          "title": "Task completed",
+          "detail": "Observed the expected page outcome",
+          "kind": "success"
+        }
+      ],
+      "elapsed_s": 7.3
+    },
+    {
+      "scenario": "developer",
+      "provider": "demo",
+      "status": "completed",
+      "outcome": "revoke",
+      "steps": 3,
+      "error": null,
+      "receipts": [
+        {
+          "digest": "6a29d2a4e399622da25cd1b460299daadc0307498f3613b2ef335850b41e034a",
+          "bytes": 394,
+          "latency_ms": 0,
+          "destination": "Local test driver \u2014 no AI request",
+          "id": "3c0cd4922a0b",
+          "snapshot": "s_06520f2580b8ee652a0f0c5f",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "API_KEY",
+            "IN_PAN",
+            "IP_ADDRESS"
+          ],
+          "image_disclosed": false,
+          "region": null
+        },
+        {
+          "digest": "2efdc19e2310605450178267548c128c9bedefea6da0db4412c41593cc44c201",
+          "bytes": 610,
+          "latency_ms": 0,
+          "destination": "Local test driver \u2014 no AI request",
+          "id": "681594164349",
+          "snapshot": "s_8b773125dccda6ee02046d52",
+          "contract": "task-bound-v1",
+          "decision": "allowed",
+          "categories": [
+            "API_KEY",
+            "IN_PAN",
+            "IP_ADDRESS"
+          ],
+          "image_disclosed": false,
+          "region": null
+        }
+      ],
+      "events": [
+        {
+          "id": 0,
+          "time": "02:22:04",
+          "title": "Browser connected",
+          "detail": "Private ephemeral Chromium context",
+          "kind": "info"
+        },
+        {
+          "id": 1,
+          "time": "02:22:06",
+          "title": "Observation protected",
+          "detail": "6 findings \u00b7 2450 ms",
+          "kind": "privacy"
+        },
+        {
+          "id": 2,
+          "time": "02:22:06",
+          "title": "Action executed",
+          "detail": "click",
+          "kind": "success"
+        },
+        {
+          "id": 3,
+          "time": "02:22:09",
+          "title": "Observation protected",
+          "detail": "6 findings \u00b7 2381 ms",
+          "kind": "privacy"
+        },
+        {
+          "id": 4,
+          "time": "02:22:09",
+          "title": "Approval required",
+          "detail": "Revoke demo key",
+          "kind": "approval"
+        },
+        {
+          "id": 5,
+          "time": "02:22:09",
+          "title": "Action executed",
+          "detail": "click",
+          "kind": "success"
+        },
+        {
+          "id": 6,
+          "time": "02:22:12",
+          "title": "Observation protected",
+          "detail": "6 findings \u00b7 2888 ms",
+          "kind": "privacy"
+        },
+        {
+          "id": 7,
+          "time": "02:22:12",
+          "title": "Task completed",
+          "detail": "Observed the expected page outcome",
+          "kind": "success"
+        }
+      ],
+      "elapsed_s": 10.89
+    }
+  ],
+  "timestamp": 1793307133.5529718
+}

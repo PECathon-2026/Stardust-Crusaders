@@ -14,6 +14,11 @@ async def main():
         if provider == "demo"
         else ["checkout", "authentication", "support", "conference", "developer"]
     )
+    if len(sys.argv) > 2:
+        requested = sys.argv[2:]
+        if any(s not in ("checkout", "authentication", "support", "conference", "developer", "wikipedia", "saucedemo") for s in requested):
+            raise SystemExit("Unknown scenario for this validation suite")
+        scenarios = requested
     rows = []
     async with httpx.AsyncClient(
         base_url="http://127.0.0.1:8765", timeout=180, trust_env=False
@@ -34,7 +39,7 @@ async def main():
                 break
             start = time.monotonic()
             approvals = set()
-            while time.monotonic() - start < 240:
+            while time.monotonic() - start < (540 if provider == "groq" else 240):
                 run = (await c.get("/api/status")).json()["run"]
                 a = run.get("approval")
                 if a and a["id"] not in approvals:
@@ -75,7 +80,8 @@ async def main():
             if run.get("error") and "HTTP" in run["error"]:
                 break
     if rows:
-        path = Path(__file__).parent / "docs" / f"live-{provider}-results.json"
+        suffix = "-followup" if len(sys.argv) > 2 else ""
+        path = Path(__file__).parent / "docs" / f"live-{provider}{suffix}-results.json"
         path.write_text(
             json.dumps({"runs": rows, "timestamp": time.time()}, indent=2),
             encoding="utf-8",

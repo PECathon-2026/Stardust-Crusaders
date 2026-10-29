@@ -25,7 +25,7 @@ COLLECT = r"""() => {
   const product=e.closest('.inventory_item')?.querySelector('.inventory_item_name')?.textContent;
   if(product&&e.tagName==='BUTTON')label+=' — '+product;
   if(e.classList.contains('shopping_cart_link'))label='Shopping cart';
-  controls.push({id,label:label.slice(0,300),tag:e.tagName.toLowerCase(),type:e.type||'',autocomplete:e.autocomplete||'',name:e.name||e.id||'',value:e.value||'',disabled:!!e.disabled,rect:rect(e),href:e.tagName==='A'?e.href:null});
+  controls.push({id,label:label.slice(0,300),tag:e.tagName.toLowerCase(),type:e.type||'',autocomplete:e.autocomplete||'',name:e.name||e.id||'',value:e.value||'',disabled:!!e.disabled,rect:rect(e),href:e.tagName==='A'?e.href:null,options:e.tagName==='SELECT'?Array.from(e.options).slice(0,50).map(o=>({label:o.label.slice(0,300),selected:o.selected,disabled:o.disabled})):[]});
  }
  const texts=[];const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;
  while(n=walker.nextNode()){
@@ -231,6 +231,12 @@ class Browser:
                     "disabled": c["disabled"],
                 }
             )
+            if c["tag"] == "select":
+                controls[-1]["options"] = [
+                    {"label": self.detector.sanitize(option["label"], known)[0],
+                     "selected": option["selected"], "disabled": option["disabled"]}
+                    for option in c.get("options", [])
+                ]
         visual = await asyncio.to_thread(self.detector.visual_boxes, png)
         masks.extend(visual)
         findings.extend(
@@ -258,6 +264,9 @@ class Browser:
                     "muted",
                     "revoked",
                     "order placed",
+                    "required fields",
+                    "invalid",
+                    "please select",
                 ]
             )
         )[:1000]

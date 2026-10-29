@@ -30,6 +30,35 @@ async def test_stale_snapshot_blocked(browser):
         await browser.validate(Action(type="done", snapshot_id="old"))
 
 
+async def test_select_observation_has_sanitized_choices_and_selection(browser):
+    await browser.page.set_content('<select aria-label="Category"><option>Choose category</option><option selected>Billing</option><option>person@example.test</option></select><p>Please complete the required fields correctly.</p>')
+    preview = await browser.capture()
+    observation = preview["observation"]
+    options = observation["controls"][0]["options"]
+    assert options[1] == {"label": "Billing", "selected": True, "disabled": False}
+    assert "person@example.test" not in str(observation)
+    assert "required fields" in observation["context"]
+
+
+async def test_repeated_no_progress_action_stops_before_third_click(browser):
+    from backend.agent import Run
+    from backend.contracts import StartRequest
+    await browser.page.set_content('<button onclick="window.clicks=(window.clicks||0)+1">Open details</button>')
+    async def existing_page(*args, **kwargs):
+        pass
+    browser.open = existing_page
+    class RepeatingPlanner:
+        last_receipt = None
+        detector = browser.detector
+        async def plan(self, obs, *args):
+            return Action(type="click", snapshot_id=obs["snapshot_id"], target_id=obs["controls"][0]["id"]), {"digest": "test", "bytes": 0}
+    run = Run(StartRequest(scenario="developer", provider="gemini"), browser, RepeatingPlanner(), {}, browser.page.url)
+    await run.loop(browser.page.url)
+    assert run.status == "blocked"
+    assert "without observable progress" in run.error
+    assert await browser.page.evaluate('window.clicks') == 2
+
+
 async def test_mutated_page_blocked(browser):
     await browser.page.locator("button").evaluate(
         "e=>e.textContent='Different operation'"

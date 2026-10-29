@@ -103,3 +103,27 @@ async def test_fixed_schema_accepts_unused_nulls(monkeypatch):
     gateway.groq_api_key = "test-key"
     action, _ = await gateway.plan({"snapshot_id": "s_test"}, "Read", [], [], "groq")
     assert action.type == "done"
+
+
+async def test_pacing_waits_for_budget_without_resending(monkeypatch):
+    import backend.agent as agent
+    clock = [100.0]
+    waits = []
+    monkeypatch.setattr(agent.time, "monotonic", lambda: clock[0])
+    async def sleep(seconds):
+        waits.append(seconds)
+        clock[0] += seconds
+    monkeypatch.setattr(agent.asyncio, "sleep", sleep)
+    gateway = Gateway(Detector())
+    await gateway.pace_groq(6000)
+    await gateway.pace_groq(6000)
+    await gateway.pace_groq(6000)
+    assert waits == [61.0]
+    assert len(gateway.groq_reservations) == 1
+
+
+async def test_pacing_rejects_oversized_observation():
+    gateway = Gateway(Detector())
+    with pytest.raises(PrivacyError, match="request budget"):
+        await gateway.pace_groq(25000)
+    assert gateway.groq_reservations == []

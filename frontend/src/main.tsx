@@ -399,6 +399,9 @@ function App() {
                         ? "Only sanitized context reaches Gemini. Add your API key in Settings."
                         : "Requires a running local Ollama instance with qwen3:4b. No cloud fallback."}
                   </p>
+                  {active && provider === "groq" && state.provider_status?.state === "pacing" && (
+                    <p className="helper" role="status">Waiting for the Groq request budget. The task will continue automatically; Stop remains available.</p>
+                  )}
                   <div className="button-row">
                     <button
                       className="primary"
