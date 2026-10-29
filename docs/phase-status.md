@@ -14,6 +14,9 @@
 ## Relocation and commit checkpoint
 The user moved the project to `D:\pecathon`. The existing Python environment launches from D: and all four detectors initialize. Its shared Python interpreter remains installed on C:. No dependency reinstall is required for the documented direct launch commands. The server was stopped for the move, clearing its memory-only API key. Resume live validation after entering the key locally again.
 
+## Laksh handoff — provider failure handling
+Laksh's takeover on the shared device was confirmed before this phase. The new live attempt again returned HTTP 402 before any action. Cloud task success remains unverified for the revised planner. Added fixed, safe explanations for billing/authentication/access/model/quota/service failures, timeout handling without retries, and explicit provider status separate from merely saving a key. Receipts now distinguish receiving an error response from an unanswered transmission attempt. Settings displays the last provider-check result without exposing credentials or raw error bodies. These changes are verified with mocked transport tests; they do not resolve Google project billing.
+
 Passing tests are scoped evidence, not a privacy guarantee. Screenshot p95 was 3.50 seconds, exceeding the <3 second target. Text precision was 98.21%; do not describe it as perfect. The deterministic local driver is not AI, and a planner's `done` response is not a verified outcome.
 
 Downloaded reference repositories are under `third_party/`. OpenCV bulk LFS downloads were stopped; the required YuNet model was separately downloaded and checksum-verified. Reference source remains available with LFS pointers, and runtime does not need the checkouts. `requirements.lock.txt` and `frontend/package-lock.json` pin installed packages. The spaCy model is installed by its explicit 3.8.0 wheel URL.

@@ -112,6 +112,7 @@ class Gateway:
         self.model = "gemini-3.5-flash-lite"
         self.sent = 0
         self.last_receipt = None
+        self.provider_status = None
 
     async def plan(self, observation, task, refs, known, provider, image=None):
         self.last_receipt = None
@@ -190,13 +191,62 @@ class Gateway:
             timeout=35, follow_redirects=False, trust_env=False
         ) as client:
             self.sent += 1
-            response = await client.post(endpoint, content=data, headers=headers)
+            try:
+                response = await client.post(endpoint, content=data, headers=headers)
+            except httpx.HTTPError:
+                self.provider_status = {
+                    "provider": provider,
+                    "state": "connection_error",
+                    "message": "The model connection failed or timed out. No raw fallback was sent.",
+                }
+                raise PrivacyError(self.provider_status["message"]) from None
+            self.last_receipt.update(
+                transport="response received",
+                http_status=response.status_code,
+                latency_ms=round((time.perf_counter() - start) * 1000),
+            )
             if response.status_code != 200:
-                raise PrivacyError(
-                    f"Model request failed (HTTP {response.status_code}); inspect key, model access or quota in Settings"
+                state, message = {
+                    401: (
+                        "authentication_required",
+                        "Check the model API key in Settings.",
+                    ),
+                    402: (
+                        "billing_required",
+                        "Check this key's project billing and prepaid credits in Google AI Studio. A saved key does not confirm billing access.",
+                    ),
+                    403: (
+                        "access_denied",
+                        "Check API permissions and project eligibility.",
+                    ),
+                    404: (
+                        "model_unavailable",
+                        "Check that the selected model is available to this account or installed locally.",
+                    ),
+                    429: (
+                        "quota_limited",
+                        "The provider's rate or quota limit was reached. Check quota before retrying.",
+                    ),
+                }.get(
+                    response.status_code,
+                    (
+                        "provider_unavailable",
+                        "The model service rejected the request or is temporarily unavailable.",
+                    ),
                 )
-            result = response.json()
+                if provider != "gemini" and response.status_code == 402:
+                    message = "The local model endpoint rejected the request. Check its configuration."
+                self.provider_status = {
+                    "provider": provider,
+                    "state": state,
+                    "http_status": response.status_code,
+                    "message": message,
+                }
+                raise PrivacyError(
+                    f"Model request failed (HTTP {response.status_code}): {message}"
+                )
         try:
+            result = response.json()
             if provider == "gemini":
                 output = "".join(
                     p.get("text", "")
@@ -212,6 +262,12 @@ class Gateway:
                 else parsed
             )
         except Exception:
+            self.provider_status = {
+                "provider": provider,
+                "state": "invalid_response",
+                "http_status": 200,
+                "message": "The model replied, but its output did not satisfy the action contract.",
+            }
             raise PrivacyError(
                 "Model response did not satisfy the action contract"
             ) from None
@@ -219,6 +275,12 @@ class Gateway:
             latency_ms=round((time.perf_counter() - start) * 1000),
             transport="response received",
         )
+        self.provider_status = {
+            "provider": provider,
+            "state": "action_validated",
+            "http_status": 200,
+            "message": "The last model response passed action validation. This is not a task-success score.",
+        }
         return action, dict(self.last_receipt)
 
 

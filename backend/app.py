@@ -102,6 +102,7 @@ async def status():
         "detectors": detector.status,
         "gemini_configured": bool(gateway.api_key),
         "gemini_model": gateway.model,
+        "provider_status": gateway.provider_status,
         "headless": headless,
         "scenarios": DEFAULT_TASKS,
         "run": run.public() if run else None,
@@ -116,6 +117,8 @@ async def settings(payload: SettingsRequest):
         raise HTTPException(409, "Stop the run before changing settings")
     if payload.api_key:
         gateway.api_key = payload.api_key
+    if payload.api_key or gateway.model != payload.gemini_model:
+        gateway.provider_status = None
     gateway.model = payload.gemini_model
     headless = payload.headless
     return {"configured": bool(gateway.api_key), "model": gateway.model}

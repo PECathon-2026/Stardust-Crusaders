@@ -909,6 +909,13 @@ function App() {
               never returned to the dashboard or saved to source files.
             </p>
             <label className="field-label">Gemini API key</label>
+            <p className="helper" role="status">
+              {state.provider_status?.provider === "gemini"
+                ? state.provider_status.message
+                : state.gemini_configured
+                  ? "Key saved locally. Provider access is checked when a task runs."
+                  : "No Gemini key is saved in this session."}
+            </p>
             <input
               type="password"
               autoComplete="off"
