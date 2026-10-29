@@ -1,5 +1,5 @@
 {
-  "scope": "50 actual browser screenshots, unseen seeds 11\u201315, two layouts. Detector receives no known-value vault. Coverage covers annotated visible text; whole media is conservatively masked. Not a universal pixel-PII benchmark.",
+  "scope": "50 actual browser screenshots, unseen seeds 11-15, two layouts. Detector receives no known-value vault. Coverage covers annotated visible text; private/unsupported media remains conservatively masked while ordinary images are scanned with OCR and face detection. Not a universal pixel-PII benchmark.",
   "cases": [
     {
       "scenario": "checkout",
@@ -22,7 +22,7 @@
           "protected": true
         }
       ],
-      "latency_ms": 3965,
+      "latency_ms": 6889,
       "masked_pixel_fraction": 0.1199,
       "yunet_faces": 0
     },
@@ -47,7 +47,7 @@
           "protected": true
         }
       ],
-      "latency_ms": 3408,
+      "latency_ms": 3653,
       "masked_pixel_fraction": 0.1205,
       "yunet_faces": 0
     },
@@ -72,7 +72,7 @@
           "protected": true
         }
       ],
-      "latency_ms": 3863,
+      "latency_ms": 4643,
       "masked_pixel_fraction": 0.1197,
       "yunet_faces": 0
     },
@@ -97,7 +97,7 @@
           "protected": true
         }
       ],
-      "latency_ms": 3581,
+      "latency_ms": 3046,
       "masked_pixel_fraction": 0.1197,
       "yunet_faces": 0
     },
@@ -122,7 +122,7 @@
           "protected": true
         }
       ],
-      "latency_ms": 3335,
+      "latency_ms": 2922,
       "masked_pixel_fraction": 0.1202,
       "yunet_faces": 0
     },
@@ -147,7 +147,7 @@
           "protected": true
         }
       ],
-      "latency_ms": 3497,
+      "latency_ms": 3150,
       "masked_pixel_fraction": 0.0872,
       "yunet_faces": 0
     },
@@ -172,7 +172,7 @@
           "protected": true
         }
       ],
-      "latency_ms": 3251,
+      "latency_ms": 3351,
       "masked_pixel_fraction": 0.0877,
       "yunet_faces": 0
     },
@@ -197,7 +197,7 @@
           "protected": true
         }
       ],
-      "latency_ms": 2729,
+      "latency_ms": 2798,
       "masked_pixel_fraction": 0.087,
       "yunet_faces": 0
     },
@@ -222,7 +222,7 @@
           "protected": true
         }
       ],
-      "latency_ms": 3414,
+      "latency_ms": 2841,
       "masked_pixel_fraction": 0.0878,
       "yunet_faces": 0
     },
@@ -247,7 +247,7 @@
           "protected": true
         }
       ],
-      "latency_ms": 3305,
+      "latency_ms": 2506,
       "masked_pixel_fraction": 0.0879,
       "yunet_faces": 0
     },
@@ -267,7 +267,7 @@
           "protected": true
         }
       ],
-      "latency_ms": 2702,
+      "latency_ms": 2546,
       "masked_pixel_fraction": 0.0935,
       "yunet_faces": 0
     },
@@ -287,7 +287,7 @@
           "protected": true
         }
       ],
-      "latency_ms": 2791,
+      "latency_ms": 2209,
       "masked_pixel_fraction": 0.0937,
       "yunet_faces": 0
     },
@@ -307,7 +307,7 @@
           "protected": true
         }
       ],
-      "latency_ms": 2481,
+      "latency_ms": 2270,
       "masked_pixel_fraction": 0.0937,
       "yunet_faces": 0
     },
@@ -327,7 +327,7 @@
           "protected": true
         }
       ],
-      "latency_ms": 2295,
+      "latency_ms": 2427,
       "masked_pixel_fraction": 0.0937,
       "yunet_faces": 0
     },
@@ -347,7 +347,7 @@
           "protected": true
         }
       ],
-      "latency_ms": 2483,
+      "latency_ms": 2338,
       "masked_pixel_fraction": 0.0937,
       "yunet_faces": 0
     },
@@ -367,7 +367,7 @@
           "protected": true
         }
       ],
-      "latency_ms": 2267,
+      "latency_ms": 2448,
       "masked_pixel_fraction": 0.0693,
       "yunet_faces": 0
     },
@@ -387,7 +387,7 @@
           "protected": true
         }
       ],
-      "latency_ms": 2480,
+      "latency_ms": 2302,
       "masked_pixel_fraction": 0.0696,
       "yunet_faces": 0
     },
@@ -407,7 +407,7 @@
           "protected": true
         }
       ],
-      "latency_ms": 2229,
+      "latency_ms": 2253,
       "masked_pixel_fraction": 0.0697,
       "yunet_faces": 0
     },
@@ -427,7 +427,7 @@
           "protected": true
         }
       ],
-      "latency_ms": 2937,
+      "latency_ms": 2069,
       "masked_pixel_fraction": 0.0696,
       "yunet_faces": 0
     },
@@ -447,7 +447,7 @@
           "protected": true
         }
       ],
-      "latency_ms": 2575,
+      "latency_ms": 2358,
       "masked_pixel_fraction": 0.0697,
       "yunet_faces": 0
     },
@@ -467,8 +467,8 @@
           "protected": true
         }
       ],
-      "latency_ms": 2900,
-      "masked_pixel_fraction": 0.047,
+      "latency_ms": 2242,
+      "masked_pixel_fraction": 0.0222,
       "yunet_faces": 0
     },
     {
@@ -487,8 +487,8 @@
           "protected": true
         }
       ],
-      "latency_ms": 2486,
-      "masked_pixel_fraction": 0.0466,
+      "latency_ms": 2189,
+      "masked_pixel_fraction": 0.0218,
       "yunet_faces": 0
     },
     {
@@ -507,8 +507,8 @@
           "protected": true
         }
       ],
-      "latency_ms": 2168,
-      "masked_pixel_fraction": 0.0466,
+      "latency_ms": 2228,
+      "masked_pixel_fraction": 0.0218,
       "yunet_faces": 0
     },
     {
@@ -527,8 +527,8 @@
           "protected": true
         }
       ],
-      "latency_ms": 2616,
-      "masked_pixel_fraction": 0.0471,
+      "latency_ms": 2303,
+      "masked_pixel_fraction": 0.0223,
       "yunet_faces": 0
     },
     {
@@ -547,8 +547,8 @@
           "protected": true
         }
       ],
-      "latency_ms": 2518,
-      "masked_pixel_fraction": 0.0466,
+      "latency_ms": 2230,
+      "masked_pixel_fraction": 0.0218,
       "yunet_faces": 0
     },
     {
@@ -567,8 +567,8 @@
           "protected": true
         }
       ],
-      "latency_ms": 2149,
-      "masked_pixel_fraction": 0.0576,
+      "latency_ms": 2352,
+      "masked_pixel_fraction": 0.0217,
       "yunet_faces": 0
     },
     {
@@ -587,8 +587,8 @@
           "protected": true
         }
       ],
-      "latency_ms": 2074,
-      "masked_pixel_fraction": 0.0571,
+      "latency_ms": 2056,
+      "masked_pixel_fraction": 0.0212,
       "yunet_faces": 0
     },
     {
@@ -607,8 +607,8 @@
           "protected": true
         }
       ],
-      "latency_ms": 2249,
-      "masked_pixel_fraction": 0.0571,
+      "latency_ms": 2098,
+      "masked_pixel_fraction": 0.0212,
       "yunet_faces": 0
     },
     {
@@ -627,8 +627,8 @@
           "protected": true
         }
       ],
-      "latency_ms": 2195,
-      "masked_pixel_fraction": 0.0577,
+      "latency_ms": 2179,
+      "masked_pixel_fraction": 0.0218,
       "yunet_faces": 0
     },
     {
@@ -647,8 +647,8 @@
           "protected": true
         }
       ],
-      "latency_ms": 2171,
-      "masked_pixel_fraction": 0.0577,
+      "latency_ms": 2104,
+      "masked_pixel_fraction": 0.0218,
       "yunet_faces": 0
     },
     {
@@ -672,7 +672,7 @@
           "protected": true
         }
       ],
-      "latency_ms": 2629,
+      "latency_ms": 2517,
       "masked_pixel_fraction": 0.1279,
       "yunet_faces": 2
     },
@@ -697,7 +697,7 @@
           "protected": true
         }
       ],
-      "latency_ms": 2554,
+      "latency_ms": 2202,
       "masked_pixel_fraction": 0.1284,
       "yunet_faces": 2
     },
@@ -722,7 +722,7 @@
           "protected": true
         }
       ],
-      "latency_ms": 2126,
+      "latency_ms": 2178,
       "masked_pixel_fraction": 0.1277,
       "yunet_faces": 2
     },
@@ -747,7 +747,7 @@
           "protected": true
         }
       ],
-      "latency_ms": 2839,
+      "latency_ms": 2012,
       "masked_pixel_fraction": 0.128,
       "yunet_faces": 2
     },
@@ -772,7 +772,7 @@
           "protected": true
         }
       ],
-      "latency_ms": 2326,
+      "latency_ms": 2142,
       "masked_pixel_fraction": 0.1282,
       "yunet_faces": 2
     },
@@ -797,7 +797,7 @@
           "protected": true
         }
       ],
-      "latency_ms": 2322,
+      "latency_ms": 2326,
       "masked_pixel_fraction": 0.0946,
       "yunet_faces": 2
     },
@@ -822,7 +822,7 @@
           "protected": true
         }
       ],
-      "latency_ms": 2439,
+      "latency_ms": 1935,
       "masked_pixel_fraction": 0.0955,
       "yunet_faces": 2
     },
@@ -847,7 +847,7 @@
           "protected": true
         }
       ],
-      "latency_ms": 2156,
+      "latency_ms": 2081,
       "masked_pixel_fraction": 0.0945,
       "yunet_faces": 2
     },
@@ -872,7 +872,7 @@
           "protected": true
         }
       ],
-      "latency_ms": 2385,
+      "latency_ms": 2022,
       "masked_pixel_fraction": 0.0948,
       "yunet_faces": 2
     },
@@ -897,7 +897,7 @@
           "protected": true
         }
       ],
-      "latency_ms": 2366,
+      "latency_ms": 2126,
       "masked_pixel_fraction": 0.095,
       "yunet_faces": 2
     },
@@ -922,7 +922,7 @@
           "protected": true
         }
       ],
-      "latency_ms": 2692,
+      "latency_ms": 2255,
       "masked_pixel_fraction": 0.0203,
       "yunet_faces": 0
     },
@@ -947,7 +947,7 @@
           "protected": true
         }
       ],
-      "latency_ms": 2775,
+      "latency_ms": 2396,
       "masked_pixel_fraction": 0.0203,
       "yunet_faces": 0
     },
@@ -972,7 +972,7 @@
           "protected": true
         }
       ],
-      "latency_ms": 2706,
+      "latency_ms": 2387,
       "masked_pixel_fraction": 0.0203,
       "yunet_faces": 0
     },
@@ -997,7 +997,7 @@
           "protected": true
         }
       ],
-      "latency_ms": 2795,
+      "latency_ms": 2231,
       "masked_pixel_fraction": 0.0203,
       "yunet_faces": 0
     },
@@ -1022,7 +1022,7 @@
           "protected": true
         }
       ],
-      "latency_ms": 2608,
+      "latency_ms": 2145,
       "masked_pixel_fraction": 0.0203,
       "yunet_faces": 0
     },
@@ -1047,7 +1047,7 @@
           "protected": true
         }
       ],
-      "latency_ms": 2301,
+      "latency_ms": 2746,
       "masked_pixel_fraction": 0.0203,
       "yunet_faces": 0
     },
@@ -1072,7 +1072,7 @@
           "protected": true
         }
       ],
-      "latency_ms": 2431,
+      "latency_ms": 2319,
       "masked_pixel_fraction": 0.0203,
       "yunet_faces": 0
     },
@@ -1097,7 +1097,7 @@
           "protected": true
         }
       ],
-      "latency_ms": 2705,
+      "latency_ms": 2434,
       "masked_pixel_fraction": 0.0203,
       "yunet_faces": 0
     },
@@ -1122,7 +1122,7 @@
           "protected": true
         }
       ],
-      "latency_ms": 2668,
+      "latency_ms": 2042,
       "masked_pixel_fraction": 0.0203,
       "yunet_faces": 0
     },
@@ -1147,7 +1147,7 @@
           "protected": true
         }
       ],
-      "latency_ms": 2399,
+      "latency_ms": 2027,
       "masked_pixel_fraction": 0.0203,
       "yunet_faces": 0
     }
@@ -1155,7 +1155,7 @@
   "entity_regions": 130,
   "protected_regions": 130,
   "region_recall": 1.0,
-  "p50_ms": 2564.5,
-  "p95_ms": 3497,
-  "mean_masked_fraction": 0.07385
+  "p50_ms": 2286.0,
+  "p95_ms": 3351,
+  "mean_masked_fraction": 0.06778
 }

@@ -253,7 +253,7 @@ class Detector:
             text = text[: f.start] + f"[REDACTED:{f.kind}]" + text[f.end :]
         return text, merged
 
-    def visual_boxes(self, png):
+    def visual_boxes(self, png, known=(), public_literals=()):
         import numpy as np
 
         image = Image.open(io.BytesIO(png)).convert("RGB")
@@ -263,7 +263,7 @@ class Detector:
             result = self.ocr(arr)
             if result.txts is not None:
                 for box, text in zip(result.boxes, result.txts):
-                    findings = self.detect(str(text))
+                    _, findings = self.sanitize(str(text), known, public_literals)
                     if findings:
                         xs = [float(p[0]) for p in box]
                         ys = [float(p[1]) for p in box]

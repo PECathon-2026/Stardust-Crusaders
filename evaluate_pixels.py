@@ -101,7 +101,7 @@ async def main():
     es = [e for r in rows for e in r["entities"]]
     lat = [r["latency_ms"] for r in rows]
     report = {
-        "scope": "50 actual browser screenshots, unseen seeds 11–15, two layouts. Detector receives no known-value vault. Coverage covers annotated visible text; whole media is conservatively masked. Not a universal pixel-PII benchmark.",
+        "scope": "50 actual browser screenshots, unseen seeds 11–15, two layouts. Detector receives no known-value vault. Coverage covers annotated visible text; private/unsupported media is conservatively masked, while ordinary images are scanned with OCR and face detection. Not a universal pixel-PII benchmark.",
         "cases": rows,
         "entity_regions": len(es),
         "protected_regions": sum(e["protected"] for e in es),

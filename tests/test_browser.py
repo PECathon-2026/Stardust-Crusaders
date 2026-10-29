@@ -11,7 +11,7 @@ async def browser():
     d = Detector()
     d.status.update(presidio=True, ocr=True)
     # Security-boundary tests use a detector stub; real detector integration is benchmarked separately.
-    d.visual_boxes = lambda png: []
+    d.visual_boxes = lambda png, **kwargs: []
     b = Browser(d)
     b.pw = await async_playwright().start()
     b.browser = await b.pw.chromium.launch(**launch_options(b.pw))
@@ -109,6 +109,37 @@ async def test_missing_detector_fails_closed(browser):
     browser.detector.status["ocr"] = False
     with pytest.raises(PrivacyError):
         await browser.capture()
+
+
+async def test_public_product_image_preserved_private_media_stays_masked(browser):
+    browser.detector.status['faces'] = True
+    await browser.page.set_content('<img style="width:100px;height:100px" alt="Product" src="data:image/svg+xml,%3Csvg xmlns=\"http://www.w3.org/2000/svg\"/%3E"><section aria-label="Private conversation"><img style="width:100px;height:100px" alt="Private photo"></section>')
+    preview = await browser.capture()
+    media = [b for b in preview['masks'] if b['source']=='conservative-media']
+    assert len(media) == 1 and media[0]['private']
+    browser.detector.status['faces'] = False
+    preview = await browser.capture()
+    assert len([b for b in preview['masks'] if b['source']=='conservative-media']) == 2
+
+
+async def test_sensitive_span_does_not_hide_surrounding_public_text(browser):
+    await browser.page.set_content('<p style="font:20px monospace">Public product information: person@example.test — available today</p>')
+    line = await browser.page.locator('p').bounding_box()
+    preview = await browser.capture(mode='baseline')
+    boxes = [b for b in preview['masks'] if b['source']=='dom-text']
+    assert boxes and all(b['width'] < line['width']/2 for b in boxes)
+    assert 'Public product information' in preview['observation']['context']
+    assert 'person@example.test' not in preview['observation']['context']
+
+
+async def test_public_search_is_visible_but_private_input_remains_masked(browser):
+    await browser.page.set_content('<input type="search" aria-label="Search Wikipedia" value="Privacy"><input type="password" aria-label="Password" value="secret-value">')
+    preview = await browser.capture()
+    boxes = [b for b in preview['masks'] if b['source']=='structural']
+    assert len(boxes) == 1 and boxes[0]['kind']=='PASSWORD'
+    await browser.page.locator('input[type=search]').fill('person@example.test')
+    preview = await browser.capture()
+    assert len([b for b in preview['masks'] if b['source']=='structural']) == 2
 
 
 async def test_snapshot_hides_local_values_and_urls(browser):

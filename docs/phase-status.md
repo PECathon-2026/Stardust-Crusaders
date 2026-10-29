@@ -36,3 +36,6 @@ Groq follow-up verified conference and developer outcomes. Support's earlier pro
 
 ## Live external-site Groq validation
 The two external-site tasks completed with live Groq on this revision: Wikipedia reached the verified Privacy article in 4 steps / 143.28 seconds; SauceDemo reached the verified backpack-only cart in 6 steps / 122.14 seconds. The run stopped before checkout. Evidence: `live-groq-wikipedia-saucedemo-results.json`. These are one successful attempt each, not a general reliability benchmark. Free-tier pacing dominates demo duration, so plan a short live action plus clearly labeled recorded evidence for a 2–3 minute presentation.
+
+
+Selective-redaction validation: 130/130 annotated text regions covered in 50 screenshots; median 2286 ms, p95 3351 ms (still above the 3-second target). Real-site checks preserved public images, but public-text false positives remain. The full suite passed 88 tests before the final search-field test; the expanded browser suite passed all 18 tests afterward.

@@ -33,14 +33,31 @@ COLLECT = r"""() => {
   const range=document.createRange();range.selectNodeContents(n);
   const boxes=Array.from(range.getClientRects()).map(r=>({x:r.x,y:r.y,width:r.width,height:r.height}));
   const scope=e.closest('section,[aria-label]');
-  texts.push({text:n.textContent.trim().slice(0,3000),context:(scope?.getAttribute('aria-label')||'')+' '+(e.getAttribute('aria-label')||''),boxes});
+  texts.push({node_index:texts.length,trim_start:n.textContent.length-n.textContent.trimStart().length,text:n.textContent.trim().slice(0,3000),context:(scope?.getAttribute('aria-label')||'')+' '+(e.getAttribute('aria-label')||''),boxes});
  }
- const media=Array.from(document.querySelectorAll('img,canvas,video,iframe,[role=img]')).filter(visible).map(e=>({...rect(e),kind:'MEDIA',source:'conservative-media'}));
+ const media=Array.from(document.querySelectorAll('img,canvas,video,iframe,[role=img]')).filter(visible).map(e=>({...rect(e),tag:e.tagName.toLowerCase(),private:/private|participant|medical/i.test((e.closest('section,[aria-label]')?.getAttribute('aria-label')||'')+' '+(e.getAttribute('aria-label')||'')),kind:'MEDIA',source:'conservative-media'}));
  const regions=Array.from(document.querySelectorAll('section')).filter(visible).map((e,j)=>({id:'r'+j,label:e.querySelector('h2')?.innerText||'Page section',...rect(e)}));
  if(!regions.length)regions.push({id:'r0',label:'Current viewport',x:0,y:0,width:innerWidth,height:innerHeight});
  return {controls,texts,media,regions,width:innerWidth,height:innerHeight,title:document.title};
 }"""
 FINGERPRINT = r"""() => JSON.stringify({url:location.href,text:document.body.innerText,fields:Array.from(document.querySelectorAll('input,textarea,select')).map(e=>[e.value,e.type,e.disabled]),controls:Array.from(document.querySelectorAll('[data-pl-target]')).map(e=>{const r=e.getBoundingClientRect();return[e.getAttribute('data-pl-target'),e.getAttribute('aria-label'),e.name,e.type,e.disabled,e.href,r.x,r.y,r.width,r.height]}),scroll:[scrollX,scrollY],size:[innerWidth,innerHeight]})"""
+
+TEXT_SPAN_BOXES = r"""({index,start,end}) => {
+ const visible=e=>{const r=e.getBoundingClientRect(),s=getComputedStyle(e);return r.width>0&&r.height>0&&s.visibility!=='hidden'&&s.display!=='none'&&r.bottom>0&&r.top<innerHeight&&r.right>0&&r.left<innerWidth};
+ const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n,i=0;
+ while(n=walker.nextNode()){
+  const e=n.parentElement;if(!e||e.closest('script,style,noscript,option')||!visible(e)||!n.textContent.trim())continue;
+  if(i++!==index)continue;
+  if(start<0||end>n.textContent.length||end<=start)return [];
+  const range=document.createRange();range.setStart(n,start);range.setEnd(n,end);
+  return Array.from(range.getClientRects()).map(r=>({x:r.x,y:r.y,width:r.width,height:r.height}));
+ }return [];
+}"""
+
+PUBLIC_LABELS = {
+    'https://en.wikipedia.org': ('Wikipedia', 'The Free Encyclopedia', 'Wikimedia Foundation'),
+    'https://www.saucedemo.com': ('Swag Labs', 'Sauce Labs Backpack', 'Sauce Labs Bike Light', 'Sauce Labs Bolt T-Shirt', 'Sauce Labs Fleece Jacket', 'Sauce Labs Onesie', 'Test.allTheThings() T-Shirt (Red)'),
+}
 
 
 def purpose(control):
@@ -154,17 +171,13 @@ class Browser:
             raise PrivacyError("Page changed while capturing")
         if not self.detector.status["presidio"] or not self.detector.status["ocr"]:
             raise PrivacyError("Required local detectors are unavailable")
-        masks = list(raw["media"])
+        masks = [m for m in raw["media"] if m['tag'] != 'img' or m['private'] or not self.detector.status.get('faces')]
         findings = []
         texts = []
         controls = []
         self.registry = {}
         # Explicit public demo product dictionary; never exempts regex secrets or vault values.
-        public_literals = (
-            ("Sauce Labs Backpack",)
-            if self.origin == "https://www.saucedemo.com"
-            else ()
-        )
+        public_literals = PUBLIC_LABELS.get(self.origin, ())
         for item in raw["texts"]:
             private = any(
                 w in item["context"].lower()
@@ -185,10 +198,15 @@ class Browser:
                     }
                 )
             else:
-                safe, fs = self.detector.sanitize(item["text"], known)
+                safe, fs = self.detector.sanitize(item["text"], known, public_literals)
                 if fs:
-                    for box in item["boxes"]:
-                        masks.append({**box, "kind": fs[0].kind, "source": "dom-text"})
+                    for finding in fs:
+                        # Python offsets count Unicode points; DOM Range uses UTF-16.
+                        start = item['trim_start'] + len(item['text'][:finding.start].encode('utf-16-le')) // 2
+                        end = item['trim_start'] + len(item['text'][:finding.end].encode('utf-16-le')) // 2
+                        boxes = await self.page.evaluate(TEXT_SPAN_BOXES, {'index':item['node_index'], 'start':start, 'end':end})
+                        for box in boxes or item['boxes']:
+                            masks.append({**box, "kind": finding.kind, "source": "dom-text"})
                     findings.extend(
                         {"kind": f.kind, "source": f.source, "reason": f.reason}
                         for f in fs
@@ -203,7 +221,7 @@ class Browser:
                 "reset",
                 "checkbox",
                 "radio",
-            ):
+            ) and (p or c['type'] == 'password' or self.detector.sanitize(c.get('value', ''), known)[1]):
                 masks.append(
                     {
                         **c["rect"],
@@ -215,7 +233,7 @@ class Browser:
                     {
                         "kind": p.upper() if p else "INPUT",
                         "source": "structural",
-                        "reason": "Input value stays local",
+                        "reason": "Sensitive input value stays local",
                     }
                 )
             # Real hrefs, values and local selectors never enter observation.
@@ -237,7 +255,9 @@ class Browser:
                      "selected": option["selected"], "disabled": option["disabled"]}
                     for option in c.get("options", [])
                 ]
-        visual = await asyncio.to_thread(self.detector.visual_boxes, png)
+        visual = await asyncio.to_thread(self.detector.visual_boxes, png, known=known, public_literals=public_literals)
+        if await self.signature() != after:
+            raise StaleObservation("Page changed while applying privacy masks")
         masks.extend(visual)
         findings.extend(
             {"kind": b["kind"], "source": b["source"], "reason": "Local pixel detector"}

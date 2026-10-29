@@ -39,7 +39,7 @@ Secret values are in memory, bound to scenario, origin, recognized field purpose
 | `frontend/src/AgentWorkspace.tsx` | Prompt sidebar, supported address, action status, previews and approval | Primary user workflow, separate from evaluation |
 
 ## Capture and disclosure
-Visible DOM text is scanned locally. Every input field and unsupported media surface is conservatively covered. Private conversation/participant regions are protected by contextual policy. OCR scans the full screenshot to catch text in pixels; YuNet adds detected face boxes. The screenshot is rebuilt as RGB PNG with solid rectangles, not blur, and no original image metadata. Original and sanitized previews are local only.
+Visible DOM text is scanned locally. Sensitive-purpose inputs and inputs containing detected or known private values are covered. Ordinary images are scanned with OCR/face detection; private media and unsupported surfaces remain conservatively covered. Private conversation/participant regions are protected by contextual policy. OCR scans the full screenshot to catch text in pixels; YuNet adds detected face boxes. The screenshot is rebuilt as RGB PNG with solid rectangles, not blur, and no original image metadata. Original and sanitized previews are local only.
 
 Contract mode shares controls and completion status; baseline mode shares full sanitized text. Neither automatically transmits screenshots. A planner may request an enumerated region; user approval releases only its sanitized crop. Gemini supports the image path; local Ollama currently uses text only. Whole-image and text-only ablations must not be conflated.
 

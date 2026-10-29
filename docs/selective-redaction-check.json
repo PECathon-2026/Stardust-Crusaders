@@ -1,0 +1,27 @@
+{
+  "scope": "Real-page visual checks with direct scripted navigation, not AI task success",
+  "results": [
+    {
+      "site": "wikipedia",
+      "blanket_public_image_masks": 0,
+      "remaining_masks": 8,
+      "detectors": {
+        "patterns": true,
+        "presidio": true,
+        "ocr": true,
+        "faces": true
+      }
+    },
+    {
+      "site": "saucedemo",
+      "blanket_public_image_masks": 0,
+      "remaining_masks": 4,
+      "detectors": {
+        "patterns": true,
+        "presidio": true,
+        "ocr": true,
+        "faces": true
+      }
+    }
+  ]
+}
