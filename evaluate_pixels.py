@@ -56,6 +56,16 @@ async def main():
                         """truth=>truth.map(([kind,value])=>{const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;const boxes=[];while(n=w.nextNode()){if(n.parentElement.closest('script,style'))continue;let i=n.textContent.indexOf(value);if(i<0)continue;const r=document.createRange();r.setStart(n,i);r.setEnd(n,i+value.length);for(const b of r.getClientRects())if(b.y>=0&&b.bottom<=innerHeight)boxes.push({x:b.x,y:b.y,width:b.width,height:b.height});}return {kind,boxes}})""",
                         truth,
                     )
+                    if scenario == 'authentication':
+                        # Independent pixel annotations: never pass these values/boxes to detection.
+                        annotations = json.loads((ROOT / 'docs/identity-image-annotations.json').read_text())
+                        for annotation in annotations:
+                            rect = await b.page.locator('img[src$="' + annotation['image'] + '"]').bounding_box()
+                            left, top, right, bottom = annotation['bounds']
+                            sx, sy = rect['width']/annotation['size'][0], rect['height']/annotation['size'][1]
+                            expected_box = {'x':rect['x']+left*sx,'y':rect['y']+top*sy,'width':(right-left)*sx,'height':(bottom-top)*sy}
+                            if expected_box['y'] >= 0 and expected_box['y']+expected_box['height'] <= 900:
+                                boxes.append({'kind':annotation['kind'], 'boxes':[expected_box]})
                     masks = coverage((1280, 900), p["masks"])
                     entities = []
                     for item in boxes:

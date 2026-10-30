@@ -1,0 +1,62 @@
+{
+  "scope": "Synthetic clean card scans at two viewport widths and two layouts. OCR masks only; known-value hints empty. Not a guarantee for arbitrary photographs.",
+  "cases": [
+    {
+      "viewport_width": 1050,
+      "layout": 0,
+      "kind": "IN_AADHAAR",
+      "ocr_coverage": 1.0,
+      "passed": true
+    },
+    {
+      "viewport_width": 1050,
+      "layout": 0,
+      "kind": "IN_PAN",
+      "ocr_coverage": 1.0,
+      "passed": true
+    },
+    {
+      "viewport_width": 1050,
+      "layout": 1,
+      "kind": "IN_AADHAAR",
+      "ocr_coverage": 1.0,
+      "passed": true
+    },
+    {
+      "viewport_width": 1050,
+      "layout": 1,
+      "kind": "IN_PAN",
+      "ocr_coverage": 1.0,
+      "passed": true
+    },
+    {
+      "viewport_width": 1280,
+      "layout": 0,
+      "kind": "IN_AADHAAR",
+      "ocr_coverage": 1.0,
+      "passed": true
+    },
+    {
+      "viewport_width": 1280,
+      "layout": 0,
+      "kind": "IN_PAN",
+      "ocr_coverage": 1.0,
+      "passed": true
+    },
+    {
+      "viewport_width": 1280,
+      "layout": 1,
+      "kind": "IN_AADHAAR",
+      "ocr_coverage": 1.0,
+      "passed": true
+    },
+    {
+      "viewport_width": 1280,
+      "layout": 1,
+      "kind": "IN_PAN",
+      "ocr_coverage": 1.0,
+      "passed": true
+    }
+  ],
+  "passed": true
+}

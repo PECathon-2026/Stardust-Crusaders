@@ -47,3 +47,9 @@ Supported actions are clicks, text entry, explicit local-secret entry, dropdown 
 
 
 Draft-only enforcement: enable **Draft only — block sending, purchasing and deleting** before starting the custom support task. The activity shows the rule is active. If the planner proposes Send, the run blocks locally and leaves the draft on the page; it must not display an approval prompt or submit. The exact English instruction "Do not send it" also activates the rule. This is limited to recognized consequential controls, not all possible website side effects.
+
+
+## Aadhaar and PAN inside images
+Open a fresh Sign-in & identity demo, then choose Privacy → Inspect this page locally. The page displays clearly marked synthetic card PNGs. Compare Show local original against the protected preview: the identifier numbers should be blacked out. No AI key is needed for this inspection. Ordinary AI text planning still sends no screenshot; image disclosure remains a separate approval.
+
+Run `.venv/Scripts/python.exe verify_identity_images.py` for the real OCR regression. Eight checks passed across two viewport widths and two layouts, with no known-value hints and numbers absent from DOM text. This result applies to these clean synthetic scans, not all real photographs.

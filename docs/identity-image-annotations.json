@@ -1,0 +1,32 @@
+[
+  {
+    "image": "synthetic-aadhaar.png",
+    "kind": "IN_AADHAAR",
+    "value": "2345 6789 0123",
+    "bounds": [
+      32,
+      191,
+      408,
+      228
+    ],
+    "size": [
+      760,
+      310
+    ]
+  },
+  {
+    "image": "synthetic-pan.png",
+    "kind": "IN_PAN",
+    "value": "ABCDE1234F",
+    "bounds": [
+      31,
+      191,
+      361,
+      228
+    ],
+    "size": [
+      760,
+      310
+    ]
+  }
+]

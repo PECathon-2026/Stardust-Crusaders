@@ -239,3 +239,7 @@ Time-critical next work: validate a custom prompt, demonstrate denied approval a
 
 ## Laksh: task-authority restriction and bonus audit
 User confirmed the reported send followed clicking Approve; the approval gate did not silently bypass consent. Added explicit per-run Draft only enforcement plus a conservative English negative-instruction trigger. Consequential recognized clicks are blocked before approval/execution. See docs/BONUS-STATUS.md for honest bonus coverage, innovation candidates and remaining required demonstration work. Saved-browser-data extraction remains excluded. Unused reference checkout removal was blocked by automatic review; the folders remain. Attribution is retained.
+
+
+## Laksh: image-based identity demo
+Replaced typed Aadhaar/PAN examples on authentication with clearly synthetic PNG card scans. Real local OCR covered both identifier regions in 8/8 checks across two widths and two layouts without vault hints. Updated screenshot evaluator to use independent image annotations; prior 160-region benchmark remains historical, not a rerun on this revision. See docs/identity-image-results.json and verify_identity_images.py.
