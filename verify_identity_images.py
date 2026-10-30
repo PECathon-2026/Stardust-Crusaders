@@ -33,10 +33,22 @@ async def main():
                     left,top,right,bottom=round(rect['x']+x1*sx),round(rect['y']+y1*sy),round(rect['x']+x2*sx),round(rect['y']+y2*sy)
                     rate=float(pixels[top:bottom,left:right].mean())
                     rows.append({'viewport_width':width,'layout':layout,'kind':a['kind'],'ocr_coverage':round(rate,4),'passed':rate>=.98})
+                all_masks=Image.new('1',(width,1000));all_draw=ImageDraw.Draw(all_masks)
+                for m in preview['masks']:
+                    all_draw.rectangle((m['x']-3,m['y']-3,m['x']+m['width']+3,m['y']+m['height']+3),fill=1)
+                all_pixels=np.asarray(all_masks)
+                portraits=b.page.locator('.identity-portrait')
+                assert await portraits.count()==2
+                for i in range(2):
+                    r=await portraits.nth(i).bounding_box()
+                    x,y,right,bottom=round(r['x']),round(r['y']),round(r['x']+r['width']),round(r['y']+r['height'])
+                    rate=float(all_pixels[y:bottom,x:right].mean())
+                    rows.append({'viewport_width':width,'layout':layout,'kind':'PRIVATE_PORTRAIT','coverage':round(rate,4),'passed':rate>=.98})
                 if width==1050 and layout==0:
+                    (ROOT/'docs/identity-images-original.png').write_bytes(await b.page.screenshot())
                     (ROOT/'docs/identity-images-sanitized.png').write_bytes(b.png)
-                print(json.dumps(rows[-2:]),flush=True)
-        report={'scope':'Synthetic clean card scans at two viewport widths and two layouts. OCR masks only; known-value hints empty. Not a guarantee for arbitrary photographs.','cases':rows,'passed':all(r['passed'] for r in rows)}
+                print(json.dumps(rows[-4:]),flush=True)
+        report={'scope':'Synthetic clean card scans at two viewport widths and two layouts. Identifier coverage uses OCR masks only; portraits use explicit private-region masks. Known-value hints empty. Not a guarantee for arbitrary photographs.','cases':rows,'passed':all(r['passed'] for r in rows)}
         (ROOT/'docs/identity-image-results.json').write_text(json.dumps(report,indent=2),encoding='utf-8')
         assert report['passed'], 'OCR did not cover all annotated identifier pixels'
     finally:await b.close()

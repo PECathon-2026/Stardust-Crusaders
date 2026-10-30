@@ -53,3 +53,5 @@ Draft-only enforcement: enable **Draft only — block sending, purchasing and de
 Open a fresh Sign-in & identity demo, then choose Privacy → Inspect this page locally. The page displays clearly marked synthetic card PNGs. Compare Show local original against the protected preview: the identifier numbers should be blacked out. No AI key is needed for this inspection. Ordinary AI text planning still sends no screenshot; image disclosure remains a separate approval.
 
 Run `.venv/Scripts/python.exe verify_identity_images.py` for the real OCR regression. Eight checks passed across two viewport widths and two layouts, with no known-value hints and numbers absent from DOM text. This result applies to these clean synthetic scans, not all real photographs.
+
+The Aadhaar/PAN displays also include fictional portraits. Local inspection should hide both portrait regions and both identifier numbers. The portrait masks use explicit private-region structure, while the identifiers are detected by OCR.

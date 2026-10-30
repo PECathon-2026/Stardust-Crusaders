@@ -1,5 +1,5 @@
 {
-  "scope": "Synthetic clean card scans at two viewport widths and two layouts. OCR masks only; known-value hints empty. Not a guarantee for arbitrary photographs.",
+  "scope": "Synthetic clean card scans at two viewport widths and two layouts. Identifier coverage uses OCR masks only; portraits use explicit private-region masks. Known-value hints empty. Not a guarantee for arbitrary photographs.",
   "cases": [
     {
       "viewport_width": 1050,
@@ -17,6 +17,20 @@
     },
     {
       "viewport_width": 1050,
+      "layout": 0,
+      "kind": "PRIVATE_PORTRAIT",
+      "coverage": 1.0,
+      "passed": true
+    },
+    {
+      "viewport_width": 1050,
+      "layout": 0,
+      "kind": "PRIVATE_PORTRAIT",
+      "coverage": 1.0,
+      "passed": true
+    },
+    {
+      "viewport_width": 1050,
       "layout": 1,
       "kind": "IN_AADHAAR",
       "ocr_coverage": 1.0,
@@ -30,6 +44,20 @@
       "passed": true
     },
     {
+      "viewport_width": 1050,
+      "layout": 1,
+      "kind": "PRIVATE_PORTRAIT",
+      "coverage": 1.0,
+      "passed": true
+    },
+    {
+      "viewport_width": 1050,
+      "layout": 1,
+      "kind": "PRIVATE_PORTRAIT",
+      "coverage": 1.0,
+      "passed": true
+    },
+    {
       "viewport_width": 1280,
       "layout": 0,
       "kind": "IN_AADHAAR",
@@ -45,6 +73,20 @@
     },
     {
       "viewport_width": 1280,
+      "layout": 0,
+      "kind": "PRIVATE_PORTRAIT",
+      "coverage": 1.0,
+      "passed": true
+    },
+    {
+      "viewport_width": 1280,
+      "layout": 0,
+      "kind": "PRIVATE_PORTRAIT",
+      "coverage": 1.0,
+      "passed": true
+    },
+    {
+      "viewport_width": 1280,
       "layout": 1,
       "kind": "IN_AADHAAR",
       "ocr_coverage": 1.0,
@@ -55,6 +97,20 @@
       "layout": 1,
       "kind": "IN_PAN",
       "ocr_coverage": 1.0,
+      "passed": true
+    },
+    {
+      "viewport_width": 1280,
+      "layout": 1,
+      "kind": "PRIVATE_PORTRAIT",
+      "coverage": 1.0,
+      "passed": true
+    },
+    {
+      "viewport_width": 1280,
+      "layout": 1,
+      "kind": "PRIVATE_PORTRAIT",
+      "coverage": 1.0,
       "passed": true
     }
   ],

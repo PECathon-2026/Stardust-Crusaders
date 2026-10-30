@@ -9,3 +9,5 @@ Face detector scores on this one image do not establish general face-detection a
 
 ## Synthetic identity scans
 `assets/synthetic-aadhaar.png` and `assets/synthetic-pan.png` are reproducible, locally drawn PNG test cards from `generate_identity_assets.py`. They are prominently marked SYNTHETIC SAMPLE / NOT VALID ID and contain no real identity, official logos, signatures or QR codes. The numbers are image pixels, not webpage text or alt values. This is a clean-scan OCR demonstration, not a realistic government-document reproduction. Independent number-region annotations are in docs/identity-image-annotations.json and are used only by evaluation.
+
+Both card displays now include the existing AI-generated fictional participant portrait, composed over the card in the webpage. Identifier numbers remain raster image text. Portrait elements are explicitly marked private and masked as private media; this does not constitute a new face-detection accuracy test. No real identity document or real person was added.
