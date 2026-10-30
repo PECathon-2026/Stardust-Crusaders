@@ -15,8 +15,4 @@ All local identities, credentials, financial details and records are synthetic. 
 | Faces and participant identity | Meeting | Private participant regions and detected faces protected |
 | Public information | SauceDemo catalog, public-browsing toggle | Product photos, labels and controls remain useful; demonstrate the difference from private account data |
 
-The exact demo actions remain independently verified fixture outcomes: sign-in, purchase, reply submitted, microphone muted and demo key revoked. The extension operates on the real open fixture tab. These controlled sites demonstrate privacy with reproducible inputs; SauceDemo is the external public test-site example. Wikipedia is no longer part of the recommended demo.
-
-The Aadhaar/PAN and explicit medical-record additions expand the earlier screenshot corpus. Earlier 130-region scores refer to the prior fixture revision and must not be relabeled as measurements of these expanded pages without rerunning evaluation.
-
-The expanded evaluation has now been rerun: 160/160 annotated visible text regions across 50 screenshots (docs/pixel-results.json). This supersedes the older 130-region corpus for these fixtures.
+The exact demo actions remain independently verified fixture outcomes: sign-in, purchase, reply submitted, microphone muted and demo key revoked. The extension operates on the real open fixture tab. These controlled sites demonstrate privacy with reproducible inputs; SauceDemo is the external public test-site example.

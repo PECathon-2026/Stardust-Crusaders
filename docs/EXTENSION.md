@@ -1,13 +1,13 @@
 # Genuine browser extension
 
-The `extension/` folder is a Manifest V3 browser extension. Its side panel sits beside the actual webpage. It does not embed the screenshot dashboard as a substitute for an interactive website.
+The `extension/` folder is a Manifest V3 browser extension. Its side panel sits beside the actual webpage. The user interacts directly with the website while the panel controls the agent.
 
 ## Start on this laptop
 
 1. Keep the local PrivacyLens server running (`start.ps1`).
 2. Run `launch-extension.ps1`. It opens a visible Chrome for Testing browser with the unpacked extension loaded. The dedicated profile is under `.runtime/extension-profile` on D:. It does not read your everyday browser profile or saved passwords.
 3. The side panel opens automatically. Click **Open connection page**, copy the server session's code, paste it into the panel's **Connection code**, then click **Connect**.
-4. In panel **Settings**, save a Gemini or Groq key. Keys stay in local-server memory. A server restart requires reconnecting and re-entering the provider key.
+4. Choose Ollama for a running local model, or in panel **Settings**, save a Gemini or Groq key. Keys stay in local-server memory. A server restart requires reconnecting and re-entering the provider key.
 5. Open a demo from the panel, enter a prompt, select a planner and click **Run on this tab**.
 
 For an existing compatible Chrome/Edge profile, use its extension management page, enable developer mode and load the project's `extension/` folder unpacked. Click the PrivacyLens toolbar icon to open the side panel. This installation route needs verification in the user's browser/version; the bundled Chrome for Testing route has been integration-tested.
@@ -36,16 +36,8 @@ The extension pairs using a random server-session code. Ordinary website origins
 
 `chrome.debugger` transports a narrow browser adapter to the local service over a loopback WebSocket. The existing local detector/sanitizer, exact-byte model gateway, secret permissions, action validator and approval engine are reused. Browser commands are restricted to a supported attached tab; action handles and the observation fingerprint are checked before input. Raw DOM/screenshots travel to localhost for local processing, not directly to the cloud. The trusted local backend can issue browser evaluation commands; this is not a sandbox against a compromised local service.
 
-Supported extension tabs: the five local demo categories and SauceDemo's login/inventory/cart. Wikipedia stays in the earlier workspace and is intentionally excluded from the extension demo. General arbitrary-site access is not implemented.
+Supported extension tabs: the five local demo categories and SauceDemo's login/inventory/cart. General arbitrary-site access is not implemented.
 
-## Validation
+## Testing
 
-The full automated suite passed **108 tests** at this checkpoint, including extension origin/pairing guards, transport lifetime, public/private handling and stale-capture recovery.
-
-Real installed-extension integration verified manual prefilled sign-in, session retention, pause/manual editing, local inspection, and Stop leaving the website open. That integration run used the deterministic local driver, not an AI model.
-
-Live Gemini validation also passed through the actual visible side panel and attached meeting tab: verified microphone muted in two observations, HTTP 200, with a text-only protected request. The webpage stayed interactive and the panel displayed the sanitized preview. Evidence: `live-extension-gemini-conference-results.json`. This is one successful live extension task, not an all-scenario reliability claim. A separate earlier browser-adapter Gemini meeting check completed in 9.47 seconds.
-
-Expanded screenshot evaluation covered 160/160 annotated visible text regions across 50 screenshots. Median processing was 2419.5 ms; p95 was 3013 ms, slightly above the 3-second target. These are bounded synthetic-corpus measurements, not universal privacy accuracy.
-
-Sources: [Chrome sidePanel](https://developer.chrome.com/docs/extensions/reference/api/sidePanel), [Chrome debugger](https://developer.chrome.com/docs/extensions/reference/api/debugger), [extension WebSocket lifecycle](https://developer.chrome.com/docs/extensions/how-to/web-platform/websockets).
+See [hands-on acceptance tests](EXTENSION-TESTING.md) and [recorded evidence](EVALUATION.md).

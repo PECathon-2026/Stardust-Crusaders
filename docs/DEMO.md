@@ -1,35 +1,26 @@
-# 2–3 minute demonstration and judging guide
+# Demo and voice-over guide
 
-Before recording: run setup/start, wait for detector readiness, open the dashboard, keep screen at 1440×1000 if possible. Use only synthetic fixtures. If using Gemini, enter a key in local Settings and select the cloud planner; otherwise explicitly say the demonstration uses the deterministic local test driver. Do not show a key entry or any real account.
+Use the actual Chrome side panel beside the website. Prepare a connected local service and a working planner before recording. Keep provider Settings and real accounts off screen. All examples below use synthetic data.
 
-## Script
-**0:00–0:20 — Problem and novelty.** “A browser agent can see far more than its task requires. PrivacyLens turns a task into a disclosure contract: the agent receives enough context to act, while local policy controls secrets, extra visibility and consequential actions.”
+## Suggested 2–3 minute sequence
+| Time | Screen action | Voice-over |
+|---|---|---|
+| 0:00–0:20 | Show the identity demo beside the extension. | “PrivacyLens is an AI browser agent that works beside the website. Our focus is controlling what the model can see and what it is allowed to do.” |
+| 0:20–0:55 | Open Privacy, inspect locally, compare protected and local-original previews. | “This demo contains synthetic Aadhaar and PAN cards. Their numbers are inside images. Local OCR finds those numbers, and our privacy pipeline masks them. Private portraits and sensitive fields are protected too. I can still read and use the original website.” |
+| 0:55–1:30 | Open Support. Enter the custom draft prompt below, enable Draft only and run. Show the category and draft on the page. | “I can give a custom instruction. Here I ask the agent to select Technical and draft a reply without sending it. The model proposes actions, but local rules validate the target and the current page. Draft only blocks recognized sending actions before approval.” |
+| 1:30–1:55 | Run a fresh synthetic consequential task and show its approval pause. Decline. | “Actions such as sending a reply or placing a demo order require my approval. Declining stops the action. Take control also returns the tab to me without closing my session.” |
+| 1:55–2:20 | Show a privacy receipt and, optionally, Attack Lab. | “Receipts show the model destination, the amount of screened data and the fingerprint of the checked request. The leakage gate and local policy tests reject detected secrets or invalid secret use.” |
+| 2:20–2:45 | Show Ollama selected and a completed local-model task. | “PrivacyLens can also use Ollama for on-device AI inference. Our contribution combines selective disclosure, scoped secret injection, approval and visible evidence in one browser workflow.” |
 
-**0:20–1:05 — Checkout.** Start the checkout. Switch between original and sanitized local previews. Point out the protected name, address, card and fields. Explain that the model gets reference names rather than secret values. At Place demo order, show the approval pause; approve once and show the verified outcome. With the local driver, say it validates the pipeline rather than AI reasoning.
+Custom support prompt: `Select Technical. Write “Please restart the demo app.” Do not send it.`
 
-**1:05–1:30 — Misuse resistance.** Open Attack lab, run probes, show actual results. Explain wrong-origin and wrong-field secret rejection. Be precise: these are local enforcement probes, not a comprehensive prompt-injection benchmark.
+Use a short meeting mute task for the local-model segment if its latency fits the recording. If waiting periods are cut, label the edit “Waiting shortened.” Record actual outcomes rather than narrating success before it happens.
 
-**1:30–2:00 — Original workflow.** Show Privacy contract and Evidence. Explain minimal context, approved region requests, and exact-payload receipts. Show the measured full-text versus minimal-context comparison from `docs/benchmark-results.json` once generated. Do not invent AI success numbers.
+## Concepts to explain
+- **Protected preview:** what local masking removes from a screenshot, not a replacement for the real website.
+- **Secret reference:** the model requests an allowed field value by reference; local code checks scope and fills it.
+- **Receipt:** a record of the checked model request, not a certificate of perfect privacy.
+- **Attack Lab:** synthetic local misuse tests, not an attack on an external website.
+- **Local AI:** the model runs through Ollama on this device. The deterministic test driver is a different testing tool.
 
-**2:00–2:30 — Proof and boundaries.** Show tests/results and one conference/developer scenario. State the limitations: detectors can miss unknown PII, approved sites receive submitted values, and receipts are audit records rather than formal proofs. Reused detectors are openly attributed; the integration and enforcement workflow are original.
-
-## Rubric mapping
-| Criterion | Marks | Demonstrate |
-|---|---:|---|
-| Innovation | 15 | Contract/disclosure/capability workflow and measured ablation; acknowledge prior art |
-| System design / codebase knowledge | 20 | Trace capture → sanitized observation → exact-byte gate → planner → policy → execution; explain every module |
-| Problem understanding | 15 | Both text and pixels, five scenario types, local raw data, usefulness retained |
-| Test cases | 20 | Policy, API, browser staleness, image masking, detector corpus, real scenario completion and failed cases |
-| Impact / feasibility | 15 | Runs on this laptop; measured latency; explicit cloud/local boundaries and practical limits |
-| Presentation | 15 | Clear live task, visible approval, attack evidence, honest reproducible results |
-
-## Questions to rehearse
-- Why are regexes insufficient? Contextual names and pixel text need other detectors; generic classifiers can also miss things.
-- Why opaque masks? Blur is not reliable removal; rebuilt solid pixels eliminate the covered original region.
-- How does the agent fill a password it cannot see? It proposes a scoped reference; local code validates origin, field, snapshot and use count before resolving it.
-- What if a page tells it to ignore instructions? Page text is untrusted, but prompt wording is not the main defense: strict actions and local permissions constrain execution.
-- Does zero observed leakage prove privacy? No. State tested denominators and attack scope.
-- What did you copy? Infrastructure libraries and three attributed patterns; no prior privacy-agent application fork.
-- What is incomplete? Consult the current phase-status and evaluation report; distinguish adapter implementation from live-provider validation.
-
-Record a screen demonstration after rehearsing. A recorded local-driver demo must be labeled as such. Do not present synthetic page success as performance on arbitrary websites.
+Keep the explanation focused on the behavior visible in the recording. The five synthetic categories and SauceDemo are the supported extension scope.

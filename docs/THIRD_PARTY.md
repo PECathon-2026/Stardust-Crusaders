@@ -19,5 +19,3 @@ YuNet SHA-256: `8f2383e4dd3cfbb4553ea8718107fc0423210dc964f9f4280604804ed2552fa4
 Pinned model source: https://media.githubusercontent.com/media/opencv/opencv_zoo/48b10fa505aeb51fbd127fc60a5c660040e823b7/models/face_detection_yunet/face_detection_yunet_2023mar.onnx
 
 Original code: privacy contract and observation format; browser registry/fingerprint; purpose-bound vault; disclosure approvals; action executor checks; exact-payload gate; receipts; dashboard design; synthetic pages; tests; evaluation and documentation. Dependencies are openly attributed; do not present their detectors, browser engine or model inference as our invention.
-
-NAYAN and screenshot-redactor are prior-art references only. No application source or interface is reused. No Browser Use agent loop is forked. No claim of uniqueness follows merely from avoiding copied code.

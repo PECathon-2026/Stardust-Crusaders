@@ -15,7 +15,7 @@ To repeat, open a fresh meeting using the demo menu. Running the mute task on an
 
 ## Other functional checks
 
-For each row, open a fresh demo, use **Use this page's example**, and choose Gemini. These are supported flows to test; only the meeting is currently recorded as a successful live Gemini extension run.
+For each row, open a fresh demo, use **Use this page's example**, and choose a configured AI planner. Check the actual page outcome after each run.
 
 | Demo | What you should see | Data demonstrated |
 |---|---|---|
@@ -41,7 +41,7 @@ Start a task and click **Take control** before it finishes. Wait for paused stat
 
 
 ## Custom prompts
-Type your own task instead of the example. The cloud planner receives that instruction, subject to privacy screening and supported actions. Try: `Set the issue category to "Technical". Write "Please restart the demo app." in the public reply box. Do not send it.` The expected page state is Technical selected, the requested draft present and no submitted-reply result. Custom tasks end with a request to inspect the result, not a claim of independent verification. The local test driver remains scripted and does not support arbitrary instructions.
+Type your own task instead of the example. The selected AI planner receives that instruction, subject to privacy screening and supported actions. Try: `Set the issue category to "Technical". Write "Please restart the demo app." in the public reply box. Do not send it.` The expected page state is Technical selected, the requested draft present and no submitted-reply result. Custom tasks end with a request to inspect the result, not a claim of independent verification. The local test driver remains scripted and does not support arbitrary instructions.
 
 Supported actions are clicks, text entry, explicit local-secret entry, dropdown selection, scrolling and waiting. Arbitrary sites, arbitrary browser/system operations, uploads and password-store extraction are not implemented. Custom prompt support does not mean every possible request can be completed.
 
@@ -52,6 +52,9 @@ Draft-only enforcement: enable **Draft only — block sending, purchasing and de
 ## Aadhaar and PAN inside images
 Open a fresh Sign-in & identity demo, then choose Privacy → Inspect this page locally. The page displays clearly marked synthetic card PNGs. Compare Show local original against the protected preview: the identifier numbers should be blacked out. No AI key is needed for this inspection. Ordinary AI text planning still sends no screenshot; image disclosure remains a separate approval.
 
-Run `.venv/Scripts/python.exe verify_identity_images.py` for the real OCR regression. Eight checks passed across two viewport widths and two layouts, with no known-value hints and numbers absent from DOM text. This result applies to these clean synthetic scans, not all real photographs.
+Run `.venv/Scripts/python.exe verify_identity_images.py` for the real OCR regression. It checks identifier and portrait coverage across two viewport widths and two layouts, with no known-value hints for identifiers and numbers absent from DOM text. This result applies to these clean synthetic scans, not all real photographs.
 
 The Aadhaar/PAN displays also include fictional portraits. Local inspection should hide both portrait regions and both identifier numbers. The portrait masks use explicit private-region structure, while the identifiers are detected by OCR.
+
+## Local AI
+Ensure Ollama serves `qwen3:4b` at localhost:11434. Select Ollama in Task, open a fresh Meeting demo and run the mute instruction. Verify the microphone status on the page and Local Ollama as the receipt destination. The team has confirmed this mode works on its device.

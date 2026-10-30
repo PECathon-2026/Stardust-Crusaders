@@ -1,58 +1,50 @@
-# PrivacyLens architecture and codebase guide
+# Architecture and codebase guide
 
-## What we built
-A local browser-agent control plane with task-scoped disclosure. It deliberately separates an untrusted planner's proposed actions from local authority. The original contribution is the integrated workflow: task contracts, progressive visual disclosure, field-scoped secret capabilities, current-page approval checks and request receipts, paired with a reproducible ablation. None of these primitives is claimed to be a new invention.
-
+## Data flow
 ```mermaid
 flowchart LR
-  B[Attached extension tab or isolated Chromium] --> D[Local DOM / NLP / OCR / face detectors]
-  D --> S[Sanitized semantic observation + opaque PNG]
-  S --> C[Task contract: minimal context]
-  C --> G[Exact serialized payload gate]
-  G --> P[Gemini or local Ollama]
-  P --> V[Strict action schema + snapshot validation]
-  V --> A[Local approval / scoped secret vault]
-  A --> B
-  G --> R[Digest + disclosure receipt]
+  B[Real browser tab] --> E[Extension side panel and debugger adapter]
+  E --> D[Local DOM, NER, OCR and face detection]
+  D --> S[Sanitized observation and pixel masks]
+  S --> G[Exact serialized payload gate]
+  G --> P[Gemini, Groq or local Ollama]
+  P --> V[Action and snapshot validation]
+  V --> A[Task rules, scoped secrets and approval]
+  A --> E
+  G --> R[Privacy receipts]
 ```
 
-The primary interaction surface is now `extension/panel.html`: prompts, approvals, manual handoff and privacy evidence beside an ordinary interactive tab. `extension_api.py` pairs an explicit extension origin and session token, and `extension_transport.py` adapts its loopback WebSocket/CDP commands to the existing browser pipeline. The extension's tab survives stopping; the earlier isolated-browser adapter still closes its own browser. The five local fixtures and SauceDemo remain the supported targets. See EXTENSION.md for trust limits and EXTENSION-TESTING.md for acceptance steps.
+The extension uses a paired localhost WebSocket to the FastAPI service. Its side panel contains tasks, approval controls, local previews and provider settings. The real tab remains interactive and survives Stop or Take control. The root web page provides setup; `/lab` provides evaluation tools. An isolated browser adapter supports automated fixture benchmarks.
 
-## Trust boundaries
-The webpage, model output, target labels and task text may contain hostile instructions. They never become executable code, arbitrary selectors or a destination supplied to the model gateway. The model receives random target handles and permitted secret-reference names. The browser resolves handles locally and checks a fingerprint of URL, visible text, fields and geometry before acting. A stale action fails rather than operating on a new page.
+## Module map
+| Module | Responsibility |
+|---|---|
+| `extension/panel.html`, `panel.js` | Prompts, planner selection, privacy controls, approvals and receipts |
+| `extension/background.js` | Active-tab control and debugger command transport |
+| `backend/extension_api.py` | Pairing, allowed extension origins and extension endpoints |
+| `backend/extension_transport.py` | Loopback WebSocket browser adapter |
+| `backend/contracts.py` | Strict action/request types and scenario capabilities |
+| `backend/browser.py` | DOM collection, opaque target handles, capture and execution |
+| `backend/privacy.py` | Detectors, masking and outbound data checks |
+| `backend/agent.py` | Model adapters, bounded agent loop, secret vault, approvals and receipts |
+| `backend/fixtures.py` | Synthetic websites and independently evaluated outcomes |
+| `backend/evaluation.py` | Text corpus and local policy probes |
+| `backend/app.py` | Local HTTP API and session/origin controls |
+| `frontend/src/main.tsx` | Privacy Lab and setup interface |
 
-The planner's JSON schema is regenerated for each observation: current snapshot and target handles are enumerated; completed secret fields are excluded from further fill proposals; each action variant has exactly its relevant fields. A bounded, sanitized recent-action summary gives continuity without exposing values or old raw pages. The model proposes a consequential click normally; approval is collected by the executor, never inferred from the model's wording.
+## Observation and disclosure
+Visible DOM spans and screenshot pixels are screened locally. Sensitive-purpose fields and private regions receive masks. Ordinary images use OCR and face detection. The sanitizer uses solid pixel rectangles and fresh PNG encoding. Private/Public profiles control contextual masking while retaining protection for recognized identifiers and known secrets.
 
-All task inputs and observations pass local sanitization. The model HTTP body is serialized once, inspected and hashed, then those same bytes are passed to HTTPX. The only image exemption is the exact locally composed image at the exact provider image path. Payload fields named `data` or `image_base64` are not generally exempt. API credentials are separate authentication headers, necessarily sent to the selected API provider; they are not browser-page context.
+The ordinary model observation contains sanitized text and opaque controls, without screenshot transmission. Gemini may request a named region, which requires approval before a sanitized crop is released. Groq and Ollama use text only. Task-minimal and full-sanitized-text modes support a controlled disclosure comparison.
 
-Secret values are in memory, bound to scenario, origin, recognized field purpose and a two-use limit. Action validation binds their use to the current snapshot. Authorized form submission necessarily sends values to the destination website; this project protects the model pathway, not all network traffic. Labels and form semantics are not a cryptographic proof of website intent. The preset origin is assumed to be an authorized site; a malicious same-origin page remains an important limitation.
+The gateway serializes the model request once, inspects and hashes it, then transmits those exact bytes. Approved image data is exempted only at its specific provider field. Provider credentials travel as authentication, separately from browser context. Ollama requests stay on localhost.
 
-## Modules and questions judges may ask
-| Module | Responsibility | Why it exists |
-|---|---|---|
-| `contracts.py` | Strict request/action types; scenario capabilities | Reject tool invention and unrelated action properties |
-| `fixtures.py` | Seeded synthetic pages and separate annotations | Reproducible evaluation without personal data |
-| `privacy.py` | Patterns, Presidio, OCR, YuNet, opaque PNG composition, outgoing gate | Detect locally and avoid raw fallback |
-| `browser.py` | DOM extraction, target registry, capture, fingerprint, execution | Keep raw selectors, values and URLs out of reasoning |
-| `agent.py` | Planner adapters, bounded loop, vault, approvals and receipts | Model proposes; local policy authorizes |
-| `evaluation.py` | Text corpus and local adversarial probes | Evidence rather than hard-coded success claims |
-| `app.py` | Local API, session/origin boundary and fixtures | Separate control origin (8765) from untrusted pages (8766) |
-| `frontend/src/main.tsx` | Privacy Lab scenario studio, preview, approvals, evidence | Make the trust boundary inspectable |
-| `frontend/src/AgentWorkspace.tsx` | Prompt sidebar, supported address, action status, previews and approval | Primary user workflow, separate from evaluation |
+## Local action authority
+Model output is a proposal, not executable code. Local validation checks action type, target handle, snapshot, field purpose and task restrictions. Groq uses a stable wire schema with changing constraints enforced locally. Gemini uses per-observation constraints. Bounded sanitized action history provides continuity.
 
-## Capture and disclosure
-Visible DOM text is scanned locally. Sensitive-purpose inputs and inputs containing detected or known private values are covered. Ordinary images are scanned with OCR/face detection; private media and unsupported surfaces remain conservatively covered. Private conversation/participant regions are protected by contextual policy. OCR scans the full screenshot to catch text in pixels; YuNet adds detected face boxes. The screenshot is rebuilt as RGB PNG with solid rectangles, not blur, and no original image metadata. Original and sanitized previews are local only.
+Secret values stay in memory and are bound to task/scenario, origin, recognized field purpose and a two-use limit. The model receives references. Authorized form entry delivers the resolved value to the website. Recognized consequential actions require approval. Draft only rejects those actions before approval. Custom tasks finish with user review; canonical fixture tasks can independently verify their outcome.
 
-Contract mode shares controls and completion status; baseline mode shares full sanitized text. Neither automatically transmits screenshots. A planner may request an enumerated region; user approval releases only its sanitized crop. Gemini supports the image path; local Ollama currently uses text only. Whole-image and text-only ablations must not be conflated.
+## Failure handling and trust boundaries
+Invalid actions, stale observations, denied approvals and detected unsafe payloads stop execution. Capture changes trigger bounded recapture before a model request. There is no raw-data fallback. Loops and waits are bounded; provider errors do not silently trigger retries. Take control cancels the run and detaches automation. Stop also clears local overrides/previews while retaining the extension tab.
 
-## Failure policy
-Missing required NLP/OCR, changing capture, stale target, invalid action, unapproved disclosure, denied operation, unknown secret, detector exception and transport failure stop the run. No raw fallback. Loops are bounded by step, wall-time and approval deadlines. Transport redirects and environment proxies are disabled. No automatic retries risk duplicate consequential actions. Browser sessions are ephemeral and Stop & clear closes the context and removes run secrets/previews.
-
-## Honest limitations
-This is a hackathon prototype, not a proof of complete privacy. Unknown PII, novel encodings, split text, CSS-generated content and small/occluded faces can evade detection. Conservative media masking loses context. Screenshots/DOM can differ in dynamic applications. The page fingerprint is a practical stale-action defense, not atomic execution or a defense against a compromised browser. The host OS, local processes, malicious extensions and provider retention policies are outside the guarantee. Local dashboard access is not multi-user authentication. Cloud data handling depends on the provider/account. Raw data exists briefly in memory and the local preview; never export it in real-user runs.
-
-Receipts are hashes of checked bytes and disclosures, not independently signed proofs and not evidence that all sensitive data was detected. A blocked action may follow an earlier permitted request. A model saying `done` is reported separately from a verified fixture outcome. The local deterministic driver verifies plumbing, not AI reasoning quality.
-
-
-## Prompt entry and Groq schema update
-The root route is the prompt-driven Browser Agent; `/lab` is the scenario/evidence workspace. `/api/agent/runs` accepts instructions and an exact allowlisted page URL, then reuses the existing task/origin policy. Unsupported addresses are rejected before navigation. Groq uses a stable required-nullable wire schema to avoid provider discriminator conflicts; the current snapshot/action/target restrictions are enforced locally by `validate_text_proposal` and the executor. Gemini retains the per-observation schema. Groq pacing estimates a rolling token budget; shared-account use can still cause rate limits.
+The host, local service and browser are trusted. The local service can issue browser evaluation commands, so the transport is not a sandbox against a compromised backend. Page semantics can be misleading, and detectors can miss unknown information. The project protects its model pathway rather than all browser traffic. Receipts identify checked bytes and decisions, not mathematical guarantees of complete redaction.

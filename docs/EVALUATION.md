@@ -1,61 +1,30 @@
-# Measured evaluation
+# Evaluation and reproducibility
 
-Latest extension checkpoint: **108 automated tests passed**. Expanded screenshot corpus: **160/160 annotated visible text regions across 50 screenshots**, median 2419.5 ms and p95 3013 ms. The latency target remains unmet. Live Gemini completed the meeting task through the actual side panel and attached tab, with a text-only request and verified mute outcome (`live-extension-gemini-conference-results.json`). This single success does not establish all-scenario reliability. Earlier measurements below describe their recorded revisions.
+Results refer to their saved test inputs and revisions. Synthetic coverage does not establish universal detection accuracy or arbitrary-site reliability.
 
-Measured on this Windows laptop (16 GB RAM, CPU local inference; GTX 1650 is not required). These are hackathon fixture results, not production guarantees. Machine-readable evidence is saved beside this document.
-
-## Current verified results
-| Check | Result | Scope |
+## Evidence index
+| Check | Recorded evidence | Interpretation |
 |---|---|---|
-| Automated tests | 56 passed (also verified after moving to D:) | Detector patterns, negative text, payload fields/encodings, image masks, vault use limits, dynamic action schemas, exact-byte mock transport, HTTP failures, API, stale/duplicate/disabled targets, denied/mutated approvals and approved-only sanitized crop disclosure |
-| Text detection | 100% recall, 98.21% precision | 110 expected entities across 50 text cases, 4 negative controls; 2 false positives; no known-secret hints |
-| Text latency | p50 10.22 ms, p95 19.48 ms | Detector only, excludes browser and AI |
-| Screenshot annotated-region coverage | 130/130 regions covered at least 98% | 50 actual screenshots, seeds 11–15, 2 layouts × 5 scenarios; no known-value vault passed to capture |
-| Screenshot processing | p50 2,564.5 ms, p95 3,497 ms | Capture, DOM scan, NLP, OCR, face detection and masking; some early samples overlapped other development checks |
-| Mean masked viewport fraction | 7.385% | Includes conservative input/media masking; not false-positive pixel rate |
-| YuNet conference face detections | 2 per image in all 10 conference samples | Repeated fictional face fixture; not a general face benchmark |
-| UI smoke | No page JavaScript errors; no horizontal overflow at 390 px | Desktop and mobile dashboard inspection |
+| Text detection | 110 entities across 50 cases and 4 negative controls; 100% recall, about 98.2% precision | Two false positives in the synthetic corpus. Text latency excludes browser capture, OCR and AI. |
+| Identity images | `identity-image-results.json` | OCR identifier and explicit private-portrait coverage across two widths and two layouts. Independent annotations; no known-value hints for identifier detection. |
+| Screenshot corpus | `pixel-results.json` | 50 screenshots and 160 annotated text regions in the recorded fixture revision; median 2419.5 ms, p95 3013 ms. This predates image-card additions and is not a benchmark of the current card assets. |
+| Disclosure comparison | `benchmark-results.json` | Ten verified deterministic workflow outcomes; task-bound observation bytes reduced 25.18%. This is not an AI-quality benchmark. |
+| Real extension + Gemini | `live-extension-gemini-conference-results.json` | Meeting mute verified through the actual side panel and attached tab in two observations. |
+| Local AI | Team acceptance test, 30 October 2026 | Team confirmed Ollama works locally. No automated timing/reliability report is attached to that manual test. |
 
-The p95 screenshot target of <3 seconds is **not met** in this run. All annotated regions being covered does not establish zero unknown-PII leakage. Small, split, transformed or occluded text and unfamiliar names remain challenging.
+Automated test checkpoints include a full run of 109 passing tests and a later focused run of 37 browser/extension tests. They are separate runs, not an additive count. Re-run the suite to report the result for a new checkout.
 
-## Workflow evaluation
-`benchmark.py` compares contract and baseline disclosure across all five synthetic tasks. Each fixture verifies entered field values or the required operation before exposing completion. The benchmark's automatic approvals apply only to test fixtures. Results are in `benchmark-results.json`; initial authentication regressions were identified and corrected (numeric-looking random handles and a password-reveal button incorrectly classified as a field). The completed local-driver rerun is summarized below.
+Groq records include verified checkout, authentication, support, meeting and developer outcomes in `live-groq-results.json`, `live-groq-support-results.json` and `live-groq-followup-results.json`. These are selected attempts across revisions, not a consecutive five-task trial. Saved reports retain failed attempts and their provider/policy outcomes.
 
-The deterministic local driver is not AI. Its success measures workflow/policy integration. Gemini runs and two external-site tasks are recorded separately by `live_check.py`; a planner claiming completion without a verified page result is `needs_review`, not success.
+## Security checks
+Tests cover encoded canaries, misleading payload fields, exact checked/transmitted bytes, secret scopes, disabled/unknown targets, stale pages, denied approvals and approved-only image disclosure. Attack Lab executes local rejection probes. It is not a comprehensive end-to-end prompt-injection benchmark.
 
-Latest local-driver ablation including bounded action history: 10/10 verified outcomes, with 15,044 bytes of contract-mode planning observations versus 20,106 baseline bytes (25.18% reduction). Context-only bytes were 86 versus 6,305 (98.64% reduction). These are local-driver observation sizes, not cloud request billing sizes. Both modes used the same core privacy enforcement and bounded action history.
-
-Initial live Gemini 3.8 Flash returned HTTP 503; no action executed. Gemini 3.5 Flash-Lite responded, but the initial stateless prompt/schema completed only conference; other tasks hit loops, an invalid action or unverified completion. Those failure records are preserved. The revised agent adds bounded action history, per-observation action variants and explicit executor-owned approval semantics. Live results must be remeasured; local test success does not substitute for this.
-
-## Leakage and attack evidence
-Outgoing canaries, URL-encoded/base64 values and misleading `data`/`image_base64` keys are rejected by policy tests. A mock HTTPX receiver confirms the exact inspected and hashed bytes are those handed to transport. This is a bounded transport test, not a network-wide DLP proof. Eight dashboard probes exercise actual local rejection paths. Browser tests check stale pages, unknown targets, duplicate handles, disabled targets, missing OCR and protected-field writes.
-
-The suite does not establish a broad prompt-injection success rate. A malicious authorized website can still mislabel its own fields. No unredacted baseline is sent to a cloud provider. Detection is only part of the boundary; action restrictions and human approvals constrain consequences independently.
-
-## Reproduction and independence
-Run `python -m pytest -q`, then start the server and run `benchmark.py` and `evaluate_pixels.py` using `.venv/Scripts/python.exe`. The latter obtains expected regions from annotations only after the detector has processed the screenshot. Browser holdout seeds differ from the 1–5 text corpus. Templates are deliberately small and controlled; layout variations are not independent real-world applications.
-
-For a fair AI ablation, use the same Gemini model, seed, task and core enforcement in both modes. Report request bytes, context bytes, image area, turns and independently verified outcome. A script-only ablation cannot prove that reduced context preserves arbitrary AI reasoning quality.
-
-## Remaining validation
-The revised cloud flow most recently received HTTP 402 before producing an action. Its successful end-to-end validation remains open pending project billing/access and a locally entered key. Both external tasks passed after relocation: Wikipedia reached the verified Privacy article in 28.73 seconds; SauceDemo reached a verified backpack-only cart in 23.77 seconds. Earlier repetitions encountered browser/capture failures, preserved in the first commit, so reliability across arbitrary sites is not established. The captioned local-driver demo is 143 seconds and does not claim cloud-AI performance.
-
-
-## Groq live follow-up and prompt workspace
-The earlier Gemini billing limitation remains provider-specific. Groq returned successful actions using `openai/gpt-oss-120b`; the selected successful outcomes below occurred across different attempts and revisions, **not one 5/5 consecutive trial**:
-
-| Synthetic scenario | Verified outcome | Steps | Seconds | Evidence |
-|---|---|---:|---:|---|
-| Checkout | purchase | 7 | 30.75 | live-groq-results.json |
-| Authentication | signin | 5 | 21.53 | live-groq-results.json |
-| Support, revised prompt | send | 6 | 75.39 | live-groq-support-results.json |
-| Conference | mute | 2 | 8.27 | live-groq-followup-results.json |
-| Developer | revoke | 3 | 55.16 | live-groq-followup-results.json |
-
-Failures are preserved. Support previously repeated actions, hit HTTP 429, encountered schema rejection, and then stopped via the no-progress guard. The real NER detector misclassified "Choose Billing" in the task as a person, deleting required context. Rephrasing the fixture's example to `Set the issue category to "Billing"` preserved the category instruction without bypassing detection. Arbitrary free-form tasks may still suffer contextual false positives. Live times include local processing, inference and conservative quota pacing.
-
-The cloud wire schema is now fixed across snapshots, with all changing target/snapshot constraints enforced locally. Full automated suite passed 85 tests before the final prompt-wording regression was added; 22 focused tests then passed, including that real-detector regression. UI checks cover prompt submission, approval rejection, unsupported-address rejection, protected key entry, mobile layout and Privacy Lab navigation. Mocked UI results are not AI success evidence.
-
-
-## Live external-site Groq validation
-The two external-site tasks completed with live Groq on this revision: Wikipedia reached the verified Privacy article in 4 steps / 143.28 seconds; SauceDemo reached the verified backpack-only cart in 6 steps / 122.14 seconds. The run stopped before checkout. Evidence: `live-groq-wikipedia-saucedemo-results.json`. These are one successful attempt each, not a general reliability benchmark. Free-tier pacing dominates demo duration, so plan a short live action plus clearly labeled recorded evidence for a 2–3 minute presentation.
+## Run the checks
+```powershell
+.\.venv\Scripts\python.exe -m pytest -q
+# Start the server and leave it idle for the following:
+.\.venv\Scripts\python.exe verify_identity_images.py
+.\.venv\Scripts\python.exe benchmark.py
+.\.venv\Scripts\python.exe evaluate_pixels.py
+```
+Pixel evaluation reads expected annotations separately from detector inputs. Use [extension acceptance tests](EXTENSION-TESTING.md) for the interactive workflow. Provider timing includes inference and quota pacing, while text-only detector timing does not. The recorded screenshot p95 slightly exceeds the three-second target.

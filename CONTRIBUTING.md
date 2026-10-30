@@ -1,9 +1,7 @@
-# Team checkpoints
+# Contributing
 
-Use a small number of meaningful commits: an implemented phase, a verified fix, or a finished evidence/documentation update. Record actual work when it is ready; do not backdate commits or split a completed snapshot to simulate earlier development.
+Make focused commits for coherent changes and use the identity of the contributor who implements or reviews and owns that work. GitHub push credentials and commit authorship are separate.
 
-The first implementation checkpoint is authored by Silveroger (`eshans444@gmail.com`), as requested by Eshan. LakshGargG (`lakshgargg@gmail.com`) can author a later checkpoint for work he implements or substantively reviews and owns. For a genuine joint contribution, use a `Co-authored-by` footer with the contributor's agreement.
+Before committing, inspect the diff and run checks appropriate to the change. Keep setup, current behavior and reproducible tests documented. Use synthetic fixtures for privacy tests and keep their expected annotations separate from detector inputs.
 
-Local commit authorship uses this repository's Git identity. It does not require signing out of GitHub. The credentials used to push are separate; GitHub associates commits with accounts through verified email addresses. Never include credentials, `.env`, runtime data, installed dependencies or reference checkouts in commits.
-
-This project was developed with Codex assistance. Dependency provenance, measured results and unfinished validation are documented openly. Before a checkpoint, inspect the staged diff and run checks appropriate to its changes.
+Do not commit provider keys, local secrets, runtime profiles, virtual environments or installed dependencies. Preserve applicable dependency licenses and attribution. Development uses AI assistance alongside team implementation and review.

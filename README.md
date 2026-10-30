@@ -1,57 +1,64 @@
 # PrivacyLens — Stardust Crusaders
 
-**Permission to do more. Access to less.** A local browser-agent workspace with task-scoped disclosure, local secret capabilities, consequential-action approval and inspectable privacy receipts.
+PrivacyLens is a Chrome side-panel AI agent with local privacy screening. Type a task beside the real webpage, inspect what the model can see, and approve sensitive actions before execution.
 
-## Run on Windows
-
+## Start on Windows
 ```powershell
-cd "D:\pecathon"
+cd D:\pecathon
 powershell -ExecutionPolicy Bypass -File .\setup.ps1
 powershell -ExecutionPolicy Bypass -File .\start.ps1
 ```
-Setup is needed once; start is used thereafter. Open http://127.0.0.1:8765. Fixtures run on 8766. Requires Node/npm, Python with pip, internet for initial dependency/model downloads and roughly 16 GB RAM. Python 3.11.9 is isolated. An ephemeral Microsoft Edge session is used if Playwright Chromium is absent; it never attaches to your normal browser profile.
+Run setup once. Keep the server running, then launch the extension in another terminal:
+```powershell
+powershell -ExecutionPolicy Bypass -File .\launch-extension.ps1
+```
+The launcher installs its browser if needed and opens Chrome for Testing with PrivacyLens. Open the connection page from the side panel, enter its session code and connect. Open a demo website from the panel, enter a task and choose a planner. See [extension setup](docs/EXTENSION.md).
 
-The home page provides extension setup and pairing links. Privacy Lab at `/lab` retains detection tests and evidence for judging.
+The local app uses port 8765 and synthetic demo pages use 8766. The home page provides setup links. Privacy Lab at `/lab` provides evaluation and evidence tools. Initial setup requires Python, Node/npm and internet access for dependencies and model assets.
 
-The primary demo is now a **genuine browser extension**. With the server running, launch `launch-extension.ps1`, pair the side panel using its connection page, and save your provider key in panel Settings. Open a demo from the panel and run a prompt beside the actual interactive website. **Take control** pauses automation while keeping your tab and session open. See [extension setup](docs/EXTENSION.md) and [hands-on testing](docs/EXTENSION-TESTING.md).
+## Features
+- Same-tab automation with custom prompts, manual takeover and approval controls.
+- Local pattern, NER, OCR and face detection with selective text and pixel masking.
+- Private/Public profiles, task-minimal context and approved sanitized image regions.
+- Local secret injection bound to task, origin, field purpose and limited uses.
+- Draft only blocks recognized consequential actions before approval.
+- Checked outbound payloads and inspectable privacy receipts.
 
-The former screenshot-only agent UI has been removed. Privacy Lab remains available as evidence tooling. The extension supports five synthetic pages and SauceDemo; Wikipedia stays in the earlier workspace. Arbitrary-site access is not implemented. The local test driver is explicitly labeled and is not AI.
+## Planner choices
+| Planner | Configuration |
+|---|---|
+| Gemini | Save a provider key in panel Settings. Supports sanitized text and approved image regions. |
+| Groq | Save a Groq key. Text planning with `openai/gpt-oss-120b`. See [Groq](docs/GROQ.md). |
+| Ollama | Run `qwen3:4b` locally at `127.0.0.1:11434`. Text planning without a cloud fallback. |
+| Local test driver | Deterministic fixture checks without an AI model or key. |
 
+For Ollama, install Ollama separately, run `ollama pull qwen3:4b`, ensure the local service is running and select Ollama in the panel. The team has successfully tested local AI on its device. Setup does not install the language model.
 
+Provider keys and explicit local secrets remain in server memory and clear on restart. No `.env` file is needed. Never paste secrets into task prompts or commit them.
 
-### Planner choices
-- **Local test driver:** deterministic fixture walkthrough, no AI call or key. Exercises the real privacy pipeline; not an AI success benchmark.
-- **Groq:** add a Groq key in local Settings and select Groq for sanitized text planning with `openai/gpt-oss-120b`. Keys stay in memory until restart. Local screenshot masking still runs, but this planner cannot receive images. Free accounts have rate limits. See [Groq setup and validation](docs/GROQ.md).
-- **Gemini:** add a key in local Settings, select a supported model, then select Gemini. Keys stay in backend memory until the process ends. Exact request bytes pass the local gate. Provider data-handling terms still apply.
-- **Ollama:** optional adapter to an existing local instance at `127.0.0.1:11434`, model `qwen3:4b`. Text only, no cloud fallback. Not installed by setup; evaluate separately on this laptop.
+## Demo and testing
+Supported extension targets are five synthetic categories (checkout, identity/sign-in, support/health, meeting and developer settings) and SauceDemo login/inventory/cart pages. Use synthetic data for demonstrations.
 
-Five synthetic profiles cover checkout, authentication, support, conference and developer settings. Two external presets target Wikipedia and SauceDemo. Use demonstration credentials and synthetic data for judging.
-
-## Reproduce verification
 ```powershell
 .\.venv\Scripts\python.exe -m pytest -q
-# Keep start.ps1 running for the following:
+# With the local server running:
+.\.venv\Scripts\python.exe verify_identity_images.py
 .\.venv\Scripts\python.exe benchmark.py
 .\.venv\Scripts\python.exe evaluate_pixels.py
-.\.venv\Scripts\python.exe verify_external.py
-# Once a key is saved locally:
-.\.venv\Scripts\python.exe live_check.py groq
-# Repeat selected cases without overwriting the full suite result:
-.\.venv\Scripts\python.exe live_check.py groq support conference developer
-# Captioned synthetic local-driver video (app must be idle):
-.\.venv\Scripts\python.exe record_demo.py
 ```
-The benchmark automatically approves synthetic test tasks, compares both disclosure modes and saves evidence under `docs/`. Screenshot evaluation uses separate annotations without supplying known secrets to the detector. The dashboard’s text evaluation is a smaller, separately labeled corpus.
+The benchmark automatically approves synthetic fixture operations. Run it while the app is idle. It measures the deterministic workflow; live AI and detection evidence have separate scopes.
 
-Read [project plan.md](project%20plan.md) for the agreed scope, source reuse, phases, test targets and judging rubric. Read [docs/research.md](docs/research.md) for the upstream survey.
+## Documentation
+- [Architecture and code map](docs/ARCHITECTURE.md)
+- [Hands-on tests](docs/EXTENSION-TESTING.md)
+- [Demo and voice-over script](docs/DEMO.md)
+- [Sensitive-data demo map](docs/DEMO-DATA-MAP.md)
+- [Bonus capabilities](docs/BONUS-STATUS.md)
+- [Evaluation](docs/EVALUATION.md)
+- [Original contribution](docs/INNOVATION.md)
+- [Dependencies and licenses](docs/THIRD_PARTY.md)
+- [Synthetic assets](docs/ASSETS.md)
+- [Project scope and judging checklist](project%20plan.md)
 
-Source checkouts in `third_party/` are ignored reference/dependency material, not application implementation. NAYAN is prior art only and must not be copied into the application or submission.
-
-## Documentation and scope
-Read [architecture](docs/ARCHITECTURE.md), [innovation](docs/INNOVATION.md), [reuse/licenses](docs/THIRD_PARTY.md), [phase status](docs/phase-status.md), [demo guide](docs/DEMO.md) and [synthetic asset](docs/ASSETS.md).
-
-Protection applies to application-controlled model requests and execution. Websites still receive values deliberately entered into their forms. Detection can miss unknown PII; conservative masking can lose context. Hashes are not proofs of perfect redaction. Original pixels exist in local memory/preview. Do not claim production security or AI performance from scripted tests. Consult the evaluation report for actual results and unmet targets.
-
-Credentials must be configured locally and never committed. Reference checkouts, virtual environments, raw previews and runtime state are not submission source files.
-
-Development is AI-assisted with Codex. Open-source components are credited separately from the application integration. See `CONTRIBUTING.md` for the checkpoint and attribution workflow.
+## Privacy boundary
+Raw page data is processed locally. The model receives screened context; authorized form entry still sends values to the website. Detection can miss unknown sensitive information or over-mask useful content. Receipts identify checked payloads, not proofs of perfect privacy. The extension controls supported tabs and does not read the browser password database.
