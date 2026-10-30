@@ -127,7 +127,7 @@ async function refresh() {
     $('events').replaceChildren(...(r?.events||[]).slice(-6).map(e=>{const li=document.createElement('li');li.textContent=e.title;const small=document.createElement('small');small.textContent=e.detail;li.append(small);return li}));
     $('receipts').replaceChildren(...(r?.receipts||[]).slice(-5).map(r=>{const div=document.createElement('div');div.className='receipt';div.textContent=`${r.destination||r.decision} · ${r.bytes||0} bytes · ${r.image_disclosed?'sanitized image approved':'no image disclosure'} · ${r.digest||'blocked before transport'}`;return div}));
     $('pause').disabled=!controlling;
-    for(const id of ['provider','privacy-profile','demo-secrets','prompt'])$(id).disabled=controlling;
+    for(const id of ['provider','privacy-profile','demo-secrets','draft-only','prompt'])$(id).disabled=controlling;
     if(controlling&&!operation&&r?.id===activeRunId&&['completed','blocked','needs_review','stopped'].includes(r.status)){controlling=false;await detach()}
     drawPreview();await updateTab();
   } catch(e){error(e.message)}finally{polling=false}
@@ -139,7 +139,7 @@ $('example').onclick=()=>action(async()=>{const name=scenario((await currentTab(
 $('start').onclick=()=>action(async()=>{
   if($('prompt').value.trim().length<3)throw new Error('Enter your task first');
   operation=true;inspection=null;
-  try {const tab=await attach();const result=await api('extension/run',{url:tab.url,task:$('prompt').value,provider:$('provider').value,demo_secrets:$('demo-secrets').checked,privacy_profile:$('privacy-profile').value});activeRunId=result.id;await refresh()}catch(e){controlling=false;await detach();throw e}finally{operation=false}
+  try {const tab=await attach();const result=await api('extension/run',{url:tab.url,task:$('prompt').value,provider:$('provider').value,demo_secrets:$('demo-secrets').checked,privacy_profile:$('privacy-profile').value,draft_only:$('draft-only').checked});activeRunId=result.id;await refresh()}catch(e){controlling=false;await detach();throw e}finally{operation=false}
 });
 $('pause').onclick=()=>action(takeControl);
 $('stop').onclick=()=>action(async()=>{controlling=false;guard=null;await api('stop',{});await detach();inspection=null;await refresh()});

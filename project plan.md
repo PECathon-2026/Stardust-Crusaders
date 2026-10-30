@@ -235,3 +235,7 @@ Laksh resumed ownership on the shared laptop. Removed the old screenshot-agent U
 Saved-browser-password and autofill-data extraction is explicitly out of scope at the user's request. Manual login and explicit local secret injection remain. Reference clones are optional, but installed dependencies, model assets, licenses and provenance must stay. No reference folders were deleted in this checkpoint.
 
 Time-critical next work: validate a custom prompt, demonstrate denied approval and blocked unsafe payload, record the required 2–3 minute video, and rehearse the architecture/limitations explanation. General arbitrary-site control is a future phase, not required by PS-004's controlled-page evaluation scenarios.
+
+
+## Laksh: task-authority restriction and bonus audit
+User confirmed the reported send followed clicking Approve; the approval gate did not silently bypass consent. Added explicit per-run Draft only enforcement plus a conservative English negative-instruction trigger. Consequential recognized clicks are blocked before approval/execution. See docs/BONUS-STATUS.md for honest bonus coverage, innovation candidates and remaining required demonstration work. Saved-browser-data extraction remains excluded. Unused reference checkout removal was blocked by automatic review; the folders remain. Attribution is retained.

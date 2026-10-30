@@ -30,6 +30,7 @@ class TabRunRequest(Strict):
     provider: str = 'groq'
     demo_secrets: bool = False
     privacy_profile: Literal['private','public'] = 'private'
+    draft_only: bool = False
 
 
 def tab_scenario(url):
@@ -136,7 +137,8 @@ def install_extension(app, state):
             data['password'] = data['sauce_password']
         data.update(state.settings_secrets)
         request = StartRequest(scenario=scenario, task=payload.task, provider=payload.provider, seed=seed, layout=layout, privacy_profile=payload.privacy_profile,
-                               verify_scenario_outcome=payload.provider == 'demo' or payload.task.strip() == DEFAULT_TASKS[scenario])
+                               verify_scenario_outcome=payload.provider == 'demo' or payload.task.strip() == DEFAULT_TASKS[scenario],
+                               draft_only=payload.draft_only)
         adapter = ExtensionBrowser(state.detector, connection, payload.url)
         state.run = Run(request, adapter, state.gateway, data, payload.url)
         state.run.task = asyncio.create_task(state.run.loop(payload.url))

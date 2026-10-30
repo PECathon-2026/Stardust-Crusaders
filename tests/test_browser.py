@@ -51,6 +51,27 @@ async def test_custom_prompt_does_not_stop_at_preset_outcome(browser):
     assert run.outcome == 'planner_finished'
 
 
+@pytest.mark.parametrize('explicit,task', [(True, 'Prepare a reply.'), (False, 'Write a reply. Do not send it.')])
+async def test_draft_rule_blocks_model_send_without_approval_or_click(browser, explicit, task):
+    from backend.agent import Run
+    from backend.contracts import StartRequest
+    await browser.page.locator('button').evaluate("e=>e.onclick=()=>window.sent=true")
+    async def existing_page(*args, **kwargs): pass
+    browser.open = existing_page
+    class Planner:
+        last_receipt = None
+        async def plan(self, obs, task, refs, known, provider):
+            assert obs['task_rules']['draft_only'] is True
+            target = next(c['id'] for c in obs['controls'] if c['role']=='button')
+            return Action(type='click',snapshot_id=obs['snapshot_id'],target_id=target), {'bytes':0,'destination':'Adversarial test planner'}
+    run = Run(StartRequest(scenario='support',provider='gemini',task=task,draft_only=explicit,verify_scenario_outcome=False),browser,Planner(),{},browser.page.url)
+    await run.loop(browser.page.url)
+    assert run.status == 'blocked' and 'Draft-only rule' in run.error
+    assert run.approval is None
+    assert not any(e['title']=='Approval required' for e in run.events)
+    assert await browser.page.evaluate('window.sent || false') is False
+
+
 async def test_transient_capture_change_is_recaptured_before_planning(browser):
     from backend.agent import Gateway, Run
     from backend.contracts import StartRequest

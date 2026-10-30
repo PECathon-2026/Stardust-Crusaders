@@ -62,6 +62,7 @@ class StartRequest(Strict):
     mode: Literal["contract", "baseline"] = "contract"
     privacy_profile: Literal["private", "public"] = "private"
     verify_scenario_outcome: bool = True
+    draft_only: bool = False
     seed: int = Field(default=1, ge=1, le=10000)
     layout: int = Field(default=0, ge=0, le=1)
 
